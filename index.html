@@ -3,9 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kepta — Waste Less, Save Money</title>
-<meta name="description" content="Kepta tracks the food in your fridge, freezer, and pantry, warns you before it goes bad, helps you cook what you have, and shows what waste really costs — in real dollars. Free, with family sharing. Coming soon to the App Store.">
+<title>Kepta | Waste Less, Save Money</title>
+<meta name="description" content="Kepta tracks the food in your fridge, freezer, and pantry, warns you before it goes bad, helps you cook what you have, and shows what waste really costs, in real dollars. Free, with family sharing. Coming soon to the App Store.">
 <link rel="canonical" href="https://kepta.kitchen/">
+<meta name="theme-color" content="#0F6E56">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kepta">
+<meta property="og:title" content="Kepta | Waste Less, Save Money">
+<meta property="og:description" content="Kepta tracks the food in your fridge, freezer, and pantry, warns you before it goes bad, helps you cook what you have, and shows what waste really costs, in real dollars. Free, with family sharing. Coming soon to the App Store.">
+<meta property="og:url" content="https://kepta.kitchen/">
+<meta property="og:image" content="https://kepta.kitchen/kepta-logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kepta | Waste Less, Save Money">
+<meta name="twitter:description" content="Kepta tracks the food in your fridge, freezer, and pantry, warns you before it goes bad, helps you cook what you have, and shows what waste really costs, in real dollars. Free, with family sharing. Coming soon to the App Store.">
+<meta name="twitter:image" content="https://kepta.kitchen/kepta-logo.png">
 <style>
   :root {
     --green: #0F6E56;
@@ -23,113 +34,137 @@
     color: var(--ink);
     background: var(--canvas);
     margin: 0;
-    line-height: 1.6;
+    font-size: 1.08rem;
+    line-height: 1.65;
   }
-  main { max-width: 960px; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
-  section { margin: 0 0 4rem; }
+  img { max-width: 100%; }
+  main { max-width: 1120px; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
+  main a { color: var(--green); }
+  section { margin: 0 0 4.5rem; }
 
   .hero { text-align: center; }
   .logo {
-    width: 108px; height: 108px; border-radius: 26px;
+    width: 116px; height: 116px; border-radius: 28px;
     box-shadow: 0 10px 30px rgba(15,110,86,0.28);
   }
-  h1 { color: var(--green); font-size: 2.4rem; margin: 1.2rem 0 0.2rem; letter-spacing: -0.02em; }
-  .tagline { font-size: 1.3rem; font-weight: 600; margin: 0 0 1rem; }
-  .lede { color: var(--muted); max-width: 560px; margin: 0 auto 2rem; }
+  h1 { color: var(--green); font-size: clamp(2.5rem, 6vw, 3.1rem); margin: 1.2rem 0 0.2rem; letter-spacing: -0.02em; }
+  .tagline { font-size: 1.4rem; font-weight: 600; margin: 0 0 1rem; }
+  .lede { color: var(--muted); font-size: 1.13rem; line-height: 1.7; max-width: 760px; margin: 0 auto 2rem; }
 
-  h2 { color: var(--green); font-size: 1.5rem; letter-spacing: -0.01em; margin: 0 0 0.4rem; }
-  h3 { font-size: 1.05rem; margin: 0 0 0.3rem; }
-  .kicker { color: var(--muted); max-width: 620px; margin: 0 0 1.5rem; }
+  h2 { color: var(--green); font-size: clamp(1.55rem, 2.6vw, 1.85rem); letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+  h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
+  .kicker { color: var(--muted); max-width: 780px; margin: 0 0 1.6rem; }
   .center { text-align: center; }
   .center .kicker { margin-left: auto; margin-right: auto; }
 
   .soon {
     display: inline-block;
     background: linear-gradient(135deg, var(--green), var(--deep));
-    color: #fff; font-weight: 600; border-radius: 999px;
-    padding: 0.75rem 1.6rem;
+    color: #fff; font-weight: 600; font-size: 1.05rem; border-radius: 999px;
+    padding: 0.8rem 1.8rem;
     box-shadow: 0 8px 22px rgba(15,110,86,0.3);
+    text-decoration: none;
   }
-  .soon-note { color: var(--muted); font-size: 0.85rem; margin-top: 0.7rem; }
+  .soon-note { color: var(--muted); font-size: 0.98rem; margin-top: 0.8rem; }
+  .notify {
+    display: inline-block; margin-top: 0.9rem;
+    color: var(--green); background: #fff;
+    border: 1.5px solid var(--green); border-radius: 999px;
+    padding: 0.65rem 1.5rem; font-weight: 600; text-decoration: none;
+  }
+  .notify:hover { background: rgba(15,110,86,0.07); }
 
   .card {
     background: #fff;
     border: 1px solid var(--card-border);
     border-radius: 16px;
-    padding: 1.2rem 1.3rem;
+    padding: 1.4rem 1.5rem;
   }
-  .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-  .grid { display: grid; gap: 0.9rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.6; }
+  .grid { display: grid; gap: 1.1rem; align-items: start; }
   @media (min-width: 720px) {
     .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 900px) {
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1000px) {
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
   }
   .step-num {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 1.7rem; height: 1.7rem; border-radius: 999px;
+    width: 1.9rem; height: 1.9rem; border-radius: 999px;
     background: rgba(15,110,86,0.1); color: var(--green);
-    font-weight: 700; font-size: 0.9rem; margin-bottom: 0.6rem;
+    font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem;
   }
 
   .swatches { display: flex; gap: 0.45rem; margin-top: 0.7rem; }
-  .swatch { width: 14px; height: 14px; border-radius: 4px; }
+  .swatch { width: 16px; height: 16px; border-radius: 5px; }
   .swatch.g { background: var(--green); }
   .swatch.a { background: var(--amber); }
   .swatch.r { background: var(--red); }
 
-  .shots { display: grid; gap: 1.5rem; justify-items: center; }
+  .shots { display: grid; gap: 1.6rem; justify-items: center; }
   @media (min-width: 720px) { .shots { grid-template-columns: repeat(3, 1fr); } }
   .phone {
-    width: 100%; max-width: 250px;
-    border-radius: 34px;
+    width: 100%; max-width: 280px;
+    border-radius: 36px;
     border: 9px solid var(--ink);
     background: var(--ink);
     overflow: hidden;
     box-shadow: 0 16px 40px rgba(28,28,26,0.22);
   }
   .phone img { display: block; width: 100%; height: auto; }
-  .shot-label { color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem; text-align: center; }
+  .shot-label { color: var(--muted); font-size: 1rem; margin-top: 0.6rem; text-align: center; }
 
   .code-demo {
     display: inline-block;
     font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-    font-size: 1.5rem; font-weight: 700; letter-spacing: 0.18em;
+    font-size: 1.7rem; font-weight: 700; letter-spacing: 0.18em;
     color: var(--green);
     background: #fff; border: 1px solid var(--card-border); border-radius: 12px;
-    padding: 0.5rem 1rem; margin: 0.6rem 0 1rem;
+    padding: 0.55rem 1.1rem; margin: 0.6rem 0 1.2rem;
   }
 
-  ul.plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
-  ul.plain li { display: flex; gap: 0.6rem; align-items: baseline; color: var(--muted); font-size: 0.95rem; }
+  ul.plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.65rem; }
+  ul.plain li { display: flex; gap: 0.65rem; align-items: baseline; color: var(--muted); font-size: 1rem; line-height: 1.6; }
   ul.plain .dot { color: var(--green); font-weight: 700; }
-  @media (min-width: 720px) { ul.plain.cols { grid-template-columns: 1fr 1fr; column-gap: 1.5rem; } }
 
   .compare {
     background: #fff; border: 1px solid var(--card-border); border-radius: 16px;
-    padding: 1.3rem 1.4rem; margin-top: 1.2rem;
+    padding: 1.4rem 1.5rem;
   }
-  .compare p { color: var(--muted); font-size: 0.93rem; margin: 0 0 0.7rem; }
+  .compare p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 0.8rem; }
   .compare p:last-child { margin-bottom: 0; }
-  .compare a { color: var(--green); }
 
-  .money-rules { margin-top: 1rem; }
+  .money-rules { margin-top: 1.2rem; }
   .rule-tag {
-    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    display: inline-block; font-size: 0.85rem; font-weight: 700;
     color: var(--green); background: rgba(15,110,86,0.1);
-    border-radius: 999px; padding: 0.15rem 0.7rem; margin-bottom: 0.45rem;
+    border-radius: 999px; padding: 0.2rem 0.8rem; margin-bottom: 0.5rem;
   }
 
   .name-story em { font-style: normal; font-weight: 600; color: var(--green); }
 
+  .duo { display: grid; gap: 1.5rem; align-items: center; }
+  @media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+  .cta-card {
+    background: #fff; border: 1px solid var(--card-border); border-radius: 16px;
+    padding: 1.8rem 1.5rem; text-align: center;
+  }
+  .cta-card p { color: var(--muted); margin: 0 0 1.1rem; }
+  .cta-links { color: var(--muted); font-size: 0.98rem; margin-top: 1.1rem; }
+
   footer {
     border-top: 1px solid var(--card-border);
-    color: var(--muted); font-size: 0.9rem;
+    color: var(--muted); font-size: 1rem;
     padding: 2rem 1.25rem 2.5rem;
     text-align: center;
   }
   footer nav { margin-bottom: 0.8rem; }
   footer a { color: var(--green); }
-  footer nav a { margin: 0 0.55rem; white-space: nowrap; }
+  footer nav a { margin: 0 0.6rem; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -141,14 +176,16 @@
     <p class="tagline">Waste less, save money.</p>
     <p class="lede">Kepta keeps track of the food in your fridge, freezer, and pantry, warns you
     before it goes bad, helps you cook what you already have, and shows what your waste really
-    costs — in real dollars, not made-up estimates. It's free, your whole family can share one
-    kitchen, and there are no ads, no tracking, and no item limits.</p>
+    costs: real dollars, not made-up estimates. It's <strong>free</strong>, your whole family
+    can share one kitchen, and there are <strong>no ads, no tracking, and no item
+    limits</strong>.</p>
     <!-- When Apple approves the app, replace the span below with the real App Store link.
          Keep the same class so the styling carries over:
          <a class="soon" href="https://apps.apple.com/app/id6805635396">Download on the App Store</a>
          Then delete the "not out yet" note underneath. -->
     <span class="soon">Coming Soon to the App Store</span>
-    <p class="soon-note">Kepta is in App Store review right now — it isn't downloadable yet.</p>
+    <p class="soon-note">Kepta is in App Store review right now. It isn't downloadable yet.</p>
+    <a class="notify" href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Tell Me When It Launches</a>
   </section>
 
   <section class="center">
@@ -160,13 +197,13 @@
         <h3>Add in seconds</h3>
         <p>Tap a chip for staples like milk or eggs, or type a couple of letters and pick from
         the suggestions. Kepta guesses the category, the spot, and the shelf life for you.
-        There's no barcode scanner yet — for now, a tap or two covers most items.</p>
+        There's no barcode scanner yet. For now, a tap or two covers most items.</p>
       </div>
       <div class="card">
         <span class="step-num">2</span>
         <h3>Colors tell you what to use</h3>
         <p>Every item gets a freshness color based on its own shelf life, backed by a
-        USDA-researched database. Fresh ground beef shows green, not red — because freshness
+        USDA-researched database. Fresh ground beef shows green, not red, because freshness
         is relative to the food, not a countdown that treats everything the same.</p>
         <div class="swatches" aria-hidden="true"><span class="swatch g"></span><span class="swatch a"></span><span class="swatch r"></span></div>
       </div>
@@ -181,7 +218,7 @@
         <span class="step-num">4</span>
         <h3>See real money</h3>
         <p>When food gets used, you saved what it cost. When it gets tossed, you wasted it.
-        Kepta adds up what you actually spent — so the number at the top of Insights is one
+        Kepta adds up what you actually spent, so the number at the top of Insights is one
         you can believe.</p>
       </div>
     </div>
@@ -207,35 +244,37 @@
   </section>
 
   <section class="center">
-    <h2>One kitchen, whole family — free</h2>
-    <p class="kicker">Your kitchen has a six-character invite code. Share it, and family members
-    join your kitchen from their own phones. Everyone sees the same shelves, the same list,
-    the same leftovers — when someone finishes the milk, it's gone from everyone's kitchen
-    at once.</p>
-    <span class="code-demo">QX2-M4P</span>
-    <div class="card" style="text-align:left; max-width:640px; margin:0 auto;">
-      <h3>Also included, also free</h3>
-      <ul class="plain cols">
-        <li><span class="dot">●</span><span>Daily reminders that name real items — "use the chicken" — not generic nags</span></li>
-        <li><span class="dot">●</span><span>Shopping list grouped by aisle, flowing straight into your kitchen with prices</span></li>
-        <li><span class="dot">●</span><span>Custom places — name your own fridges, freezers, and cupboards</span></li>
-        <li><span class="dot">●</span><span>Works offline — browse your kitchen and queue new adds; everything syncs when you're back</span></li>
-        <li><span class="dot">●</span><span>One-tap undo everywhere, so mistakes cost nothing</span></li>
-        <li><span class="dot">●</span><span>No item limits, no ads, no tracking — your email and your food data are used to run the app, nothing else</span></li>
-        <li><span class="dot">●</span><span>Delete your account in the app, any time</span></li>
-      </ul>
-    </div>
-    <div class="compare" style="text-align:left; max-width:640px; margin:1.2rem auto 0;">
-      <h3>How that compares — plainly</h3>
-      <p>As of September 2026, Eatvora offers household sharing in its $9.99/month Plus tier
-      and caps its free plan at 25 pantry items. To be fair, Eatvora offers things Kepta
-      doesn't have yet, like barcode scanning, receipt scanning, and AI recipe suggestions.
-      <a href="/kepta-vs-eatvora">Full comparison</a>.</p>
-      <p>Free-tier item caps are common: 100 items in KitchenPal, 200 in Pantry Check, 500 in
-      NoWaste (as of September 2026). Kepta has no item limits at all.</p>
-      <p>And if you're here because CozZo shut down — the cloud infrastructure behind it was
-      shut down, and support ended December 30, 2025 — we're sorry; it was a good app, and its
-      farewell was a classy one. <a href="/cozzo-alternative">Here's how Kepta lines up</a>.</p>
+    <h2>One kitchen for the whole family, free</h2>
+    <p class="kicker">Your kitchen has a <strong>six-character invite code</strong>. Share it,
+    and family members join your kitchen from their own phones. Everyone sees the same shelves,
+    the same list, the same leftovers. When someone finishes the milk, it's gone from
+    everyone's kitchen at once.</p>
+    <span class="code-demo" aria-label="Example invite code">ABC-123</span>
+    <div class="grid grid-2" style="text-align:left;">
+      <div class="card">
+        <h3>Also included, also free</h3>
+        <ul class="plain">
+          <li><span class="dot">●</span><span>Daily reminders that name real items ("use the chicken"), not generic nags</span></li>
+          <li><span class="dot">●</span><span>Shopping list grouped by aisle, flowing straight into your kitchen with prices</span></li>
+          <li><span class="dot">●</span><span>Custom places: name your own fridges, freezers, and cupboards</span></li>
+          <li><span class="dot">●</span><span>Works offline: browse your kitchen and queue new adds; everything syncs when you're back</span></li>
+          <li><span class="dot">●</span><span>One-tap undo everywhere, so mistakes cost nothing</span></li>
+          <li><span class="dot">●</span><span>No item limits, no ads, no tracking. Your email and your food data are used to run the app, nothing else</span></li>
+          <li><span class="dot">●</span><span>Delete your account in the app, any time</span></li>
+        </ul>
+      </div>
+      <div class="compare">
+        <h3>How that compares, plainly</h3>
+        <p>As of September 2026, Eatvora offers household sharing in its $9.99/month Plus tier
+        and caps its free plan at 25 pantry items. To be fair, Eatvora offers things Kepta
+        doesn't have yet, like barcode scanning, receipt scanning, and AI recipe suggestions.
+        <a href="/kepta-vs-eatvora">Full comparison</a>.</p>
+        <p>Free-tier item caps are common: 100 items in KitchenPal, 200 in Pantry Check, 500 in
+        NoWaste (as of September 2026). Kepta has <strong>no item limits at all</strong>.</p>
+        <p>And if you're here because CozZo shut down: the cloud infrastructure behind it was
+        shut down, and support ended December 30, 2025. We're sorry; it was a good app, and its
+        farewell was a classy one. <a href="/cozzo-alternative">Here's how Kepta lines up</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -245,7 +284,7 @@
       <p class="kicker">Savings numbers are easy to inflate with estimates. Kepta doesn't do
       that. Three rules keep the math believable:</p>
     </div>
-    <div class="money-rules grid grid-2" style="max-width:760px; margin:0 auto;">
+    <div class="money-rules grid grid-3">
       <div class="card">
         <span class="rule-tag">Rule 1</span>
         <p>Only money you actually spent counts. If you never typed a price, Kepta never
@@ -253,23 +292,33 @@
       </div>
       <div class="card">
         <span class="rule-tag">Rule 2</span>
-        <p>Homemade meals are counted as dishes cooked — never converted into fake dollar
+        <p>Homemade meals are counted as dishes cooked, never converted into fake dollar
         "savings." A home-cooked dinner is a win; it isn't $14.37.</p>
       </div>
-      <div class="card" style="grid-column: 1 / -1;">
+      <div class="card">
         <span class="rule-tag">Rule 3</span>
-        <p>Partial use charges proportionally. Use half of a $10 roast, and $5 moved to saved —
-        toss the other half, and $5 moved to wasted. The numbers always add up, because they're
+        <p>Partial use charges proportionally. Use half of a $10 roast, and $5 moves to saved.
+        Toss the other half, and $5 moves to wasted. The numbers always add up, because they're
         real.</p>
       </div>
     </div>
   </section>
 
-  <section class="center name-story">
-    <h2>Why "Kepta"?</h2>
-    <p class="kicker" style="margin-bottom:0;">From <em>kept</em>: a well kept kitchen, money you
-    keep, recipes worth keeping. It's also the Lithuanian word for <em>baked</em> — which felt
-    right for an app that would rather see your food cooked than tossed.</p>
+  <section class="duo">
+    <div class="name-story">
+      <h2>Why "Kepta"?</h2>
+      <p class="kicker" style="margin-bottom:0;">From <em>kept</em>: a well kept kitchen, money
+      you keep, recipes worth keeping. It's also the Lithuanian word for <em>baked</em>, which
+      felt right for an app that would rather see your food cooked than tossed.</p>
+    </div>
+    <div class="cta-card">
+      <h2>Be first in line</h2>
+      <p>Kepta is finishing App Store review. Want an email the day it goes live? Send us a
+      note, and that launch email is the only thing we'll ever send you.</p>
+      <a class="soon" href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Tell Me When Kepta Launches</a>
+      <p class="cta-links">Still comparing? Read <a href="/kepta-vs-eatvora">Kepta vs
+      Eatvora</a> or see <a href="/cozzo-alternative">how Kepta fits after CozZo</a>.</p>
+    </div>
   </section>
 
 </main>

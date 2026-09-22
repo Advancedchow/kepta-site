@@ -4,54 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kepta vs Eatvora</title>
-<meta name="description" content="An honest, plainly worded comparison of Kepta and Eatvora: family sharing, item limits, pricing, recipes, and where each app is ahead — verified September 2026.">
+<meta name="description" content="An honest, plainly worded comparison of Kepta and Eatvora: family sharing, item limits, pricing, recipes, and where each app is ahead. Verified September 2026.">
 <link rel="canonical" href="https://kepta.kitchen/kepta-vs-eatvora">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kepta">
+<meta property="og:title" content="Kepta vs Eatvora">
+<meta property="og:description" content="An honest, plainly worded comparison of Kepta and Eatvora: family sharing, item limits, pricing, recipes, and where each app is ahead. Verified September 2026.">
+<meta property="og:url" content="https://kepta.kitchen/kepta-vs-eatvora">
+<meta property="og:image" content="https://kepta.kitchen/kepta-logo.png">
+<meta property="og:image:alt" content="The Kepta logo on a deep green background">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kepta vs Eatvora">
+<meta name="twitter:description" content="An honest, plainly worded comparison of Kepta and Eatvora: family sharing, item limits, pricing, recipes, and where each app is ahead. Verified September 2026.">
+<meta name="twitter:image" content="https://kepta.kitchen/kepta-logo.png">
 <style>
-  :root { --green: #0F6E56; --deep: #0B5743; --ink: #1c1c1a; --muted: #6b6b66; --canvas: #F7F7F4; }
+  :root { --green: #0F6E56; --deep: #0B5743; --ink: #1c1c1a; --muted: #6b6b66;
+          --canvas: #F7F7F4; --card-border: rgba(15,110,86,0.14); }
   * { box-sizing: border-box; }
   body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink);
-         background: var(--canvas); margin: 0; line-height: 1.6; }
-  main { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
-  header.site { max-width: 760px; margin: 0 auto; padding: 1.25rem 1.25rem 0; }
-  header.site a { color: var(--green); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
-  h1 { color: var(--green); font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 0.4rem; }
-  h2 { color: var(--green); font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.4rem 0 0.8rem; }
-  .lede { color: var(--muted); margin: 0 0 1.6rem; max-width: 620px; }
-  .note { background: #fff; border: 1px solid rgba(15,110,86,0.14); border-radius: 14px;
-          padding: 0.85rem 1.1rem; color: var(--muted); font-size: 0.92rem; margin: 1.4rem 0; }
-  .table-wrap { background: #fff; border: 1px solid rgba(15,110,86,0.14); border-radius: 14px;
-                overflow-x: auto; margin: 1.2rem 0; }
-  table { border-collapse: collapse; width: 100%; min-width: 600px; }
-  th, td { text-align: left; vertical-align: top; padding: 0.85rem 1rem;
-           border-bottom: 1px solid rgba(15,110,86,0.1); font-size: 0.95rem; }
+         background: var(--canvas); margin: 0; font-size: 1.08rem; line-height: 1.7; }
+  main { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+  header.site { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+                max-width: 1120px; margin: 0 auto; padding: 1.4rem 1.5rem 0; }
+  header.site .brand { display: flex; align-items: center; gap: 0.6rem; color: var(--green);
+                       font-weight: 700; text-decoration: none; font-size: 1.2rem; }
+  header.site .brand img { width: 38px; height: 38px; border-radius: 10px; }
+  header.site nav { margin-left: auto; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  header.site nav a { color: var(--green); text-decoration: none; font-weight: 600; font-size: 1rem; }
+  h1 { color: var(--green); font-size: 2.5rem; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+  h2 { color: var(--green); font-size: 1.6rem; letter-spacing: -0.01em; margin: 2.8rem 0 1rem; }
+  main > p { max-width: 75ch; }
+  .lede { color: var(--muted); font-size: 1.15rem; margin: 0 0 1.8rem; max-width: 75ch; }
+  .note { background: #fff; border: 1px solid var(--card-border); border-radius: 14px;
+          padding: 1rem 1.25rem; color: var(--muted); font-size: 1rem; line-height: 1.65;
+          margin: 1.6rem 0; max-width: 75ch; }
+  .note a { color: var(--green); }
+  .duo, .cards { display: grid; gap: 1rem; margin: 1.3rem 0; }
+  @media (min-width: 700px) { .duo, .cards { grid-template-columns: 1fr 1fr; } }
+  .card { background: #fff; border: 1px solid var(--card-border); border-radius: 14px;
+          padding: 1.3rem 1.5rem; }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1.2rem; color: var(--green); }
+  .card p { margin: 0; font-size: 1.02rem; }
+  .card a { color: var(--green); font-weight: 600; }
+  .table-wrap { background: #fff; border: 1px solid var(--card-border); border-radius: 14px;
+                overflow-x: auto; margin: 1.3rem 0; }
+  table { border-collapse: collapse; width: 100%; min-width: 680px; }
+  th, td { text-align: left; vertical-align: top; padding: 1rem 1.25rem;
+           border-bottom: 1px solid rgba(15,110,86,0.1); font-size: 1rem; line-height: 1.6; }
   tr:last-child th, tr:last-child td { border-bottom: none; }
-  thead th { background: rgba(15,110,86,0.06); color: var(--green); font-size: 0.95rem; }
-  tbody th { font-weight: 600; width: 22%; }
-  td.k { width: 39%; }
-  td.e { width: 39%; }
-  .date { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.25rem; }
-  .cards { display: grid; gap: 0.9rem; margin: 1.2rem 0; }
-  @media (min-width: 620px) { .cards { grid-template-columns: 1fr 1fr; } }
-  .card { background: #fff; border: 1px solid rgba(15,110,86,0.14); border-radius: 14px;
-          padding: 1.1rem 1.2rem; }
-  .card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; color: var(--green); }
-  .card p { margin: 0; font-size: 0.95rem; }
-  ul.plain { padding-left: 1.2rem; margin: 0.6rem 0 0; }
-  ul.plain li { margin: 0.3rem 0; }
-  figure { margin: 1.6rem auto; text-align: center; }
-  figure img { width: 100%; max-width: 260px; height: auto; border-radius: 22px;
+  thead th { background: rgba(15,110,86,0.06); color: var(--green); font-size: 1rem; }
+  tbody th { font-weight: 600; width: 18%; }
+  td.k { width: 41%; }
+  td.e { width: 41%; }
+  .date { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 0.3rem; }
+  .invite { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-weight: 700;
+            letter-spacing: 0.08em; color: var(--green); background: rgba(15,110,86,0.08);
+            border-radius: 6px; padding: 0.05rem 0.45rem; white-space: nowrap; }
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem 1.75rem;
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  ul.features li { display: flex; gap: 0.6rem; align-items: baseline; font-size: 1.02rem; }
+  .dot { color: var(--green); font-weight: 700; }
+  ul.plain { padding-left: 1.3rem; margin: 0.8rem 0 0; }
+  ul.plain li { margin: 0.5rem 0; }
+  .media { display: grid; gap: 2rem; align-items: start; margin: 1.3rem 0; }
+  @media (min-width: 860px) { .media { grid-template-columns: minmax(0, 1fr) 300px; } }
+  .media figure { margin: 0; text-align: center; }
+  .media img { width: 100%; max-width: 280px; height: auto; border-radius: 22px;
                box-shadow: 0 10px 30px rgba(15,110,86,0.22); }
-  figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 0.6rem; }
-  .cta { text-align: center; margin: 2.6rem 0 0; }
+  figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.7rem; }
+  .crosslink { color: var(--muted); margin: 2rem 0 0; }
+  .crosslink a { color: var(--green); }
+  .cta { text-align: center; margin: 3rem 0 0; }
   .soon { display: inline-block; background: linear-gradient(135deg, var(--green), var(--deep));
-          color: #fff; font-weight: 600; border-radius: 999px; padding: 0.7rem 1.5rem;
-          box-shadow: 0 8px 22px rgba(15,110,86,0.3); }
-  footer { color: var(--muted); font-size: 0.9rem; margin-top: 3rem; text-align: center; }
+          color: #fff; font-weight: 600; font-size: 1.05rem; border-radius: 999px;
+          padding: 0.8rem 1.7rem; box-shadow: 0 8px 22px rgba(15,110,86,0.3); }
+  .notify { color: var(--muted); font-size: 1rem; max-width: 46em; margin: 1rem auto 0; }
+  .notify a { color: var(--green); font-weight: 600; }
+  footer { color: var(--muted); font-size: 1rem; margin-top: 3.5rem; text-align: center; }
   footer a { color: var(--green); }
 </style>
 </head>
 <body>
-<header class="site"><a href="/">Kepta</a></header>
+<header class="site">
+  <a class="brand" href="/"><img src="kepta-logo.png" alt="">Kepta</a>
+  <nav aria-label="Site">
+    <a href="/">Home</a>
+    <a href="/cozzo-alternative">CozZo Alternative</a>
+    <a href="/support">Support</a>
+  </nav>
+</header>
 <main>
   <h1>Kepta vs Eatvora</h1>
   <p class="lede">Kepta and Eatvora both help you track the food in your kitchen and waste
@@ -59,18 +100,28 @@
   out the differences plainly, so you can pick the one that fits your kitchen.</p>
 
   <p class="note">Everything on this page about Eatvora was checked against eatvora.app and
-  their US App Store listing in September 2026. Their pricing and plans can change — if
+  their US App Store listing in September 2026. Their pricing and plans can change. If
   something here is out of date, tell us at
   <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a> and we'll fix it.
-  Eatvora is a trademark of its owner; Kepta isn't affiliated with or endorsed by Eatvora —
-  we're just comparing.</p>
+  Eatvora is a trademark of its owner. Kepta isn't affiliated with or endorsed by Eatvora,
+  and we're just comparing.</p>
 
   <h2>The short version</h2>
-  <p>Eatvora is a household-management app with a free plan and two paid tiers; as of
-  September 2026, features like AI suggestions, unlimited items, family sharing, and monthly
-  reports sit in the paid tiers. Kepta is a smaller, focused app that launches free: full
-  inventory, family sharing, and honest money numbers, with no item caps, no ads, and no
-  tracking. Eatvora ships several things Kepta doesn't have at all yet, and we say so below.</p>
+  <div class="duo">
+    <div class="card">
+      <h3>Eatvora in short</h3>
+      <p>A household-management app with a <strong>free plan and two paid tiers</strong>. As
+      of September 2026, features like AI suggestions, unlimited items, family sharing, and
+      monthly reports sit in the paid tiers.</p>
+    </div>
+    <div class="card">
+      <h3>Kepta in short</h3>
+      <p>A smaller, focused app that <strong>launches free</strong>: full inventory, family
+      sharing, and honest money numbers, with <strong>no item caps, no ads, and no
+      tracking</strong>.</p>
+    </div>
+  </div>
+  <p>Eatvora ships several things Kepta doesn't have at all yet, and we say so below.</p>
 
   <h2>Side by side</h2>
   <div class="table-wrap">
@@ -87,7 +138,8 @@
         </tr>
         <tr>
           <th scope="row">Family Sharing</th>
-          <td class="k">Free. Your whole family shares one kitchen with a 6-character invite code.</td>
+          <td class="k">Free. Your whole family shares one kitchen with a 6-character invite
+            code like <span class="invite">ABC-123</span>.</td>
           <td class="e">In the Plus tier at $9.99/mo, for up to 5 household members.
             <small class="date">As of Sept 2026</small></td>
         </tr>
@@ -100,10 +152,10 @@
         </tr>
         <tr>
           <th scope="row">Money Tracking</th>
-          <td class="k">Free. Real dollars only — what you actually spent, wasted, and saved.
+          <td class="k">Free. Real dollars only: what you actually spent, wasted, and saved.
             Homemade meals are counted as dishes, never given made-up prices.</td>
-          <td class="e">Savings and report features — the monthly report card and PDF reports —
-            are in the Plus tier.
+          <td class="e">Savings and report features, including the monthly report card and PDF
+            reports, are in the Plus tier.
             <small class="date">As of Sept 2026</small></td>
         </tr>
         <tr>
@@ -128,7 +180,7 @@
         </tr>
         <tr>
           <th scope="row">Availability</th>
-          <td class="k">In App Store review — coming soon.</td>
+          <td class="k">In App Store review. Coming soon.</td>
           <td class="e">On the App Store now.
             <small class="date">As of Sept 2026</small></td>
         </tr>
@@ -136,57 +188,79 @@
     </table>
   </div>
 
-  <figure>
-    <img src="shots/insights.png" alt="Kepta's Insights screen showing money wasted and money saved in real dollars" width="420" height="913" loading="lazy">
-    <figcaption>Kepta's money screen. Real dollars only — homemade meals count as dishes, not estimates.</figcaption>
-  </figure>
-
   <h2>Where Eatvora is ahead today</h2>
-  <p>Honestly, in a few places. As of September 2026, Eatvora ships barcode scanning and
-  receipt scanning, AI recipe and autopilot suggestions, smart shopping tips, meal planning,
-  chore tracking with AI chore planning, calendar integration, and monthly and PDF reports.
-  Kepta has none of those today. If scanning items in by barcode or having AI plan your week
-  is what you're after, Eatvora is the stronger pick right now.</p>
+  <p>Honestly, in a few places. As of September 2026, Eatvora ships all of these:</p>
+  <div class="card">
+    <ul class="features">
+      <li><span class="dot">&#9679;</span><span>Barcode scanning</span></li>
+      <li><span class="dot">&#9679;</span><span>Receipt scanning</span></li>
+      <li><span class="dot">&#9679;</span><span>AI recipe and autopilot suggestions</span></li>
+      <li><span class="dot">&#9679;</span><span>Smart shopping tips</span></li>
+      <li><span class="dot">&#9679;</span><span>Meal planning</span></li>
+      <li><span class="dot">&#9679;</span><span>Chore tracking with AI chore planning</span></li>
+      <li><span class="dot">&#9679;</span><span>Calendar integration</span></li>
+      <li><span class="dot">&#9679;</span><span>Monthly and PDF reports</span></li>
+    </ul>
+  </div>
+  <p>Kepta has none of those today. If scanning items in by barcode or having AI plan your
+  week is what you're after, <strong>Eatvora is the stronger pick right now</strong>.</p>
 
   <h2>What Kepta does instead</h2>
-  <p>Kepta puts its effort into the everyday loop: knowing what's in your kitchen, what to
-  use next, and what it's really costing you.</p>
-  <ul class="plain">
-    <li>A freshness color for every item, based on that food's own shelf life, so you always know what to use next</li>
-    <li>A daily reminder that names the actual food about to turn — not a generic ping</li>
-    <li>A shopping list with aisle grouping that moves straight into your kitchen, prices included</li>
-    <li>Family sharing, offline support, and one-tap undo everywhere — all free</li>
-    <li>No ads and no tracking: your email and your food data are used to run the app, nothing else</li>
-    <li>Delete your account any time, right inside the app</li>
-  </ul>
+  <div class="media">
+    <div>
+      <p>Kepta puts its effort into the everyday loop: knowing what's in your kitchen, what
+      to use next, and what it's really costing you.</p>
+      <ul class="plain">
+        <li><strong>A freshness color for every item</strong>, based on that food's own shelf life, so you always know what to use next</li>
+        <li><strong>A daily reminder that names the actual food</strong> about to turn, not a generic ping</li>
+        <li><strong>A shopping list with aisle grouping</strong> that moves straight into your kitchen, prices included</li>
+        <li><strong>Family sharing, offline support, and one-tap undo</strong> everywhere, all free</li>
+        <li><strong>No ads and no tracking</strong>: your email and your food data are used to run the app, nothing else</li>
+        <li><strong>Delete your account any time</strong>, right inside the app</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="shots/insights.png" alt="Kepta's Insights screen showing money wasted and money saved in real dollars" width="420" height="913" loading="lazy">
+      <figcaption>Kepta's money screen. Real dollars only: homemade meals count as dishes, not estimates.</figcaption>
+    </figure>
+  </div>
 
   <h2>Which one should you pick?</h2>
   <div class="cards">
     <div class="card">
-      <h3>Pick Eatvora if…</h3>
+      <h3>Pick Eatvora if&hellip;</h3>
       <p>You want barcode and receipt scanning, AI-generated suggestions, meal and chore
-      planning, or calendar integration today — and you're comfortable with a subscription
-      for household sharing and unlimited items.</p>
+      planning, or calendar integration today. You're comfortable with a subscription for
+      household sharing and unlimited items.</p>
     </div>
     <div class="card">
-      <h3>Wait for Kepta if…</h3>
+      <h3>Wait for Kepta if&hellip;</h3>
       <p>You want your whole family in one kitchen for free, no cap on how much food you
-      track, and money numbers that only ever count real dollars — and you can live without
-      scanning and AI for now. Kepta is in App Store review and will be free at launch.</p>
+      track, and money numbers that only ever count real dollars. You can live without
+      scanning and AI for now. Kepta is in App Store review and will be free at launch.
+      <a href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Ask
+      for a launch email</a> and we'll tell you the day it's live.</p>
     </div>
   </div>
+
+  <p class="crosslink">Coming from CozZo instead of Eatvora? That shutdown is its own story:
+  <a href="/cozzo-alternative">here's how Kepta lines up as a CozZo alternative</a>. Or start
+  at the <a href="/">Kepta homepage</a> for the full tour.</p>
 
   <div class="cta">
     <!-- When Kepta is approved, replace the span below with a real App Store link:
          <a class="soon" href="https://apps.apple.com/app/id6805635396">Download on the App Store</a>
          (keep the class="soon" so the button styling carries over). -->
     <span class="soon">Coming soon to the App Store</span>
+    <p class="notify">Kepta is in App Store review right now. Want to know the moment it's
+    live? <a href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Ask
+    for a launch email</a> and we'll send one note on launch day. No list, no spam.</p>
   </div>
 
   <footer>
-    <p><a href="/">Home</a> · <a href="/kepta-vs-eatvora">Kepta vs Eatvora</a> ·
-       <a href="/cozzo-alternative">CozZo Alternative</a> ·
-       <a href="/support">Support</a> · <a href="/privacy">Privacy Policy</a></p>
+    <p><a href="/">Home</a> &middot; <a href="/kepta-vs-eatvora">Kepta vs Eatvora</a> &middot;
+       <a href="/cozzo-alternative">CozZo Alternative</a> &middot;
+       <a href="/support">Support</a> &middot; <a href="/privacy">Privacy Policy</a></p>
     <p>Questions? <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a></p>
   </footer>
 </main>
