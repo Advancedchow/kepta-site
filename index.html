@@ -158,6 +158,14 @@
 
   .name-story em { font-style: normal; font-weight: 600; color: var(--green); }
 
+  .faq { display: grid; gap: 0.8rem; max-width: 860px; margin: 1.6rem auto 0; text-align: left; }
+  .faq details {
+    background: #fff; border: 1px solid var(--green); border-radius: 12px;
+    padding: 0.95rem 1.25rem;
+  }
+  .faq summary { font-weight: 700; cursor: pointer; font-size: 1.05rem; }
+  .faq p { color: var(--muted); margin: 0.6rem 0 0; font-size: 1rem; line-height: 1.65; }
+
   .duo { display: grid; gap: 1.5rem; align-items: stretch; }
   @media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
   .cta-card {
@@ -198,6 +206,7 @@
     <span class="soon">Coming Soon to the App Store</span>
     <p class="soon-note">Kepta is in App Store review right now. It isn't downloadable yet.</p>
     <a class="notify" href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Tell Me When It Launches</a>
+    <p class="soon-note" style="margin-top:1rem;"><strong>Kepta is free.</strong> The whole app, family sharing included. No subscription needed.</p>
   </section>
 
   <section class="center">
@@ -318,6 +327,42 @@
     </div>
   </section>
 
+  <section class="center">
+    <h2>Quick questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Is Kepta free?</summary>
+        <p>Yes. Version 1 is completely free: the inventory, family sharing, recipes,
+        reminders, and the money numbers, with no item limits and no ads. A paid tier with
+        deeper reports may come later; the core app stays free.</p>
+      </details>
+      <details>
+        <summary>What phones does it run on?</summary>
+        <p>iPhone. Kepta is an iOS app. Android is on the long-term list, but we won't
+        promise a date we can't keep.</p>
+      </details>
+      <details>
+        <summary>How does the family kitchen work?</summary>
+        <p>Your kitchen has a six-character invite code, like ABC-123. Family members type
+        it in on their own phones and everyone shares the same kitchen: same shelves, same
+        list, same leftovers. Sharing is free.</p>
+      </details>
+      <details>
+        <summary>Do you sell my data?</summary>
+        <p>No. Your email and your food data are used to run the app, nothing else. No ads,
+        no tracking, and you can delete your account and everything in it from inside the
+        app at any time.</p>
+      </details>
+      <details>
+        <summary>When does it launch?</summary>
+        <p>Kepta is in App Store review right now, which usually takes a few days.
+        <a href="mailto:support@kepta.kitchen?subject=Tell%20me%20when%20Kepta%20launches">Ask
+        for a launch email</a> and we'll send one note the day it goes live. That's the only
+        email you'll ever get.</p>
+      </details>
+    </div>
+  </section>
+
   <section class="duo">
     <div class="cta-card name-story">
       <h2>Why "Kepta"?</h2>
@@ -345,6 +390,8 @@
     <a href="/privacy">Privacy Policy</a>
   </nav>
   <p>Questions? <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a></p>
+  <p>Kepta is built by one person who got tired of throwing food away. When you email
+  support, the founder answers.</p>
   <p>Shelf-life colors are quality guidance, not food-safety advice. © 2026 Kepta.</p>
 </footer>
 </body>
