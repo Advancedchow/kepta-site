@@ -101,7 +101,10 @@
                  flex-wrap: wrap; }
   .soon { display: inline-block; background: linear-gradient(135deg, var(--green), var(--deep));
           color: #fff; font-weight: 600; border-radius: 999px; padding: 0.8rem 1.7rem;
-          box-shadow: 0 8px 22px rgba(15,110,86,0.3); }
+          box-shadow: 0 8px 22px rgba(15,110,86,0.3); text-decoration: none; }
+  /* Apple's official badge, unmodified: 52 px tall, quarter-height clear space, no motion. */
+  .store-badge { display: inline-block; margin: 13px; line-height: 0; }
+  .store-badge img { display: block; height: 52px; width: auto; }
   .ghost { display: inline-block; color: var(--green); background: #fff;
            border: 1.5px solid var(--green); font-weight: 600; border-radius: 999px;
            padding: 0.72rem 1.6rem; text-decoration: none; }
@@ -325,7 +328,7 @@
     <p style="font-weight:600; margin:0 0 1rem;">The short verdict: Kepta covers the heart
     of what CozZo did, free, and is plain about what it doesn't do yet.</p>
     <div class="cta-buttons">
-      <a class="soon" href="https://apps.apple.com/app/id6805635396">Download on the App Store</a>
+      <a class="store-badge" href="https://apps.apple.com/app/id6805635396"><img src="/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
     </div>
     <p class="fineprint" style="margin-top:0.9rem;">Questions? <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a></p>
     <p class="fineprint" style="margin-top:0.4rem;">Weighing other options too? <a href="/kepta-vs-eatvora">See how Kepta compares with Eatvora</a>.</p>

@@ -86,11 +86,29 @@
   .cta { text-align: center; margin: 3rem 0 0; }
   .soon { display: inline-block; background: linear-gradient(135deg, var(--green), var(--deep));
           color: #fff; font-weight: 600; font-size: 1.05rem; border-radius: 999px;
-          padding: 0.8rem 1.7rem; box-shadow: 0 8px 22px rgba(15,110,86,0.3); }
+          padding: 0.8rem 1.7rem; box-shadow: 0 8px 22px rgba(15,110,86,0.3);
+          text-decoration: none; }
+  /* Apple's official badge, unmodified: 52 px tall, quarter-height clear space, no motion. */
+  .store-badge { display: inline-block; margin: 13px; line-height: 0; }
+  .store-badge img { display: block; height: 52px; width: auto; }
   .notify { color: var(--muted); font-size: 1rem; max-width: 46em; margin: 1rem auto 0; }
   .notify a { color: var(--green); font-weight: 600; }
   footer { color: var(--muted); font-size: 1rem; margin-top: 3.5rem; text-align: center; }
   footer a { color: var(--green); }
+  /* Phones: each row stacks as a labeled block, like the CozZo page's rows. */
+  @media (max-width: 699px) {
+    table { min-width: 0; }
+    thead { position: absolute; left: -9999px; }
+    table, tbody, tr, th, td { display: block; }
+    tbody tr { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(15,110,86,0.1); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody th { padding: 0 0 0.4rem; border: 0; color: var(--green); font-size: 1.05rem; width: auto; }
+    td, td.k, td.e { padding: 0.25rem 0 0.6rem; border: 0; width: auto; }
+    td.k::before, td.e::before { display: block; font-size: 0.8rem; font-weight: 700;
+                                 text-transform: uppercase; letter-spacing: 0.06em; }
+    td.k::before { content: "Kepta"; color: var(--green); }
+    td.e::before { content: "Eatvora"; color: var(--muted); }
+  }
 </style>
 </head>
 <body>
@@ -260,7 +278,7 @@
     <p style="font-weight:600; margin:0 0 1rem;">The short verdict: if you need barcode
     scanning and AI today, Eatvora earns its price. If you want a free, honest, family-shared
     kitchen, Kepta is free on the App Store.</p>
-    <a class="soon" href="https://apps.apple.com/app/id6805635396">Download on the App Store</a>
+    <a class="store-badge" href="https://apps.apple.com/app/id6805635396"><img src="/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
   </div>
 
   <footer>
