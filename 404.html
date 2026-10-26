@@ -17,14 +17,19 @@
   h1 { color: #0F6E56; font-size: 1.6rem; }
   a { color: #0F6E56; }
   .muted { color: #6b6b66; font-size: 0.9rem; }
+  /* No orphan lines: text balances its lines (browsers balance short blocks; long ones
+     wrap as usual), and each block's last two words are joined with a non-breaking space
+     so no line ends up holding one word alone. Older browsers simply wrap as before. */
+  p, li, td, dd, blockquote { text-wrap: balance; }
+  h1, h2, h3, h4, summary, figcaption, caption, th, .kicker, .center p, footer p, label, button { text-wrap: balance; }
 </style>
 </head>
 <body>
 <main>
-  <h1>That page isn't here</h1>
-  <p>The link may be old, or the address may have a typo.</p>
-  <p><a href="/">Go to the Kepta home page</a> · <a href="/support">Support</a> · <a href="/privacy">Privacy Policy</a></p>
-  <p class="muted">© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort Zero</a>.</p>
+  <h1>That page isn't&nbsp;here</h1>
+  <p>The link may be old, or the address may have a&nbsp;typo.</p>
+  <p><a href="/">Go to the Kepta home page</a> · <a href="/support">Support</a> · <a href="/privacy">Privacy&nbsp;Policy</a></p>
+  <p class="muted">© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
 </main>
 </body>
 </html>

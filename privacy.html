@@ -16,110 +16,113 @@
   h2 { font-size: 1.1rem; margin-top: 2rem; }
   a { color: #0F6E56; }
   .updated { color: #6b6b66; font-size: 0.9rem; }
+  /* No orphan lines: text balances its lines (browsers balance short blocks; long ones
+     wrap as usual), and each block's last two words are joined with a non-breaking space
+     so no line ends up holding one word alone. Older browsers simply wrap as before. */
+  p, li, td, dd, blockquote { text-wrap: balance; }
+  h1, h2, h3, h4, summary, figcaption, caption, th, .kicker, .center p, footer p, label, button { text-wrap: balance; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Kepta Privacy Policy</h1>
-  <p class="updated">Updated October 24, 2026: Kepta checks every account's Plus status with RevenueCat, and Kepta Plus has no Family Sharing</p>
+  <h1>Kepta Privacy&nbsp;Policy</h1>
+  <p class="updated">Updated October 24, 2026: Kepta checks every account's Plus status with RevenueCat, and Kepta Plus has no Family&nbsp;Sharing</p>
 
   <p>Kepta is a kitchen inventory and food waste app made and run by Effort Zero, LLC
   ("we" and "us" on this page). Effort Zero is John Sands's company, and the App Store
   lists Kepta under his name as the seller. This page explains what
   information the app handles and what happens to it. The short version: your data is
   yours, it exists so the app can work for you, and you can erase all of it whenever
-  you want.</p>
+  you&nbsp;want.</p>
 
-  <h2>What we collect</h2>
+  <h2>What we&nbsp;collect</h2>
   <p>Two kinds of information come from you, and a third is kept for every account so
-  Kepta Plus can work:</p>
+  Kepta Plus can&nbsp;work:</p>
   <ul>
     <li><strong>Your email address and password</strong>, used to create and sign in to
     your account. Your password is handled by our authentication provider and is never
-    visible to us.</li>
+    visible to&nbsp;us.</li>
     <li><strong>The content you enter</strong>: food items, shopping list entries,
     leftovers, recipes you write or mark as cooked, and your waste log, including any prices you
-    type in.</li>
+    type&nbsp;in.</li>
     <li><strong>Kepta Plus status and purchase records.</strong> Each time Kepta opens, it
     asks RevenueCat whether your account has Plus, using a random account ID. If you open
     the upgrade screen or buy Plus, RevenueCat also keeps those records. The next section
-    explains exactly what these are.</li>
+    explains exactly what these&nbsp;are.</li>
   </ul>
 
-  <h2>Kepta Plus purchases</h2>
+  <h2>Kepta Plus&nbsp;purchases</h2>
   <p>Kepta Plus is an optional paid upgrade. <strong>Apple handles the payment.</strong>
   Your card and billing details stay with Apple. We never see them, and neither does
-  anyone else we work with.</p>
+  anyone else we work&nbsp;with.</p>
   <p>To know whether your account has Plus, Kepta uses a service called
   <strong>RevenueCat</strong>. RevenueCat processes purchase records for us, under our
-  instructions. Here is what it receives:</p>
+  instructions. Here is what it&nbsp;receives:</p>
   <ul>
     <li><strong>A random account ID.</strong> This is the same ID Kepta already uses for
     your account inside our database. It is not your name, your email address, or your
-    Apple Account. It is how Plus follows you to every device you sign in to.</li>
+    Apple Account. It is how Plus follows you to every device you sign in&nbsp;to.</li>
     <li><strong>Your purchase history for Kepta Plus</strong>: which plan you chose, its
     price and currency, when it started, renews, or ends, whether you are in a free
-    trial, and Apple's transaction numbers for it.</li>
+    trial, and Apple's transaction numbers for&nbsp;it.</li>
     <li><strong>What happens on the upgrade screen</strong>, such as when it was shown or
-    closed and which plan was tapped. We use this to see whether the screen is
-    clear.</li>
+    closed and which plan was tapped. We use this to see whether the screen is&nbsp;clear.</li>
     <li><strong>Basic technical details</strong> that come with every request, such as
     your iOS version, the app version, your App Store country, and, as with any online
-    service, the internet address the request came from.</li>
+    service, the internet address the request came&nbsp;from.</li>
   </ul>
   <p>RevenueCat never receives your email address, your password, or anything you type
   into your kitchen. We use these records only to unlock Plus, restore it when you ask,
   and understand how many people choose each plan. They are not used for advertising,
-  not used to track you across other apps or websites, and not sold.</p>
+  not used to track you across other apps or websites, and not&nbsp;sold.</p>
   <p>You can read <a href="https://www.revenuecat.com/privacy">RevenueCat's privacy
-  policy</a> and <a href="https://www.apple.com/legal/privacy/">Apple's privacy
-  policy</a>.</p>
+  policy</a> and <a href="https://www.apple.com/legal/privacy/">Apple's privacy&nbsp;policy</a>.</p>
 
-  <h2>Where it lives</h2>
+  <h2>Where it&nbsp;lives</h2>
   <p>Your account and kitchen data are stored in a secured cloud database (Supabase) so
   they can sync to your device. Access is restricted so that each account can only read
   and write its own household's data. Kepta Plus purchase records are kept by Apple and
-  RevenueCat, as described above.</p>
+  RevenueCat, as described&nbsp;above.</p>
 
-  <h2>What we do not do</h2>
+  <h2>What we do not&nbsp;do</h2>
   <ul>
-    <li>No advertising and no ad networks</li>
-    <li>No tracking across other apps or websites</li>
-    <li>No analytics, cookies, or tracking scripts on the kepta.kitchen website</li>
+    <li>No advertising and no ad&nbsp;networks</li>
+    <li>No tracking across other apps or&nbsp;websites</li>
+    <li>No analytics, cookies, or tracking scripts on the kepta.kitchen&nbsp;website</li>
     <li>No selling of your information. Inside the app, the outside companies that handle
     it are Supabase (your account and kitchen data) and RevenueCat (Kepta Plus purchase
     records), plus Apple for payments, and they handle it only to run Kepta. The
     kepta.kitchen website is hosted by Cloudflare, which sees the basic details every web
     request carries, such as your internet address, to deliver pages and block attacks.
-    Emails to support@kepta.kitchen are delivered through Google Workspace.</li>
-    <li>No collection of your location, contacts, or photos</li>
-    <li>No access to your payment card or bank details. Apple handles every payment.</li>
+    Emails to support@kepta.kitchen are delivered through Google&nbsp;Workspace.</li>
+    <li>No collection of your location, contacts, or&nbsp;photos</li>
+    <li>No access to your payment card or bank details. Apple handles every&nbsp;payment.</li>
   </ul>
 
   <h2>Notifications</h2>
   <p>If you allow notifications, Kepta schedules reminders on your device about food
-  that needs attention. These are generated locally from your own data.</p>
+  that needs attention. These are generated locally from your own&nbsp;data.</p>
 
-  <h2>Deleting your data</h2>
+  <h2>Deleting your&nbsp;data</h2>
   <p>Open Settings inside the app and choose Delete Account. This permanently erases
   your account and your kitchen data from our database, with no waiting period. If you
   share a kitchen, it stays for the other members, and the items you added are no
-  longer linked to you.</p>
+  longer linked to&nbsp;you.</p>
   <p><strong>If you have Kepta Plus:</strong> deleting your account does not cancel a
   subscription, because Apple bills it. Cancel it on your iPhone in Settings, then your
   name, then Subscriptions. Your purchase record at RevenueCat is tied only to the random
   account ID above. Email us and we will delete it from RevenueCat as well. Apple keeps
-  its own record of the purchase under Apple's privacy policy.</p>
+  its own record of the purchase under Apple's privacy&nbsp;policy.</p>
 
-  <h2>A note on shelf life dates</h2>
+  <h2>A note on shelf life&nbsp;dates</h2>
   <p>Freshness colors and dates in Kepta are quality guidance to help you plan meals.
-  They are not food safety advice.</p>
+  They are not food safety&nbsp;advice.</p>
 
   <h2>Contact</h2>
   <p>Questions about privacy or your data: <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a></p>
 
-  <p><a href="/support">Support</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a> · <a href="/">kepta.kitchen</a></p>
-  <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort Zero</a>.</p>
+  <p><a href="/support">Support</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a> ·&nbsp;<a href="/">kepta.kitchen</a></p>
+  <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
 </main>
 </body>
 </html>

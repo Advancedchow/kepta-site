@@ -109,6 +109,12 @@
     td.k::before { content: "Kepta"; color: var(--green); }
     td.e::before { content: "Eatvora"; color: var(--muted); }
   }
+  /* No orphan lines: text balances its lines (browsers balance short blocks; long ones
+     wrap as usual), and each block's last two words are joined with a non-breaking space
+     so no line ends up holding one word alone. Older browsers simply wrap as before. */
+  p, li, td, dd, blockquote { text-wrap: balance; }
+  h1, h2, h3, h4, summary, figcaption, caption, th, .kicker, .center p, footer p, label, button, ul.features li, ul.plain li, .lede { text-wrap: balance; }
+  header.site nav a, footer a { white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -121,36 +127,35 @@
   </nav>
 </header>
 <main>
-  <h1>Kepta vs Eatvora</h1>
+  <h1>Kepta vs&nbsp;Eatvora</h1>
   <p class="lede">Kepta and Eatvora both help you track the food in your kitchen and waste
   less of it. They make different choices about what's free and what's paid. This page lays
-  out the differences plainly, so you can pick the one that fits your kitchen.</p>
+  out the differences plainly, so you can pick the one that fits your&nbsp;kitchen.</p>
 
   <p class="note">Everything on this page about Eatvora was checked against eatvora.app and
   their US App Store listing in September 2026. Their pricing and plans can change. If
   something here is out of date, tell us at
   <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a> and we'll fix it.
   Eatvora is a trademark of its owner. Kepta isn't affiliated with or endorsed by Eatvora,
-  and we're just comparing.</p>
+  and we're just&nbsp;comparing.</p>
 
-  <h2>The short version</h2>
+  <h2>The short&nbsp;version</h2>
   <div class="duo">
     <div class="card">
-      <h3>Eatvora in short</h3>
+      <h3>Eatvora in&nbsp;short</h3>
       <p>A household-management app with a <strong>free plan and two paid tiers</strong>. As
       of September 2026, features like AI suggestions, unlimited items, family sharing, and
-      monthly reports sit in the paid tiers.</p>
+      monthly reports sit in the paid&nbsp;tiers.</p>
     </div>
     <div class="card">
-      <h3>Kepta in short</h3>
+      <h3>Kepta in&nbsp;short</h3>
       <p>A smaller, focused app that <strong>is free</strong>: full inventory, family
-      sharing, and honest money numbers, with <strong>no item caps, no ads, and no
-      tracking</strong>.</p>
+      sharing, and honest money numbers, with <strong>no item caps, no ads, and no&nbsp;tracking</strong>.</p>
     </div>
   </div>
-  <p>Eatvora ships several things Kepta doesn't have at all yet, and we say so below.</p>
+  <p>Eatvora ships several things Kepta doesn't have at all yet, and we say so&nbsp;below.</p>
 
-  <h2>Side by side</h2>
+  <h2>Side by&nbsp;side</h2>
   <div class="table-wrap">
     <table>
       <thead>
@@ -159,134 +164,134 @@
       <tbody>
         <tr>
           <th scope="row">Price</th>
-          <td class="k">Free, with no ads and no item caps. Kepta Plus adds deeper money reports ($2.99/mo, $19.99/yr with a free week for new subscribers, or $29.99 once). Everything that saves food stays free.</td>
+          <td class="k">Free, with no ads and no item caps. Kepta Plus adds deeper money reports ($2.99/mo, $19.99/yr with a free week for new subscribers, or $29.99 once). Everything that saves food stays&nbsp;free.</td>
           <td class="e">Free download; Premium $4.99/mo or $39.99/yr; Plus $9.99/mo or $79.99/yr.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
-          <th scope="row">Family Sharing</th>
+          <th scope="row">Family&nbsp;Sharing</th>
           <td class="k">Free. Your whole family shares one kitchen with a 6-character invite
-            code like <span class="invite">ABC-123</span>.</td>
+            code like&nbsp;<span class="invite">ABC-123</span>.</td>
           <td class="e">In the Plus tier at $9.99/mo, for up to 5 household members.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
-          <th scope="row">Item Limits</th>
-          <td class="k">None. Track as much food as you own.</td>
+          <th scope="row">Item&nbsp;Limits</th>
+          <td class="k">None. Track as much food as you&nbsp;own.</td>
           <td class="e">Free plan is capped at 25 pantry items (per their site); Premium removes
             the cap.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
-          <th scope="row">Money Tracking</th>
+          <th scope="row">Money&nbsp;Tracking</th>
           <td class="k">Free. The prices you enter (or a plain typical price you can change), charged only for what you use or waste. No AI-guessed prices.
-            Homemade meals are counted as dishes, never given made-up prices.</td>
+            Homemade meals are counted as dishes, never given made-up&nbsp;prices.</td>
           <td class="e">Savings and report features, including the monthly report card and PDF
             reports, are in the Plus tier.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
           <th scope="row">Recipes</th>
           <td class="k">100 built-in recipes ranked by what you already have, with
-            expiring food pushed up, plus a YouTube video search for every dish and your own recipes.</td>
+            expiring food pushed up, plus a YouTube video search for every dish and your own&nbsp;recipes.</td>
           <td class="e">AI recipe suggestions and autopilot suggestions are in the Premium tier.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
-          <th scope="row">Barcode Scanning</th>
-          <td class="k">Not yet.</td>
+          <th scope="row">Barcode&nbsp;Scanning</th>
+          <td class="k">Not&nbsp;yet.</td>
           <td class="e">Included on the free plan.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
-          <th scope="row">Receipt Scanning</th>
-          <td class="k">Not yet.</td>
+          <th scope="row">Receipt&nbsp;Scanning</th>
+          <td class="k">Not&nbsp;yet.</td>
           <td class="e">Their site lists receipt scanning on the free plan, with advanced OCR
             scanning in Premium.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
         <tr>
           <th scope="row">Availability</th>
           <td class="k">On the App Store now.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
           <td class="e">On the App Store now.
-            <small class="date">As of Sept 2026</small></td>
+            <small class="date">As of Sept&nbsp;2026</small></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2>Where Eatvora is ahead today</h2>
-  <p>Honestly, in a few places. As of September 2026, Eatvora ships all of these:</p>
+  <h2>Where Eatvora is ahead&nbsp;today</h2>
+  <p>Honestly, in a few places. As of September 2026, Eatvora ships all of&nbsp;these:</p>
   <div class="card">
     <ul class="features">
-      <li><span class="dot">&#9679;</span><span>Barcode scanning</span></li>
-      <li><span class="dot">&#9679;</span><span>Receipt scanning</span></li>
-      <li><span class="dot">&#9679;</span><span>AI recipe and autopilot suggestions</span></li>
-      <li><span class="dot">&#9679;</span><span>Smart shopping tips</span></li>
-      <li><span class="dot">&#9679;</span><span>Meal planning</span></li>
-      <li><span class="dot">&#9679;</span><span>Chore tracking with AI chore planning</span></li>
-      <li><span class="dot">&#9679;</span><span>Calendar integration</span></li>
-      <li><span class="dot">&#9679;</span><span>Monthly and PDF reports</span></li>
+      <li><span class="dot">&#9679;</span><span>Barcode&nbsp;scanning</span></li>
+      <li><span class="dot">&#9679;</span><span>Receipt&nbsp;scanning</span></li>
+      <li><span class="dot">&#9679;</span><span>AI recipe and autopilot&nbsp;suggestions</span></li>
+      <li><span class="dot">&#9679;</span><span>Smart shopping&nbsp;tips</span></li>
+      <li><span class="dot">&#9679;</span><span>Meal&nbsp;planning</span></li>
+      <li><span class="dot">&#9679;</span><span>Chore tracking with AI chore&nbsp;planning</span></li>
+      <li><span class="dot">&#9679;</span><span>Calendar&nbsp;integration</span></li>
+      <li><span class="dot">&#9679;</span><span>Monthly and PDF&nbsp;reports</span></li>
     </ul>
   </div>
   <p>Kepta has none of those today. If scanning items in by barcode or having AI plan your
-  week is what you're after, <strong>Eatvora is the stronger pick right now</strong>.</p>
+  week is what you're after, <strong>Eatvora is the stronger pick right&nbsp;now</strong>.</p>
 
-  <h2>What Kepta does instead</h2>
+  <h2>What Kepta does&nbsp;instead</h2>
   <div class="media">
     <div>
       <p>Kepta puts its effort into the everyday loop: knowing what's in your kitchen, what
-      to use next, and what it's really costing you.</p>
+      to use next, and what it's really costing&nbsp;you.</p>
       <ul class="plain">
-        <li><strong>A freshness color for every item</strong>, based on typical storage times for its kind of food and where you keep it, so you always know what to use next</li>
-        <li><strong>A daily reminder that names the actual food</strong> about to turn, not a generic ping</li>
-        <li><strong>A shopping list with aisle grouping</strong> that moves straight into your kitchen, prices included</li>
-        <li><strong>Family sharing, offline support, and Undo</strong> right after you add, use, or toss food, all free</li>
-        <li><strong>No ads and no tracking</strong>: your email and kitchen data are used only to run Kepta, and Kepta Plus purchases are handled by Apple and RevenueCat</li>
-        <li><strong>Delete your account any time</strong>, right inside the app</li>
+        <li><strong>A freshness color for every item</strong>, based on typical storage times for its kind of food and where you keep it, so you always know what to use&nbsp;next</li>
+        <li><strong>A daily reminder that names the actual food</strong> about to turn, not a generic&nbsp;ping</li>
+        <li><strong>A shopping list with aisle grouping</strong> that moves straight into your kitchen, prices&nbsp;included</li>
+        <li><strong>Family sharing, offline support, and Undo</strong> right after you add, use, or toss food, all&nbsp;free</li>
+        <li><strong>No ads and no tracking</strong>: your email and kitchen data are used only to run Kepta, and Kepta Plus purchases are handled by Apple and&nbsp;RevenueCat</li>
+        <li><strong>Delete your account any time</strong>, right inside the&nbsp;app</li>
       </ul>
     </div>
     <figure>
       <img src="shots/insights.png" alt="Kepta's Insights screen showing money wasted and money saved" width="420" height="913" loading="lazy">
-      <figcaption>Kepta's money screen, built on the prices you enter. Homemade meals count as dishes, not dollars.</figcaption>
+      <figcaption>Kepta's money screen, built on the prices you enter. Homemade meals count as dishes, not&nbsp;dollars.</figcaption>
     </figure>
   </div>
 
-  <h2>Which one should you pick?</h2>
+  <h2>Which one should you&nbsp;pick?</h2>
   <div class="cards">
     <div class="card">
-      <h3>Pick Eatvora if&hellip;</h3>
+      <h3>Pick Eatvora&nbsp;if&hellip;</h3>
       <p>You want barcode and receipt scanning, AI-generated suggestions, meal and chore
       planning, or calendar integration today. You're comfortable with a subscription for
-      household sharing and unlimited items.</p>
+      household sharing and unlimited&nbsp;items.</p>
     </div>
     <div class="card">
-      <h3>Pick Kepta if&hellip;</h3>
+      <h3>Pick Kepta&nbsp;if&hellip;</h3>
       <p>You want your whole family in one kitchen for free, no cap on how much food you
       track, and money numbers built on the prices you enter, with no AI guessing. You can live without
       scanning and AI for now. Kepta is free
-      <a href="https://apps.apple.com/app/id6805635396">on the App Store</a>.</p>
+      <a href="https://apps.apple.com/app/id6805635396">on the App&nbsp;Store</a>.</p>
     </div>
   </div>
 
   <p class="crosslink">Coming from CozZo instead of Eatvora? That shutdown is its own story:
   <a href="/cozzo-alternative">here's how Kepta lines up as a CozZo alternative</a>. Or start
-  at the <a href="/">Kepta homepage</a> for the full tour.</p>
+  at the <a href="/">Kepta homepage</a> for the full&nbsp;tour.</p>
 
   <div class="cta">
     <p style="font-weight:600; margin:0 0 1rem;">The short verdict: if you need barcode
     scanning and AI today, Eatvora earns its price. If you want a free, honest, family-shared
-    kitchen, Kepta is free on the App Store.</p>
+    kitchen, Kepta is free on the App&nbsp;Store.</p>
     <a class="store-badge" href="https://apps.apple.com/app/id6805635396"><img src="/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
   </div>
 
   <footer>
     <p><a href="/">Home</a> &middot; <a href="/kepta-vs-eatvora">Kepta vs Eatvora</a> &middot;
        <a href="/cozzo-alternative">CozZo Alternative</a> &middot;
-       <a href="/support">Support</a> &middot; <a href="/privacy">Privacy Policy</a></p>
+       <a href="/support">Support</a> &middot; <a href="/privacy">Privacy&nbsp;Policy</a></p>
     <p>Questions? <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a></p>
-    <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort Zero</a>.</p>
+    <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
   </footer>
 </main>
 </body>
