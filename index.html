@@ -114,11 +114,14 @@
     font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem;
   }
 
-  .swatches { display: flex; gap: 0.45rem; margin-top: 0.7rem; }
-  .swatch { width: 16px; height: 16px; border-radius: 5px; }
-  .swatch.g { background: var(--green); }
-  .swatch.a { background: var(--amber); }
-  .swatch.r { background: var(--red); }
+  /* How It Works card 2: the app's three freshness colors side by side, each with its word. */
+  .swatches { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin: 0.9rem 0 0; padding: 0;
+              list-style: none; font-size: 0.9rem; font-weight: 700; color: var(--ink); }
+  .swatches li { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+  .swatch { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+  .swatch.g { background: #639922; }
+  .swatch.a { background: #EF9F27; }
+  .swatch.r { background: #E24B4A; }
 
   .shots { display: grid; gap: 1.6rem; justify-items: center; }
   @media (min-width: 720px) { .shots { grid-template-columns: repeat(3, 1fr); } }
@@ -160,6 +163,17 @@
   }
   .compare p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 0.8rem; }
   .compare p:last-child { margin-bottom: 0; }
+  .switch-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem;
+                  padding-top: 1.1rem; border-top: 1px solid var(--card-border); }
+  .compare .sf-h { color: var(--ink); font-weight: 700; font-size: 0.95rem; margin: 0 0 0.45rem; }
+  .switch-facts ul { list-style: none; margin: 0; padding: 0; }
+  .switch-facts li { position: relative; padding-left: 1.35rem; margin: 0.3rem 0;
+                     color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+  .switch-facts li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+  .switch-facts .has li::before { content: "\2713"; color: var(--green); }
+  .switch-facts .notyet li::before { content: "\25CB"; color: var(--muted); }
+  .name-story { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .name-logo { display: block; width: 88px; height: 88px; margin-top: 1.6rem; border-radius: 20px; }
 
   .money-rules { margin-top: 1.2rem; align-items: stretch; }
   .money-rules .card { height: 100%; }
@@ -218,28 +232,6 @@
   /* The app's own status colors, always paired with words. */
   .rounded { font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
              font-variant-numeric: tabular-nums; }
-  /* How It Works card 2: three rows styled like the app's own item rows. */
-  .legend { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.45rem;
-            container: legend / inline-size; }
-  .legend li { display: flex; border: 1px solid var(--card-border); border-radius: 12px;
-               overflow: hidden; background: #fff; }
-  .legend .rail { width: 6px; flex: none; }
-  .legend .row { flex: 1; display: flex; flex-wrap: wrap; align-items: center;
-                 justify-content: space-between; gap: 0.25rem 0.5rem; padding: 0.45rem 0.6rem; }
-  .legend .name { font-weight: 700; color: var(--ink); font-size: 0.95rem; line-height: 1.3; }
-  .legend .pill { white-space: nowrap; font-size: 0.8rem; font-weight: 700; line-height: 1.4;
-                  border-radius: 999px; padding: 0.15rem 0.55rem; }
-  .legend .g .rail { background: #639922; }
-  .legend .g .pill { color: #4E7A1B; background: rgba(99,153,34,0.16); }
-  .legend .a .rail { background: #EF9F27; }
-  .legend .a .pill { color: #9A5F05; background: rgba(239,159,39,0.16); }
-  .legend .r .rail { background: #E24B4A; }
-  .legend .r .pill { color: #C93335; background: rgba(226,75,74,0.16); }
-  /* Only a very narrow legend stacks each pill under its name (all rows alike); the four-across
-     desktop card (about 207 px) keeps them side by side so card 2 stays close to its neighbors. */
-  @container legend (max-width: 12rem) {
-    .legend .row { flex-direction: column; align-items: flex-start; }
-  }
   .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
   .split { max-width: 560px; margin: 1.8rem auto 0; text-align: center; }
@@ -261,10 +253,6 @@
       .card, .compare, .cta-card {
         animation: kRise linear both; animation-timeline: view(); animation-range: entry 0% cover 20%;
       }
-      .legend li { animation: kRise linear both; animation-timeline: view(); }
-      .legend li:nth-child(1) { animation-range: entry 0% cover 22%; }
-      .legend li:nth-child(2) { animation-range: entry 0% cover 28%; }
-      .legend li:nth-child(3) { animation-range: entry 0% cover 34%; }
     }
   }
   /* No orphan lines: text balances its lines (browsers balance short blocks; long ones
@@ -314,10 +302,10 @@
         <p>Every item gets a color from how much of its shelf life is left, based on typical
         storage times for its kind of food and where you keep it. Raw meat and leftovers in
         the fridge get a cook-by countdown instead, so you know what to cook&nbsp;first.</p>
-        <ul class="legend rounded">
-          <li class="g"><span class="rail" aria-hidden="true"></span><span class="row"><span class="name">Butter</span><span class="vh">, </span><span class="pill">plenty of&nbsp;time</span></span></li>
-          <li class="a"><span class="rail" aria-hidden="true"></span><span class="row"><span class="name">Bananas</span><span class="vh">, </span><span class="pill">use soon</span></span></li>
-          <li class="r"><span class="rail" aria-hidden="true"></span><span class="row"><span class="name">Yogurt</span><span class="vh">, </span><span class="pill">past its&nbsp;window</span></span></li>
+        <ul class="swatches rounded" aria-label="Freshness colors">
+          <li><span class="swatch g" aria-hidden="true"></span>Fresh</li>
+          <li><span class="swatch a" aria-hidden="true"></span>Soon</li>
+          <li><span class="swatch r" aria-hidden="true"></span>Past</li>
         </ul>
       </div>
       <div class="card">
@@ -386,6 +374,23 @@
         another app, these pages lay out the differences plainly, including where Kepta is
         behind: <a href="/kepta-vs-eatvora">Kepta vs Eatvora</a> &middot;
         <a href="/cozzo-alternative">Moving from&nbsp;CozZo</a>.</p>
+        <div class="switch-facts">
+          <div class="has">
+            <p class="sf-h">Kepta has</p>
+            <ul>
+              <li>No item limits</li>
+              <li>Free family sharing</li>
+              <li>Waste counted at your own&nbsp;prices</li>
+            </ul>
+          </div>
+          <div class="notyet">
+            <p class="sf-h">Not yet</p>
+            <ul>
+              <li>Barcode scanning</li>
+              <li>Receipt scanning</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -464,6 +469,7 @@
       you <em>keep</em>, recipes worth <em>keeping</em>. It's also the Lithuanian word for
       <em>baked</em>, which felt right for an app that would rather see your food cooked
       than&nbsp;tossed.</p>
+      <img class="name-logo" src="kepta-logo.png" alt="" width="88" height="88" loading="lazy">
     </div>
     <div class="cta-card">
       <h2>Put your kitchen in&nbsp;Kepta</h2>
@@ -485,6 +491,7 @@
     <a href="/">Home</a> ·
     <a href="/kepta-vs-eatvora">Kepta vs Eatvora</a> ·
     <a href="/cozzo-alternative">CozZo Alternative</a> ·
+    <a href="/thanksgiving-leftovers">Thanksgiving Leftovers</a> ·
     <a href="/support">Support</a> ·
     <a href="/privacy">Privacy Policy</a>
   </nav>
