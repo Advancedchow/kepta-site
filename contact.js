@@ -236,6 +236,21 @@
     e.preventDefault();
     open(trigger);
   });
+  // The support address anywhere on the page opens the sheet too, like
+  // effortzero.app (a mail app may not be set up). The links keep their mailto
+  // in the HTML, so without this script they still open a mail app. Capture
+  // runs before email.js, which then leaves the handled click alone. The
+  // address inside the sheet ("Prefer your own email app?") keeps its mailto
+  // and the copy bubble. Modifier and middle clicks behave as normal links.
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var link = e.target && e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (!link || dialog.contains(link)) return;
+    if (link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0].toLowerCase() !== ADDRESS) return;
+    e.preventDefault();
+    open(link);
+  }, true);
+
   // /support#write opens it straight away.
   if (location.hash === '#write') open(null);
 })();

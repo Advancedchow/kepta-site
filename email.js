@@ -45,11 +45,35 @@
   var hideTimer = null;
   var current = null;
 
-  function hide() {
+  function hide(now) {
     clearTimeout(hideTimer);
     bubble.classList.remove('is-on');
     current = null;
+    if (now) { bubble.hidden = true; return; }
     setTimeout(function () { if (!current) bubble.hidden = true; }, 160);
+  }
+
+  // An open modal dialog (the Write to Us sheet) sits in the browser's top
+  // layer, above anything in the page, and makes the rest of the page inert.
+  // So for a link inside one, the bubble and the spoken line move into that
+  // dialog; they go back to the page when it closes, and the bubble never
+  // shows up after the sheet is gone.
+  function hostFor(link) {
+    var d = link.closest ? link.closest('dialog') : null;
+    return d && d.open ? d : document.body;
+  }
+  function mount(host) {
+    if (bubble.parentNode !== host) { host.appendChild(bubble); host.appendChild(live); }
+    if (host !== document.body && !host.__keptaBubble) {
+      host.__keptaBubble = true;
+      host.addEventListener('close', function () {
+        if (bubble.parentNode === host) {
+          hide(true);
+          document.body.appendChild(bubble);
+          document.body.appendChild(live);
+        }
+      });
+    }
   }
 
   function place(link) {
@@ -79,6 +103,7 @@
     bubble.classList.toggle('is-still', reduce);
     if (copied) bubble.innerHTML = CHECK + 'Email copied';
     else bubble.textContent = address;
+    mount(hostFor(link));
     bubble.hidden = false;
     place(link);
     // place() read the bubble's size, so the browser has already laid it out
@@ -92,18 +117,18 @@
     hideTimer = setTimeout(hide, copied ? 2500 : 6000);
   }
 
-  function fallbackCopy(text) {
+  function fallbackCopy(text, host) {
     var box = document.createElement('textarea');
     box.value = text;
     box.setAttribute('readonly', '');
     box.style.position = 'fixed';
     box.style.top = '-1000px';
     box.style.opacity = '0';
-    document.body.appendChild(box);
+    (host || document.body).appendChild(box);
     box.select();
     var ok = false;
     try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-    document.body.removeChild(box);
+    box.parentNode.removeChild(box);
     return ok;
   }
 
@@ -115,23 +140,27 @@
     queued = true;
     requestAnimationFrame(function () { queued = false; if (current) place(current); });
   }
-  window.addEventListener('scroll', follow, { passive: true });
+  // Capture catches the sheet's own scrolling as well as the page's.
+  document.addEventListener('scroll', follow, { passive: true, capture: true });
   window.addEventListener('resize', follow);
 
   // One listener for the whole page, so links added later (the Write to Us
   // sheet's own address) get the same help.
   document.addEventListener('click', function (event) {
     var link = event.target && event.target.closest ? event.target.closest('a[href^="mailto:"]') : null;
-    if (!link) return;
+    // A link another script already handled (the address that opens the Write
+    // to Us sheet) needs nothing from here.
+    if (!link || event.defaultPrevented) return;
+    var host = hostFor(link);
     // Never stop the link: the mail app still opens wherever it can.
     var address = link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(address).then(
         function () { show(link, true, address); },
-        function () { show(link, fallbackCopy(address), address); }
+        function () { show(link, fallbackCopy(address, host), address); }
       );
     } else {
-      show(link, fallbackCopy(address), address);
+      show(link, fallbackCopy(address, host), address);
     }
   });
 })();
