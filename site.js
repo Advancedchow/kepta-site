@@ -1,4 +1,4 @@
-// kepta.kitchen: the only script on the site. The page is complete without it;
+// kepta.kitchen: the home page count-up. (email.js is the only other script: it copies the support address.)
 // this only adds the Rule 3 count-up where the browser supports it and the
 // visitor has not asked for reduced motion.
 (function () {
