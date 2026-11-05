@@ -7,6 +7,7 @@
   if (!window.HTMLDialogElement) return; // very old browsers keep the plain link
 
   var ADDRESS = 'support@kepta.kitchen';
+  var GMAIL = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + ADDRESS + '&su=Kepta';
   var TOPICS = ['A problem in the app', 'An idea', 'Kepta Plus', 'Something else'];
   var EMAIL_RE = /^[A-Za-z0-9_%+'-]+(?:\.[A-Za-z0-9_%+'-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
 
@@ -44,8 +45,22 @@
     '.kc-send{margin-top:6px;display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 26px;border:0;border-radius:999px;' +
     'background:linear-gradient(135deg,#0F6E56,#0B5A46);color:#fff;font:inherit;font-weight:600;font-size:1rem;cursor:pointer;}' +
     '.kc-send[aria-disabled="true"]{opacity:.7;cursor:default;}' +
-    '.kc-note{margin:16px 0 0;padding-top:12px;border-top:1px solid #ECEBE5;font-size:.92rem;color:#6b6b64;}' +
-    '.kc-note a,.kc-err a{color:#0F6E56;}' +
+    // Other ways to reach us (the encue.app pattern): the address as text, a
+    // Copy pill that turns into Copied for 2 s, and Open in Gmail on computers
+    // or Open in Mail on phones. Nothing here depends on a mail app.
+    '.kc-other{margin:16px 0 0;padding-top:12px;border-top:1px solid #ECEBE5;}' +
+    '.kc-other-h{margin:0;font-size:.85rem;color:#6b6b64;}' +
+    '.kc-addr{margin:2px 0 0;font-weight:600;color:#1c1c1a;word-break:break-all;}' +
+    '.kc-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}' +
+    '.kc-pill{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 14px;border:1.5px solid #cfe0d9;border-radius:999px;' +
+    'background:#fff;color:#0F6E56;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease;}' +
+    '.kc-pill:hover{border-color:#0F6E56;}' +
+    '.kc-pill.is-copied{background:#0F6E56;border-color:#0F6E56;color:#fff;}' +
+    '.kc-pill:focus-visible{outline:2px solid #0F6E56;outline-offset:2px;}' +
+    '@media (max-width:767px){.kc-gmail{display:none;}}' +
+    '@media (min-width:768px){.kc-mail{display:none;}}' +
+    '@media (prefers-reduced-motion:reduce){.kc-pill{transition:none;}}' +
+    '.kc-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}' +
     '.kc-sent{font-size:1.1rem;margin:16px 0 0;outline:none;}' +
     '.kc-sent-to{margin:4px 0 0;color:#55554f;overflow-wrap:anywhere;}' +
     '.kc-done{margin-top:20px;height:44px;padding:0 22px;border:1.5px solid #0F6E56;border-radius:999px;background:#fff;color:#0F6E56;font:inherit;font-weight:600;cursor:pointer;}';
@@ -65,7 +80,11 @@
       '<div class="kc-head"><h2 class="kc-title" id="kc-title" tabindex="-1">Write to Us</h2>' +
       '<button type="button" class="kc-close" aria-label="Close">&times;</button></div>' +
       '<div class="kc-body"></div>' +
-      '<p class="kc-note">Prefer your own email app? <a href="mailto:' + ADDRESS + '">' + ADDRESS + '</a></p>' +
+      '<div class="kc-other"><p class="kc-other-h">Or email us</p><p class="kc-addr">' + ADDRESS + '</p>' +
+        '<div class="kc-pills"><button type="button" class="kc-pill kc-copy">Copy</button>' +
+        '<a class="kc-pill kc-gmail" href="' + GMAIL.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener noreferrer">Open in Gmail</a>' +
+        '<a class="kc-pill kc-mail" href="mailto:' + ADDRESS + '?subject=Kepta" data-no-copy>Open in Mail</a></div>' +
+        '<span class="kc-sr" role="status" aria-live="polite"></span></div>' +
     '</div>';
   var formHtml =
     '<form class="kc-form" novalidate>' +
@@ -106,18 +125,63 @@
     errLine().textContent = text ? 'Please add ' + text + '.' : '';
   }
 
+  // The way out is always the Or email us block right under Send: the
+  // address, Copy, and Open in Gmail or Open in Mail.
   function showFailed(unavailable) {
-    var line = errLine();
-    line.textContent = '';
-    line.appendChild(document.createTextNode(unavailable
-      ? 'The form is resting right now. Please write to '
-      : "That didn't go through. Try again, or write to "));
-    var a = document.createElement('a');
-    a.href = 'mailto:' + ADDRESS;
-    a.textContent = ADDRESS;
-    line.appendChild(a);
-    line.appendChild(document.createTextNode('.'));
+    errLine().textContent = unavailable
+      ? 'The form is resting right now. Please email us with the address below.'
+      : "That didn't go through. Try again, or email us with the address below.";
   }
+
+  var copyBtn = dialog.querySelector('.kc-copy');
+  var copySaid = dialog.querySelector('.kc-other .kc-sr');
+  var copyTimer = null;
+  function copyFallback(text) {
+    var box = document.createElement('textarea');
+    box.value = text;
+    box.setAttribute('readonly', '');
+    box.style.position = 'fixed';
+    box.style.top = '-1000px';
+    box.style.opacity = '0';
+    dialog.appendChild(box); // inside the dialog: the page behind it is inert
+    box.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    dialog.removeChild(box);
+    return ok;
+  }
+  function copied(ok) {
+    clearTimeout(copyTimer);
+    if (ok) {
+      copyBtn.textContent = 'Copied';
+      copyBtn.classList.add('is-copied');
+      copySaid.textContent = '';
+      setTimeout(function () { copySaid.textContent = 'Email address copied'; }, 50);
+      copyTimer = setTimeout(function () { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('is-copied'); }, 2000);
+    } else {
+      // Copying refused: select the address so a long press or Ctrl+C takes it.
+      var addr = dialog.querySelector('.kc-addr');
+      var range = document.createRange();
+      range.selectNodeContents(addr);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      copySaid.textContent = 'Address selected: ' + ADDRESS;
+    }
+  }
+  copyBtn.addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ADDRESS).then(function () { copied(true); }, function () { copied(copyFallback(ADDRESS)); });
+    } else {
+      copied(copyFallback(ADDRESS));
+    }
+  });
+  dialog.addEventListener('close', function () {
+    clearTimeout(copyTimer);
+    copyBtn.textContent = 'Copy';
+    copyBtn.classList.remove('is-copied');
+    copySaid.textContent = '';
+  });
 
   function setSending(on) {
     var b = form.querySelector('.kc-send');

@@ -150,7 +150,7 @@
     var link = event.target && event.target.closest ? event.target.closest('a[href^="mailto:"]') : null;
     // A link another script already handled (the address that opens the Write
     // to Us sheet) needs nothing from here.
-    if (!link || event.defaultPrevented) return;
+    if (!link || event.defaultPrevented || link.hasAttribute('data-no-copy')) return;
     var host = hostFor(link);
     // Never stop the link: the mail app still opens wherever it can.
     var address = link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
