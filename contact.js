@@ -15,6 +15,9 @@
     '.kc-dialog::backdrop{background:rgba(20,30,26,.45);}' +
     '.kc-card{box-sizing:border-box;width:min(520px,calc(100% - 32px));margin:max(24px,6vh) auto 24px;background:#fff;color:#1c1c1a;' +
     'border-radius:16px;box-shadow:0 18px 50px rgba(15,40,30,.25);padding:22px 22px 18px;font:inherit;font-size:16px;line-height:1.5;}' +
+    // The pages balance their paragraphs (text-wrap: balance), which squeezes
+    // the sheet's one-line notes into short lines; the sheet wraps plainly.
+    '.kc-card p,.kc-card label,.kc-card legend{text-wrap:wrap;max-width:none;}' +
     '.kc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}' +
     '.kc-title{margin:0;font-size:1.45rem;line-height:1.25;color:#0F6E56;outline:none;}' +
     '.kc-close{flex:none;width:44px;height:44px;margin:-8px -8px 0 0;border:0;border-radius:999px;background:transparent;color:#55554f;cursor:pointer;font-size:24px;line-height:1;}' +
