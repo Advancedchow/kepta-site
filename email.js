@@ -118,18 +118,20 @@
   window.addEventListener('scroll', follow, { passive: true });
   window.addEventListener('resize', follow);
 
-  Array.prototype.forEach.call(links, function (link) {
-    link.addEventListener('click', function () {
-      // Never stop the link: the mail app still opens wherever it can.
-      var address = link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(address).then(
-          function () { show(link, true, address); },
-          function () { show(link, fallbackCopy(address), address); }
-        );
-      } else {
-        show(link, fallbackCopy(address), address);
-      }
-    });
+  // One listener for the whole page, so links added later (the Write to Us
+  // sheet's own address) get the same help.
+  document.addEventListener('click', function (event) {
+    var link = event.target && event.target.closest ? event.target.closest('a[href^="mailto:"]') : null;
+    if (!link) return;
+    // Never stop the link: the mail app still opens wherever it can.
+    var address = link.getAttribute('href').replace(/^mailto:/i, '').split('?')[0];
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(address).then(
+        function () { show(link, true, address); },
+        function () { show(link, fallbackCopy(address), address); }
+      );
+    } else {
+      show(link, fallbackCopy(address), address);
+    }
   });
 })();

@@ -20,8 +20,11 @@
      so no line ends up holding one word alone. Older browsers simply wrap as before. */
   p, li, td, dd, blockquote { text-wrap: balance; }
   h1, h2, h3, h4, summary, figcaption, caption, th, .kicker, .center p, footer p, label, button { text-wrap: balance; }
+  .write-btn { display: inline-block; padding: 0.6rem 1.4rem; border-radius: 999px; background: #0F6E56; color: #fff !important; text-decoration: none; font-weight: 600; }
+  .write-btn:hover { background: #0B5A46; }
 </style>
-<script src="/email.js?v=2" defer></script>
+<script src="/email.js?v=3" defer></script>
+<script src="/contact.js?v=1" defer></script>
 </head>
 <body>
 <main>
@@ -61,11 +64,10 @@
   members. Deleting your account does not cancel a Kepta Plus subscription, so cancel
   that first in iPhone&nbsp;Settings.</p>
 
-  <h2>Get in&nbsp;touch</h2>
-  <p>Found a problem or have an idea? Email
-  <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a> and include your
-  device model and what you were doing when the issue&nbsp;appeared.</p>
-  <p>No email app on this device? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=support@kepta.kitchen" target="_blank" rel="noopener">Write to us in Gmail</a>, or copy the address above into any&nbsp;email.</p>
+  <h2 id="write">Get in&nbsp;touch</h2>
+  <p>Found a problem or have an idea? Write to us below, or email
+  <a href="mailto:support@kepta.kitchen">support@kepta.kitchen</a>. Include your device model and what you were doing when the issue&nbsp;appeared.</p>
+  <p><a class="write-btn" href="/support#write" data-contact>Write to Us</a></p>
 
   <p><a href="/privacy">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a> ·&nbsp;<a href="/">kepta.kitchen</a></p>
   <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
