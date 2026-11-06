@@ -16,7 +16,7 @@
 
 const TO = 'support@kepta.kitchen';
 const FROM = 'Kepta site <form@effortzero.app>';
-const TOPICS = ['A problem in the app', 'An idea', 'Kepta Plus', 'Something else'];
+const TOPICS = ['A problem in the app', 'Food dates', 'An idea', 'Kepta Plus', 'My account', 'Something else'];
 const EMAIL_RE = /^[A-Za-z0-9_%+'-]+(?:\.[A-Za-z0-9_%+'-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
 const LIMITS = { name: 100, email: 254, message: 5000, body: 16000 };
 // Anything sent sooner than this after the form first opened is a bot: it is

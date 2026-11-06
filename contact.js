@@ -8,7 +8,7 @@
 
   var ADDRESS = 'support@kepta.kitchen';
   var GMAIL = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + ADDRESS + '&su=Kepta';
-  var TOPICS = ['A problem in the app', 'An idea', 'Kepta Plus', 'Something else'];
+  var TOPICS = ['A problem in the app', 'Food dates', 'An idea', 'Kepta Plus', 'My account', 'Something else'];
   var EMAIL_RE = /^[A-Za-z0-9_%+'-]+(?:\.[A-Za-z0-9_%+'-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
 
   var css =
@@ -57,12 +57,28 @@
     '.kc-pill:hover{border-color:#0F6E56;}' +
     '.kc-pill.is-copied{background:#0F6E56;border-color:#0F6E56;color:#fff;}' +
     '.kc-pill:focus-visible{outline:2px solid #0F6E56;outline-offset:2px;}' +
-    '@media (max-width:767px){.kc-gmail{display:none;}}' +
-    '@media (min-width:768px){.kc-mail{display:none;}}' +
+    // A mouse (a computer) gets Open in Gmail; touch (a phone or tablet) gets
+    // Open in Mail, whatever the window width.
+    '.kc-gmail{display:none;}' +
+    '@media (hover:hover) and (pointer:fine){.kc-gmail{display:inline-flex;}.kc-mail{display:none;}}' +
     '@media (prefers-reduced-motion:reduce){.kc-pill{transition:none;}}' +
     '.kc-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}' +
     '.kc-sent{font-size:1.1rem;margin:16px 0 0;outline:none;}' +
     '.kc-sent-to{margin:4px 0 0;color:#55554f;overflow-wrap:anywhere;}' +
+    // The moving green ring (encue.app's cursor ring in Kepta green): a 1.5 px
+    // ring brightest under the pointer follows it around the pill's edge, and
+    // the pill leans a few pixels toward it. Mouse only; touch and Reduce
+    // Motion keep the plain pills.
+    '@media (hover:hover) and (pointer:fine){' +
+      '.kc-ring{position:relative;--ring-c1:#0F6E56;--ring-c2:#3FA37E;--ring-c3:rgba(15,110,86,.12);}' +
+      '.kc-ring.kc-ring-light{--ring-c1:#ffffff;--ring-c2:#B9EBD6;--ring-c3:rgba(255,255,255,.25);}' +
+      '.kc-ring::before{content:"";position:absolute;inset:-1.5px;border-radius:inherit;padding:1.5px;pointer-events:none;opacity:0;z-index:2;' +
+      'transition:opacity .2s ease;background:radial-gradient(160px circle at var(--mouse-x,50%) var(--mouse-y,50%),var(--ring-c1),var(--ring-c2) 45%,var(--ring-c3) 75%);' +
+      '-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);' +
+      '-webkit-mask-composite:xor;mask-composite:exclude;}' +
+      '.kc-ring:hover::before,.kc-ring.is-hot::before{opacity:1;}' +
+    '}' +
+    '@media (prefers-reduced-motion:reduce){.kc-ring::before{display:none;}}' +
     '.kc-done{margin-top:20px;height:44px;padding:0 22px;border:1.5px solid #0F6E56;border-radius:999px;background:#fff;color:#0F6E56;font:inherit;font-weight:600;cursor:pointer;}';
 
   var style = document.createElement('style');
@@ -197,6 +213,7 @@
     sentBox.querySelector('.kc-sent-to').textContent = 'We will reply to ' + email + '.';
     sentBox.querySelector('.kc-done').addEventListener('click', close);
     body.appendChild(sentBox);
+    if (typeof ringDone === 'function') ringDone(sentBox);
     if (dialog.open) sentBox.querySelector('.kc-sent').focus();
   }
 
@@ -314,6 +331,38 @@
     e.preventDefault();
     open(link);
   }, true);
+
+  // The moving green ring on every pill in the sheet and on the page's Write to
+  // Us button.
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ring(el, hoverOn, light) {
+    if (!fine || still || !el) return;
+    el.classList.add('kc-ring');
+    if (light) el.classList.add('kc-ring-light');
+    var target = hoverOn || el;
+    target.addEventListener('mousemove', function (e) {
+      var r = el.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      el.style.setProperty('--mouse-x', x + 'px');
+      el.style.setProperty('--mouse-y', y + 'px');
+      if (hoverOn) el.classList.add('is-hot');
+      var dx = (x / r.width - 0.5) * 2, dy = (y / r.height - 0.5) * 2;
+      el.style.transition = 'transform 60ms linear';
+      el.style.transform = 'translate(' + (dx * 4).toFixed(1) + 'px,' + (dy * 2).toFixed(1) + 'px)';
+    });
+    target.addEventListener('mouseleave', function () {
+      el.classList.remove('is-hot');
+      el.style.transition = 'transform 250ms ease-out';
+      el.style.transform = 'translate(0px,0px)';
+    });
+  }
+  Array.prototype.forEach.call(dialog.querySelectorAll('.kc-topic'), function (label) { ring(label.querySelector('span'), label); });
+  Array.prototype.forEach.call(dialog.querySelectorAll('.kc-pill'), function (p) { ring(p); });
+  ring(dialog.querySelector('.kc-send'), null, true);
+  Array.prototype.forEach.call(document.querySelectorAll('.write-btn'), function (b) { ring(b, null, true); });
+  // Done is drawn after a send, so it gets the ring when it appears.
+  var ringDone = function (box) { var d = box && box.querySelector('.kc-done'); if (d) ring(d); };
 
   // /support#write opens it straight away.
   if (location.hash === '#write') open(null);
