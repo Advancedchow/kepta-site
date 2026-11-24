@@ -129,6 +129,54 @@
   tr.group th { background: rgba(15,110,86,0.04); color: var(--green); font-size: 0.8rem;
                 font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
                 padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  /* Leftovers Clock: shown by script only, so the page reads the same without it. */
+  .clock-panel { background: #fff; border: 1px solid var(--green); border-radius: 16px;
+                 padding: 1.2rem 1.25rem 1.3rem; margin: 0 0 1.1rem; }
+  .clock-panel[hidden], .clock-btn[hidden] { display: none; }
+  .clock-panel h3 { font-size: 1.25rem; margin: 0 0 0.25rem; }
+  .clock-panel p { margin: 0; }
+  .clock-help { color: var(--muted); font-size: 1rem; line-height: 1.55; max-width: 46em; }
+  .clock-label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+                 letter-spacing: 0.06em; color: var(--green); margin: 1rem 0 0.5rem; }
+  .clock-days { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .clock-days button { font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2;
+                       min-height: 44px; min-width: 44px; padding: 0.55rem 0.95rem;
+                       border-radius: 999px; border: 1.5px solid var(--green); background: #fff;
+                       color: var(--green); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .clock-days button:hover { background: rgba(15,110,86,0.08); }
+  .clock-days button[aria-pressed="true"], .clock-days button[aria-pressed="true"]:hover { background: var(--green); color: #fff; }
+  .clock-panel p.clock-summary { font-weight: 600; margin-top: 1rem; line-height: 1.5; }
+  .clock-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .clock-btn { font: inherit; font-size: 1rem; font-weight: 700; line-height: 1.2; min-height: 48px;
+               display: inline-flex; align-items: center; justify-content: center; text-align: center;
+               padding: 0.7rem 1.3rem; border-radius: 999px; border: 1.5px solid var(--green);
+               background: var(--green); color: #fff; text-decoration: none; cursor: pointer; }
+  main a.clock-btn.quiet, .clock-btn.quiet { background: #fff; color: var(--green); }
+  .clock-btn:hover { background: var(--deep); border-color: var(--deep); }
+  .clock-btn.quiet:hover { background: rgba(15,110,86,0.08); border-color: var(--green); }
+  .clock-days button:focus-visible, .clock-btn:focus-visible { outline: 3px solid #EF9F27; outline-offset: 2px; }
+  .clock-panel p.clock-note { color: var(--muted); font-size: 0.92rem; line-height: 1.5; margin-top: 0.7rem; }
+  .dish-clock { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.4rem; }
+  .dish-clock svg { flex: none; width: 22px; height: 22px; transform: rotate(-90deg); }
+  .dish-clock .track { fill: none; stroke: rgba(28,28,26,0.12); stroke-width: 3.5; }
+  .dish-clock .arc { fill: none; stroke-width: 3.5; stroke-linecap: round;
+                     transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .dish-clock .words { display: flex; flex-direction: column; line-height: 1.25; }
+  .dish-clock .left { font-weight: 700; font-size: 0.98rem; }
+  .dish-clock .thru { color: var(--muted); font-size: 0.85rem; }
+  .dish-clock.g .arc { stroke: #639922; } .dish-clock.g .left { color: #44700f; }
+  .dish-clock.a .arc { stroke: #EF9F27; } .dish-clock.a .left { color: #8a5a00; }
+  .dish-clock.r .arc { stroke: #E24B4A; } .dish-clock.r .left { color: #b3402e; }
+  .dish-clock.past .arc { stroke: none; }
+  .dish-clock.past .track { stroke: rgba(226,75,74,0.32); }
+  @media (prefers-reduced-motion: reduce) { .dish-clock .arc { transition: none; } }
+  @media (max-width: 599px) {
+    .clock-panel { padding: 1rem 1rem 1.1rem; }
+    .clock-days { gap: 0.4rem; }
+    .clock-days button { padding: 0.55rem 0.8rem; }
+    .clock-actions { gap: 0.5rem; }
+    .clock-btn { padding: 0.7rem 0.95rem; font-size: 0.97rem; flex: 1 1 auto; }
+  }
   .grid { display: grid; gap: 0.9rem; }
   .grid .card { margin: 0; }
   ul.steps { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
@@ -222,6 +270,18 @@
   <section id="chart">
     <h2>How long each dish&nbsp;keeps</h2>
     <p class="kicker">Freezer times are for best quality: frozen food stays safe indefinitely but loses moisture and flavor the longer it&nbsp;waits.</p>
+    <div class="clock-panel" id="leftovers-clock" hidden>
+      <h3>Leftovers&nbsp;Clock</h3>
+      <p class="clock-help">Tap the day you cooked. Each dish below counts down from the shorter USDA figure, so a dish listed at 3 to 4 days gets&nbsp;3.</p>
+      <span class="clock-label" id="clock-days-label">The Day You&nbsp;Cooked</span>
+      <div class="clock-days" role="group" aria-labelledby="clock-days-label"></div>
+      <p class="clock-summary" aria-live="polite"></p>
+      <div class="clock-actions">
+        <button type="button" class="clock-btn" id="clock-remind">Remind&nbsp;Me</button>
+        <a class="clock-btn quiet" href="https://apps.apple.com/app/id6805635396">Track These in&nbsp;Kepta</a>
+      </div>
+      <p class="clock-note"></p>
+    </div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -229,23 +289,23 @@
         </thead>
         <tbody>
           <tr class="group"><th scope="rowgroup" colspan="3">The main&nbsp;event</th></tr>
-          <tr><th scope="row">Cooked turkey, and other cooked poultry or meat&nbsp;leftovers</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 6&nbsp;months</td></tr>
-          <tr><th scope="row">Ham, fresh (uncured),&nbsp;cooked</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">3 to 4&nbsp;months</td></tr>
+          <tr data-keep="3"><th scope="row">Cooked turkey, and other cooked poultry or meat&nbsp;leftovers</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 6&nbsp;months</td></tr>
+          <tr data-keep="3"><th scope="row">Ham, fresh (uncured),&nbsp;cooked</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">3 to 4&nbsp;months</td></tr>
           <tr><th scope="row">Ham, cooked, store-wrapped slices, half, or spiral&nbsp;cut</th><td data-label="Refrigerator">3 to 5&nbsp;days</td><td data-label="Freezer">1 to 2&nbsp;months</td></tr>
           <tr><th scope="row">Ham, cooked, store-wrapped&nbsp;whole</th><td data-label="Refrigerator">1&nbsp;week</td><td data-label="Freezer">1 to 2&nbsp;months</td></tr>
           <tr><th scope="row">Raw whole turkey, not yet&nbsp;cooked</th><td data-label="Refrigerator">1 to 2&nbsp;days</td><td data-label="Freezer">1&nbsp;year</td></tr>
           <tr class="group"><th scope="rowgroup" colspan="3">The&nbsp;sides</th></tr>
-          <tr><th scope="row">Stuffing, mashed potatoes, cranberry sauce, cooked vegetables,&nbsp;rolls<span class="note">Not on either chart by name, so USDA's general leftovers guidance&nbsp;applies</span></th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">3 to 4 months<span class="note">General leftovers guidance, no item time&nbsp;listed</span></td></tr>
-          <tr><th scope="row">Gravy<span class="note">General leftovers guidance. Reheat to a rolling&nbsp;boil</span></th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">3 to 4 months<span class="note">General leftovers guidance, no item time&nbsp;listed</span></td></tr>
-          <tr><th scope="row">Casseroles with eggs, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
-          <tr><th scope="row">Soups and stews with vegetables or&nbsp;meat</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
-          <tr><th scope="row">Egg, chicken, ham, tuna, and macaroni&nbsp;salads</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not freeze&nbsp;well</td></tr>
-          <tr><th scope="row">Hard-cooked&nbsp;eggs</th><td data-label="Refrigerator">1&nbsp;week</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
+          <tr data-keep="3"><th scope="row">Stuffing, mashed potatoes, cranberry sauce, cooked vegetables,&nbsp;rolls<span class="note">Not on either chart by name, so USDA's general leftovers guidance&nbsp;applies</span></th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">3 to 4 months<span class="note">General leftovers guidance, no item time&nbsp;listed</span></td></tr>
+          <tr data-keep="3"><th scope="row">Gravy<span class="note">General leftovers guidance. Reheat to a rolling&nbsp;boil</span></th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">3 to 4 months<span class="note">General leftovers guidance, no item time&nbsp;listed</span></td></tr>
+          <tr data-keep="3"><th scope="row">Casseroles with eggs, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
+          <tr data-keep="3"><th scope="row">Soups and stews with vegetables or&nbsp;meat</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
+          <tr data-keep="3"><th scope="row">Egg, chicken, ham, tuna, and macaroni&nbsp;salads</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not freeze&nbsp;well</td></tr>
+          <tr data-keep="7"><th scope="row">Hard-cooked&nbsp;eggs</th><td data-label="Refrigerator">1&nbsp;week</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
           <tr class="group"><th scope="rowgroup" colspan="3">Dessert and&nbsp;drinks</th></tr>
-          <tr><th scope="row">Pumpkin or pecan pie, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">1 to 2&nbsp;months</td></tr>
-          <tr><th scope="row">Custard and chiffon pies, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
-          <tr><th scope="row">Quiche with filling, after&nbsp;baking</th><td data-label="Refrigerator">3 to 5&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
-          <tr><th scope="row">Homemade&nbsp;eggnog</th><td data-label="Refrigerator">2 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
+          <tr data-keep="3"><th scope="row">Pumpkin or pecan pie, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer">1 to 2&nbsp;months</td></tr>
+          <tr data-keep="3"><th scope="row">Custard and chiffon pies, after&nbsp;baking</th><td data-label="Refrigerator">3 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
+          <tr data-keep="3"><th scope="row">Quiche with filling, after&nbsp;baking</th><td data-label="Refrigerator">3 to 5&nbsp;days</td><td data-label="Freezer">2 to 3&nbsp;months</td></tr>
+          <tr data-keep="2"><th scope="row">Homemade&nbsp;eggnog</th><td data-label="Refrigerator">2 to 4&nbsp;days</td><td data-label="Freezer" class="no">Do not&nbsp;freeze</td></tr>
         </tbody>
       </table>
     </div>
@@ -345,5 +405,182 @@
     <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
   </footer>
 </main>
+<script>
+// Leftovers Clock. Counts each dish down from the low end of the refrigerator time
+// already printed in its row (data-keep). Runs in the browser only: nothing is sent
+// or stored. The reminder is a calendar file built here on the page.
+(function () {
+  var panel = document.getElementById('leftovers-clock');
+  var rows = document.querySelectorAll('#chart tr[data-keep]');
+  if (!panel || !rows.length || !document.createElementNS) return;
+
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'];
+  function day(y, m, d) { return new Date(y, m, d, 12); }
+  function addDays(dt, n) { return day(dt.getFullYear(), dt.getMonth(), dt.getDate() + n); }
+  function between(a, b) { return Math.round((b - a) / 86400000); }
+  function longDate(dt) { return DAYS[dt.getDay()] + ', ' + MONTHS[dt.getMonth()] + ' ' + dt.getDate(); }
+  function shortDate(dt) { return DAYS[dt.getDay()].slice(0, 3) + ', ' + MONTHS[dt.getMonth()].slice(0, 3) + ' ' + dt.getDate(); }
+  function span(n) { return n + (n === 1 ? ' day' : ' days'); }
+
+  var now = new Date();
+  var today = day(now.getFullYear(), now.getMonth(), now.getDate());
+  var choices = [
+    { label: 'Wed 25', date: day(2026, 10, 25) },
+    { label: 'Thanksgiving', date: day(2026, 10, 26) },
+    { label: 'Fri 27', date: day(2026, 10, 27) },
+    { label: 'Sat 28', date: day(2026, 10, 28) }
+  ];
+  var dup = choices.some(function (c) { return between(c.date, today) === 0; });
+  if (!dup) choices.push({ label: 'Today', date: today });
+  var picked = 1;
+
+  var daysBox = panel.querySelector('.clock-days');
+  var summary = panel.querySelector('.clock-summary');
+  var note = panel.querySelector('.clock-note');
+  var remind = document.getElementById('clock-remind');
+  var SVG = 'http://www.w3.org/2000/svg';
+  var R = 8, C = 2 * Math.PI * R;
+
+  var buttons = choices.map(function (c, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = c.label;
+    b.setAttribute('aria-label', c.label === 'Today' || c.label === 'Thanksgiving'
+      ? c.label + ', ' + longDate(c.date) : longDate(c.date));
+    b.addEventListener('click', function () { picked = i; render(); });
+    daysBox.appendChild(b);
+    return b;
+  });
+
+  var dishes = Array.prototype.map.call(rows, function (tr) {
+    var cell = tr.querySelector('td');
+    var wrap = document.createElement('span');
+    wrap.className = 'dish-clock';
+    var svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 22 22');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    var track = document.createElementNS(SVG, 'circle');
+    var arc = document.createElementNS(SVG, 'circle');
+    [track, arc].forEach(function (c) {
+      c.setAttribute('cx', '11'); c.setAttribute('cy', '11'); c.setAttribute('r', String(R));
+      svg.appendChild(c);
+    });
+    track.setAttribute('class', 'track');
+    arc.setAttribute('class', 'arc');
+    arc.setAttribute('stroke-dasharray', C.toFixed(2));
+    arc.setAttribute('stroke-dashoffset', '0');
+    var words = document.createElement('span');
+    words.className = 'words';
+    var left = document.createElement('span');
+    left.className = 'left';
+    var thru = document.createElement('span');
+    thru.className = 'thru';
+    words.appendChild(left); words.appendChild(thru);
+    wrap.appendChild(svg); wrap.appendChild(words);
+    cell.appendChild(wrap);
+    return { keep: parseInt(tr.getAttribute('data-keep'), 10), wrap: wrap, arc: arc, left: left, thru: thru };
+  });
+
+  function render() {
+    var cooked = choices[picked].date;
+    // Days since cooking. A cook day still ahead shows the whole window.
+    var elapsed = Math.max(0, between(cooked, today));
+    buttons.forEach(function (b, i) { b.setAttribute('aria-pressed', i === picked ? 'true' : 'false'); });
+
+    dishes.forEach(function (d) {
+      var remaining = d.keep - elapsed;          // days after today the dish still has
+      var last = addDays(cooked, d.keep);        // its last day, low end of the range
+      var frac, tone, text;
+      if (remaining < 0) { frac = 0; tone = 'r past'; text = span(-remaining) + ' past'; }
+      else if (remaining === 0) { frac = 0.07; tone = 'r'; text = 'eat today'; }
+      else {
+        frac = remaining / d.keep;
+        tone = (remaining === 1 || frac <= 1 / 3) ? 'a' : 'g';
+        text = span(remaining) + ' to eat';
+      }
+      d.wrap.className = 'dish-clock ' + tone;
+      d.left.textContent = text;
+      d.thru.textContent = (remaining < 0 ? 'window ended ' : 'through ') + shortDate(last);
+      // Every pick starts from a full ring and drains to its value. With Reduce
+      // Motion the stylesheet removes the transition, so only the end state shows.
+      d.arc.style.transition = 'none';
+      d.arc.setAttribute('stroke-dashoffset', '0');
+      void d.arc.getBoundingClientRect();
+      d.arc.style.transition = '';
+      d.arc.setAttribute('stroke-dashoffset', (C * (1 - frac)).toFixed(2));
+    });
+
+    var most = addDays(cooked, 3);
+    var over = between(most, today) > 0;
+    summary.textContent = 'Cooked ' + longDate(cooked) + '. Most dishes ' + (over ? 'kept' : 'keep') +
+      ' through ' + longDate(most) + '.';
+
+    var remindDay = addDays(cooked, 2);
+    if (between(remindDay, today) > 0) {
+      remind.hidden = true;
+      note.textContent = 'The reminder day for this choice, ' + longDate(remindDay) + ', has already passed.';
+    } else {
+      remind.hidden = false;
+      note.textContent = 'Remind Me saves a calendar file for ' + longDate(remindDay) +
+        ', the day before most dishes reach the end of their window. It is made on this page and nothing is sent anywhere.';
+    }
+  }
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function stamp(dt) { return dt.getFullYear() + pad(dt.getMonth() + 1) + pad(dt.getDate()); }
+  function esc(s) { return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n'); }
+  function fold(line) {
+    var out = [];
+    while (line.length > 60) { out.push(line.slice(0, 60)); line = ' ' + line.slice(60); }
+    out.push(line);
+    return out.join('\r\n');
+  }
+  function buildIcs() {
+    var cooked = choices[picked].date;
+    var when = addDays(cooked, 2);
+    var u = new Date();
+    var utc = u.getUTCFullYear() + pad(u.getUTCMonth() + 1) + pad(u.getUTCDate()) + 'T' +
+      pad(u.getUTCHours()) + pad(u.getUTCMinutes()) + pad(u.getUTCSeconds()) + 'Z';
+    var title = 'Eat or Freeze the Leftovers by Tomorrow';
+    var desc = 'Cooked ' + longDate(cooked) + '. Most leftovers keep through ' + longDate(addDays(cooked, 3)) +
+      ' in the refrigerator, counting from the shorter USDA figure of 3 days. Freeze today what you will not finish.\n\n' +
+      'Homemade eggnog keeps 2 days. Hard-cooked eggs keep 1 week. Reheat leftovers to 165\u00B0F.\n\n' +
+      'When in doubt, throw it out.\n\nhttps://kepta.kitchen/thanksgiving-leftovers';
+    var lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kepta//Leftovers Clock//EN', 'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH', 'BEGIN:VEVENT',
+      'UID:leftovers-' + stamp(cooked) + '-' + utc + '@kepta.kitchen',
+      'DTSTAMP:' + utc,
+      'DTSTART;VALUE=DATE:' + stamp(when),
+      'DTEND;VALUE=DATE:' + stamp(addDays(when, 1)),
+      'SUMMARY:' + esc(title),
+      'DESCRIPTION:' + esc(desc),
+      'URL:https://kepta.kitchen/thanksgiving-leftovers',
+      'TRANSP:TRANSPARENT',
+      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + esc(title),
+      'TRIGGER:PT9H', 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR'
+    ];
+    return lines.map(fold).join('\r\n') + '\r\n';
+  }
+  remind.addEventListener('click', function () {
+    var blob = new Blob([buildIcs()], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'kepta-leftovers-reminder.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  });
+
+  panel.hidden = false;
+  render();
+})();
+</script>
 </body>
 </html>
