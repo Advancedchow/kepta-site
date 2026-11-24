@@ -156,6 +156,7 @@
   .clock-btn.quiet:hover { background: rgba(15,110,86,0.08); border-color: var(--green); }
   .clock-days button:focus-visible, .clock-btn:focus-visible { outline: 3px solid #EF9F27; outline-offset: 2px; }
   .clock-panel p.clock-note { color: var(--muted); font-size: 0.92rem; line-height: 1.5; margin-top: 0.7rem; }
+  .clock-panel p.clock-kepta { margin-top: 0.35rem; }
   .dish-clock { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.4rem; }
   .dish-clock svg { flex: none; width: 22px; height: 22px; transform: rotate(-90deg); }
   .dish-clock .track { fill: none; stroke: rgba(28,28,26,0.12); stroke-width: 3.5; }
@@ -164,9 +165,10 @@
   .dish-clock .words { display: flex; flex-direction: column; line-height: 1.25; }
   .dish-clock .left { font-weight: 700; font-size: 0.98rem; }
   .dish-clock .thru { color: var(--muted); font-size: 0.85rem; }
-  .dish-clock.g .arc { stroke: #639922; } .dish-clock.g .left { color: #44700f; }
-  .dish-clock.a .arc { stroke: #EF9F27; } .dish-clock.a .left { color: #8a5a00; }
-  .dish-clock.r .arc { stroke: #E24B4A; } .dish-clock.r .left { color: #b3402e; }
+  /* Kepta's Cook orange on every clock day; red only once a dish is past. The words
+     use a slightly deeper orange so they stay readable on white. */
+  .dish-clock.o .arc { stroke: #D85A30; } .dish-clock.o .left { color: #B4441F; }
+  .dish-clock.r .left { color: #b3402e; }
   .dish-clock.past .arc { stroke: none; }
   .dish-clock.past .track { stroke: rgba(226,75,74,0.32); }
   @media (prefers-reduced-motion: reduce) { .dish-clock .arc { transition: none; } }
@@ -272,7 +274,7 @@
     <p class="kicker">Freezer times are for best quality: frozen food stays safe indefinitely but loses moisture and flavor the longer it&nbsp;waits.</p>
     <div class="clock-panel" id="leftovers-clock" hidden>
       <h3>Leftovers&nbsp;Clock</h3>
-      <p class="clock-help">Tap the day you cooked. Each dish below counts down from the shorter USDA figure, so a dish listed at 3 to 4 days gets&nbsp;3.</p>
+      <p class="clock-help">Tap the day you cooked. Each dish below counts down from the shorter USDA figure, counting the day you cooked, so a dish listed at 3 to 4 days gets&nbsp;3.</p>
       <span class="clock-label" id="clock-days-label">The Day You&nbsp;Cooked</span>
       <div class="clock-days" role="group" aria-labelledby="clock-days-label"></div>
       <p class="clock-summary" aria-live="polite"></p>
@@ -281,6 +283,7 @@
         <a class="clock-btn quiet" href="https://apps.apple.com/app/id6805635396">Track These in&nbsp;Kepta</a>
       </div>
       <p class="clock-note"></p>
+      <p class="clock-note clock-kepta">In Kepta, log them the day you cook and the app keeps the same&nbsp;count.</p>
     </div>
     <div class="table-wrap">
       <table>
@@ -422,7 +425,13 @@
   function between(a, b) { return Math.round((b - a) / 86400000); }
   function longDate(dt) { return DAYS[dt.getDay()] + ', ' + MONTHS[dt.getMonth()] + ' ' + dt.getDate(); }
   function shortDate(dt) { return DAYS[dt.getDay()].slice(0, 3) + ', ' + MONTHS[dt.getMonth()].slice(0, 3) + ' ' + dt.getDate(); }
-  function span(n) { return n + (n === 1 ? ' day' : ' days'); }
+  function span(n) {
+    if (n < 14) return n === 1 ? '1 day' : n + ' days';
+    if (n < 60) return Math.floor(n / 7) + ' weeks';
+    if (n < 365) return Math.floor(n / 30) + ' months';
+    var y = Math.floor(n / 365);
+    return y === 1 ? '1 year' : y + ' years';
+  }
 
   var now = new Date();
   var today = day(now.getFullYear(), now.getMonth(), now.getDate());
@@ -491,19 +500,19 @@
     buttons.forEach(function (b, i) { b.setAttribute('aria-pressed', i === picked ? 'true' : 'false'); });
 
     dishes.forEach(function (d) {
-      var remaining = d.keep - elapsed;          // days after today the dish still has
-      var last = addDays(cooked, d.keep);        // its last day, low end of the range
+      // Same count as the app: the cook day is day 1, so today is included.
+      var remaining = d.keep - elapsed;
+      var last = addDays(cooked, d.keep - 1);    // last good day, low end of the range
       var frac, tone, text;
-      if (remaining < 0) { frac = 0; tone = 'r past'; text = span(-remaining) + ' past'; }
-      else if (remaining === 0) { frac = 0.07; tone = 'r'; text = 'eat today'; }
+      if (remaining <= 0) { frac = 0; tone = 'r past'; text = span(1 - remaining) + ' past'; }
       else {
         frac = remaining / d.keep;
-        tone = (remaining === 1 || frac <= 1 / 3) ? 'a' : 'g';
-        text = span(remaining) + ' to eat';
+        tone = 'o';
+        text = remaining === 1 ? 'eat today' : span(remaining) + ' to eat';
       }
       d.wrap.className = 'dish-clock ' + tone;
       d.left.textContent = text;
-      d.thru.textContent = (remaining < 0 ? 'window ended ' : 'through ') + shortDate(last);
+      d.thru.textContent = (remaining <= 0 ? 'window ended ' : 'through ') + shortDate(last);
       // Every pick starts from a full ring and drains to its value. With Reduce
       // Motion the stylesheet removes the transition, so only the end state shows.
       d.arc.style.transition = 'none';
@@ -513,19 +522,19 @@
       d.arc.setAttribute('stroke-dashoffset', (C * (1 - frac)).toFixed(2));
     });
 
-    var most = addDays(cooked, 3);
+    var most = addDays(cooked, 2);
     var over = between(most, today) > 0;
     summary.textContent = 'Cooked ' + longDate(cooked) + '. Most dishes ' + (over ? 'kept' : 'keep') +
       ' through ' + longDate(most) + '.';
 
-    var remindDay = addDays(cooked, 2);
+    var remindDay = addDays(cooked, 1);
     if (between(remindDay, today) > 0) {
       remind.hidden = true;
       note.textContent = 'The reminder day for this choice, ' + longDate(remindDay) + ', has already passed.';
     } else {
       remind.hidden = false;
       note.textContent = 'Remind Me saves a calendar file for ' + longDate(remindDay) +
-        ', the day before most dishes reach the end of their window. It is made on this page and nothing is sent anywhere.';
+        ', the day before the last day for most dishes. It is made on this page and nothing is sent anywhere.';
     }
   }
 
@@ -540,14 +549,14 @@
   }
   function buildIcs() {
     var cooked = choices[picked].date;
-    var when = addDays(cooked, 2);
+    var when = addDays(cooked, 1);
     var u = new Date();
     var utc = u.getUTCFullYear() + pad(u.getUTCMonth() + 1) + pad(u.getUTCDate()) + 'T' +
       pad(u.getUTCHours()) + pad(u.getUTCMinutes()) + pad(u.getUTCSeconds()) + 'Z';
     var title = 'Eat or Freeze the Leftovers by Tomorrow';
-    var desc = 'Cooked ' + longDate(cooked) + '. Most leftovers keep through ' + longDate(addDays(cooked, 3)) +
-      ' in the refrigerator, counting from the shorter USDA figure of 3 days. Freeze today what you will not finish.\n\n' +
-      'Homemade eggnog keeps 2 days. Hard-cooked eggs keep 1 week. Reheat leftovers to 165\u00B0F.\n\n' +
+    var desc = 'Cooked ' + longDate(cooked) + '. Most leftovers keep through ' + longDate(addDays(cooked, 2)) +
+      ' in the refrigerator. That is the shorter USDA figure of 3 days, counting the day you cooked. Freeze today what you will not finish.\n\n' +
+      'Counted the same way, homemade eggnog gets 2 days and hard-cooked eggs get 7. Reheat leftovers to 165\u00B0F.\n\n' +
       'When in doubt, throw it out.\n\nhttps://kepta.kitchen/thanksgiving-leftovers';
     var lines = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kepta//Leftovers Clock//EN', 'CALSCALE:GREGORIAN',
