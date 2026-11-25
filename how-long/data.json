@@ -1,0 +1,3368 @@
+{
+  "about": "Every storage time on the kepta.kitchen How Long Does It Last pages. Values are computed from the USDA FoodKeeper data file; nothing is typed by hand.",
+  "source": {
+    "name": "USDA FoodKeeper",
+    "publisher": "USDA Food Safety and Inspection Service, with Cornell University and the Food Marketing Institute",
+    "data_file": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json",
+    "dataset_page": "https://catalog.data.gov/dataset/fsis-foodkeeper-data",
+    "app_page": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+    "file_name": "FMA-Data-v128.xlsx",
+    "data_version": 128,
+    "data_version_modified": "09-06-2018",
+    "license": "U.S. Government work, public domain"
+  },
+  "last_checked": "2026-11-25",
+  "wording": {
+    "main_date_of_purchase": "FoodKeeper DOP_ fields, shown as \"from the date of purchase\"",
+    "after_opening": "FoodKeeper _After_Opening fields, shown as \"after opening\"",
+    "no_basis": "FoodKeeper plain fields, shown without a qualifier",
+    "range": "Min and Max joined with \"to\"; a single number when they are equal"
+  },
+  "supporting_sources": {
+    "fk": {
+      "name": "FoodKeeper data",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app"
+    },
+    "dz": {
+      "name": "Danger Zone",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f"
+    },
+    "lo": {
+      "name": "Leftovers and Food Safety",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety"
+    },
+    "fr": {
+      "name": "Freezing and Food Safety",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety"
+    },
+    "rf": {
+      "name": "Refrigeration and Food Safety",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration"
+    },
+    "eg": {
+      "name": "Shell Eggs from Farm to Table",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table"
+    },
+    "gb": {
+      "name": "Ground Beef and Food Safety",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/ground-beef-and-food-safety"
+    },
+    "ch": {
+      "name": "Chicken from Farm to Table",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/chicken-farm-table"
+    },
+    "dt": {
+      "name": "Food Product Dating",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating"
+    },
+    "to": {
+      "name": "Safe Handling of Take-Out Foods",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods"
+    },
+    "mo": {
+      "name": "Molds on Food: Are They Dangerous?",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous"
+    },
+    "st": {
+      "name": "Safe Temperature Chart",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart"
+    },
+    "em": {
+      "name": "Keep Your Food Safe During Emergencies",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/emergencies/keep-your-food-safe-during-emergencies"
+    }
+  },
+  "groups": [
+    {
+      "key": "leftovers",
+      "name": "Leftovers shelf",
+      "foods": [
+        "cooked-rice",
+        "cooked-pasta",
+        "cooked-chicken",
+        "leftover-pizza",
+        "soup-and-stew",
+        "leftovers"
+      ]
+    },
+    {
+      "key": "deli",
+      "name": "Deli drawer",
+      "foods": [
+        "deli-meat"
+      ]
+    },
+    {
+      "key": "dairy",
+      "name": "Dairy and eggs",
+      "foods": [
+        "eggs",
+        "hard-boiled-eggs",
+        "milk",
+        "cream-cheese",
+        "yogurt",
+        "shredded-cheese"
+      ]
+    },
+    {
+      "key": "raw",
+      "name": "Raw meat and fish",
+      "foods": [
+        "ground-beef",
+        "raw-chicken",
+        "salmon"
+      ]
+    },
+    {
+      "key": "crisper",
+      "name": "Crisper drawers",
+      "foods": [
+        "berries",
+        "bagged-salad"
+      ]
+    },
+    {
+      "key": "pantry",
+      "name": "Door and pantry",
+      "foods": [
+        "salsa",
+        "bread"
+      ]
+    }
+  ],
+  "foods": [
+    {
+      "slug": "cooked-rice",
+      "url": "https://kepta.kitchen/how-long/cooked-rice",
+      "group": "leftovers",
+      "name": "Cooked Rice",
+      "question": "How Long Does Cooked Rice Last in the Fridge?",
+      "answer": "USDA's FoodKeeper lists cooked rice at 4 to 6 days in the refrigerator. Its general entry for leftovers without meat, which names rice, is shorter: 3 to 4 days.",
+      "freezer_answer": "Yes. FoodKeeper lists cooked rice at 6 months in the freezer, and leftovers without meat at 1 to 2 months.",
+      "index_summary": "4 to 6 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Cooked rice",
+          "main_note_override": null,
+          "id": 178,
+          "name": "Cooked rice",
+          "subtitle": null,
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 178)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "4 to 6 days",
+                "field": "Refrigerate",
+                "min": 4,
+                "max": 6,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "6 months",
+                "field": "Freeze",
+                "min": 6,
+                "max": 6,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 178,
+            "Category_ID": 25,
+            "Name": "Cooked rice",
+            "Refrigerate_Min": 4,
+            "Refrigerate_Max": 6,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 6,
+            "Freeze_Max": 6,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Leftovers without meat, fish, poultry, or egg, such as cooked vegetables, rice, or potatoes",
+          "main_note_override": null,
+          "id": 174,
+          "name": "Leftovers",
+          "subtitle": "without meat, fish, poultry, or egg (such as cooked vegitables, rice, or potatoes)",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 174)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 174,
+            "Category_ID": 25,
+            "Name": "Leftovers",
+            "Name_subtitle": "without meat, fish, poultry, or egg (such as cooked vegitables, rice, or potatoes)",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Refrigerate within 2 hours",
+          "text": "Never leave food out of refrigeration over 2 hours. If the temperature is above 90°F, make it 1 hour.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "2 hours",
+            "90°F",
+            "1 hour"
+          ]
+        },
+        {
+          "heading": "Use shallow containers",
+          "text": "Put leftovers in shallow containers so they cool quickly, and refrigerate them at 40°F or below.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "40°F"
+          ]
+        },
+        {
+          "heading": "Reheat to 165°F",
+          "text": "Reheat thoroughly to an internal temperature of 165°F, or until hot and steaming. In the microwave, cover the food and rotate it so it heats evenly.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "165°F"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cooked-pasta",
+      "url": "https://kepta.kitchen/how-long/cooked-pasta",
+      "group": "leftovers",
+      "name": "Cooked Pasta",
+      "question": "How Long Does Cooked Pasta Last, and Can You Freeze It?",
+      "answer": "Cooked pasta keeps 3 to 5 days in the refrigerator, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists cooked pasta at 1 to 2 months in the freezer. Pasta salad is different: freezing is not recommended.",
+      "index_summary": "3 to 5 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Cooked pasta",
+          "main_note_override": null,
+          "id": 177,
+          "name": "Cooked pasta",
+          "subtitle": null,
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 177)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 5 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 177,
+            "Category_ID": 25,
+            "Name": "Cooked pasta",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 5,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Pasta salad",
+          "main_note_override": null,
+          "id": 420,
+          "name": "Pasta salad",
+          "subtitle": null,
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 420)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 5 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 420,
+            "Category_ID": 25,
+            "Name": "Pasta salad",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 5,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Metric": "Not Recommended"
+          }
+        },
+        {
+          "page_label": "Fresh pasta, not yet cooked",
+          "main_note_override": null,
+          "id": 332,
+          "name": "Fresh pasta",
+          "subtitle": null,
+          "category": "Grains, Beans & Pasta",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 332)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "2 months",
+                "field": "Freeze",
+                "min": 2,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 332,
+            "Category_ID": 9,
+            "Name": "Fresh pasta",
+            "Refrigerate_Min": 1,
+            "Refrigerate_Max": 2,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 2,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Refrigerate within 2 hours",
+          "text": "Never leave food out of refrigeration over 2 hours. If the temperature is above 90°F, make it 1 hour.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "2 hours",
+            "90°F",
+            "1 hour"
+          ]
+        },
+        {
+          "heading": "Cover or seal it",
+          "text": "Cover leftovers, wrap them in airtight packaging, or seal them in storage containers. That keeps bacteria out, holds in moisture, and stops them picking up odors from other food.",
+          "source": "lo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "No need to thaw first",
+          "text": "It is safe to reheat frozen leftovers without thawing them. It takes longer than reheating thawed food.",
+          "source": "lo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "cooked-chicken",
+      "url": "https://kepta.kitchen/how-long/cooked-chicken",
+      "group": "leftovers",
+      "name": "Cooked Chicken",
+      "question": "How Long Does Cooked Chicken Last in the Fridge?",
+      "answer": "Cooked chicken keeps 3 to 4 days in the refrigerator, according to USDA's FoodKeeper. That covers cooked poultry dishes, fried chicken, and a rotisserie chicken counted from the day you buy it.",
+      "freezer_answer": "Yes. FoodKeeper lists cooked poultry dishes at 4 to 6 months in the freezer, and fried or rotisserie chicken at 4 months.",
+      "index_summary": "3 to 4 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Cooked chicken dishes",
+          "main_note_override": null,
+          "id": 135,
+          "name": "Cooked poultry dishes",
+          "subtitle": null,
+          "category": "Poultry / Cooked or Processed",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 135)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "4 to 6 months",
+                "field": "Freeze",
+                "min": 4,
+                "max": 6,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 135,
+            "Category_ID": 14,
+            "Name": "Cooked poultry dishes",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 4,
+            "Freeze_Max": 6,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Rotisserie chicken",
+          "main_note_override": null,
+          "id": 141,
+          "name": "Rotisserie chicken",
+          "subtitle": null,
+          "category": "Poultry / Cooked or Processed",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 141)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "4 months",
+                "field": "DOP_Freeze",
+                "min": 4,
+                "max": 4,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 141,
+            "Category_ID": 14,
+            "Name": "Rotisserie chicken",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 4,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 4,
+            "DOP_Freeze_Max": 4,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Fried chicken",
+          "main_note_override": null,
+          "id": 136,
+          "name": "Fried chicken",
+          "subtitle": null,
+          "category": "Poultry / Cooked or Processed",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 136)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "4 months",
+                "field": "Freeze",
+                "min": 4,
+                "max": 4,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 136,
+            "Category_ID": 14,
+            "Name": "Fried chicken",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 4,
+            "Freeze_Max": 4,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Out for 2 hours at most",
+          "text": "Discard perishable foods left at room temperature longer than 2 hours, or 1 hour in air temperatures above 90°F. That includes leftovers taken home from a restaurant.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "2 hours",
+            "1 hour",
+            "90°F"
+          ]
+        },
+        {
+          "heading": "Reheat to 165°F",
+          "text": "Reheat foods containing meat or poultry to an internal temperature of at least 165°F, and use a food thermometer to check.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "165°F"
+          ]
+        },
+        {
+          "heading": "Freezer times are about quality",
+          "text": "Freezer storage times are for quality only. Frozen foods remain safe indefinitely.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "leftover-pizza",
+      "url": "https://kepta.kitchen/how-long/leftover-pizza",
+      "group": "leftovers",
+      "name": "Leftover Pizza",
+      "question": "How Long Does Leftover Pizza Last in the Fridge?",
+      "answer": "Leftover pizza keeps 3 to 4 days in the refrigerator, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists leftover pizza at 1 to 2 months in the freezer.",
+      "index_summary": "3 to 4 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Leftover pizza",
+          "main_note_override": null,
+          "id": 175,
+          "name": "Leftovers",
+          "subtitle": "pizza",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 175)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 175,
+            "Category_ID": 25,
+            "Name": "Leftovers",
+            "Name_subtitle": "pizza",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Pizza bought frozen",
+          "main_note_override": null,
+          "id": 571,
+          "name": "Pizza",
+          "subtitle": "frozen",
+          "category": "Food Purchased Frozen",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 571)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "12 months",
+                "field": "Freeze",
+                "min": 12,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {
+            "Refrigerate_tips": "Recommendation is for storage after cooking.",
+            "Freeze_Tips": "Keep frozen. For safety, cook as directed."
+          },
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 571,
+            "Category_ID": 8,
+            "Name": "Pizza",
+            "Name_subtitle": "frozen",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Refrigerate_tips": "Recommendation is for storage after cooking.",
+            "Freeze_Min": 12,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months",
+            "Freeze_Tips": "Keep frozen. For safety, cook as directed."
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [
+        {
+          "id": 571,
+          "label": "Pizza bought frozen",
+          "field": "Refrigerate_tips",
+          "text": "Recommendation is for storage after cooking."
+        },
+        {
+          "id": 571,
+          "label": "Pizza bought frozen",
+          "field": "Freeze_Tips",
+          "text": "Keep frozen. For safety, cook as directed."
+        }
+      ],
+      "tips": [
+        {
+          "heading": "Out for 2 hours at most",
+          "text": "Discard perishable foods left at room temperature longer than 2 hours, or 1 hour in air temperatures above 90°F. That includes leftovers taken home from a restaurant.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "2 hours",
+            "1 hour",
+            "90°F"
+          ]
+        },
+        {
+          "heading": "Shallow containers, covered",
+          "text": "Refrigerate or freeze leftovers in shallow containers, and wrap or cover the food.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Reheat to 165°F",
+          "text": "Reheat foods containing meat or poultry to an internal temperature of at least 165°F, and use a food thermometer to check.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "165°F"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "soup-and-stew",
+      "url": "https://kepta.kitchen/how-long/soup-and-stew",
+      "group": "leftovers",
+      "name": "Soup and Stew",
+      "question": "How Long Do Soup and Stew Last in the Fridge?",
+      "answer": "Soups and stews keep 3 to 4 days in the refrigerator, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists soups and stews at 2 to 3 months in the freezer, and homemade vegetable soup at 3 months.",
+      "index_summary": "3 to 4 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Soups and stews",
+          "main_note_override": null,
+          "id": 193,
+          "name": "Soup, stews",
+          "subtitle": null,
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 193)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "2 to 3 months",
+                "field": "Freeze",
+                "min": 2,
+                "max": 3,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 193,
+            "Category_ID": 25,
+            "Name": "Soup, stews",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 2,
+            "Freeze_Max": 3,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Homemade vegetable soup",
+          "main_note_override": null,
+          "id": 629,
+          "name": "Vegetable soup",
+          "subtitle": "homemade",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 629)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 months",
+                "field": "Freeze",
+                "min": 3,
+                "max": 3,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 629,
+            "Category_ID": 25,
+            "Name": "Vegetable soup",
+            "Name_subtitle": "homemade",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 3,
+            "Freeze_Max": 3,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Use shallow containers",
+          "text": "Put leftovers in shallow containers so they cool quickly, and refrigerate them at 40°F or below.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "40°F"
+          ]
+        },
+        {
+          "heading": "Reheat from frozen",
+          "text": "It is safe to reheat frozen soup or stew without thawing it, in a saucepan or in the microwave. It takes longer than reheating thawed food.",
+          "source": "lo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Reheat to 165°F",
+          "text": "Reheat thoroughly to an internal temperature of 165°F, or until hot and steaming. In the microwave, cover the food and rotate it so it heats evenly.",
+          "source": "dz",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/danger-zone-40f-140f",
+          "non_storage_figures": [
+            "165°F"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "leftovers",
+      "url": "https://kepta.kitchen/how-long/leftovers",
+      "group": "leftovers",
+      "name": "Leftovers",
+      "question": "How Long Do Leftovers Last in the Fridge?",
+      "answer": "Leftovers keep 3 to 4 days in the refrigerator, according to USDA's FoodKeeper, whether or not they contain meat, fish, poultry, or egg.",
+      "freezer_answer": "Yes. FoodKeeper lists leftovers with meat, fish, poultry, or egg at 2 to 3 months in the freezer, and leftovers without them at 1 to 2 months.",
+      "index_summary": "3 to 4 days in the refrigerator",
+      "records": [
+        {
+          "page_label": "Leftovers with meat, fish, poultry, or egg",
+          "main_note_override": null,
+          "id": 173,
+          "name": "Leftovers",
+          "subtitle": "with meat, fish, poultry, or egg",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 173)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "2 to 3 months",
+                "field": "Freeze",
+                "min": 2,
+                "max": 3,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 173,
+            "Category_ID": 25,
+            "Name": "Leftovers",
+            "Name_subtitle": "with meat, fish, poultry, or egg",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 2,
+            "Freeze_Max": 3,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Leftovers without meat, fish, poultry, or egg, such as cooked vegetables, rice, or potatoes",
+          "main_note_override": null,
+          "id": 174,
+          "name": "Leftovers",
+          "subtitle": "without meat, fish, poultry, or egg (such as cooked vegitables, rice, or potatoes)",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 174)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 174,
+            "Category_ID": 25,
+            "Name": "Leftovers",
+            "Name_subtitle": "without meat, fish, poultry, or egg (such as cooked vegitables, rice, or potatoes)",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Store-prepared main dishes or meals, bought hot or refrigerated",
+          "main_note_override": null,
+          "id": 185,
+          "name": "Main dishes or meals",
+          "subtitle": "hot or refrigerated",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 185)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "2 to 3 months",
+                "field": "Freeze",
+                "min": 2,
+                "max": 3,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 185,
+            "Category_ID": 25,
+            "Name": "Main dishes or meals",
+            "Name_subtitle": "hot or refrigerated",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 4,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Min": 2,
+            "Freeze_Max": 3,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Out for 2 hours at most",
+          "text": "Discard perishable foods left at room temperature longer than 2 hours, or 1 hour in air temperatures above 90°F. That includes leftovers taken home from a restaurant.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "2 hours",
+            "1 hour",
+            "90°F"
+          ]
+        },
+        {
+          "heading": "Shallow containers, covered",
+          "text": "Refrigerate or freeze leftovers in shallow containers, and wrap or cover the food.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Do not taste to check",
+          "text": "Never taste food to determine its safety. When in doubt, throw it out.",
+          "source": "em",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/emergencies/keep-your-food-safe-during-emergencies",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "deli-meat",
+      "url": "https://kepta.kitchen/how-long/deli-meat",
+      "group": "deli",
+      "name": "Deli Meat",
+      "question": "How Long Is Deli Meat Good For?",
+      "answer": "Deli meat sliced at the store keeps 3 to 5 days in the refrigerator from the date of purchase. Pre-packaged lunch meat keeps 2 weeks from the date of purchase, then 3 to 5 days after opening. Those are USDA FoodKeeper times.",
+      "freezer_answer": "Yes. FoodKeeper lists both store-sliced and pre-packaged lunch meat at 1 to 2 months in the freezer.",
+      "index_summary": "3 to 5 days store-sliced, 3 to 5 days after opening a package",
+      "records": [
+        {
+          "page_label": "Lunch meat or poultry, sliced at the store",
+          "main_note_override": null,
+          "id": 184,
+          "name": "Luncheon meat or poultry",
+          "subtitle": "store-sliced",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 184)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 5 days",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 184,
+            "Category_ID": 25,
+            "Name": "Luncheon meat or poultry",
+            "Name_subtitle": "store-sliced",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 5,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Lunch meat or poultry, pre-packaged",
+          "main_note_override": null,
+          "id": 192,
+          "name": "Luncheon meat or poultry",
+          "subtitle": "pre-packaged",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 192)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "2 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 2,
+                "max": 2,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": {
+                "text": "3 to 5 days",
+                "field": "Refrigerate_After_Opening",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": "after opening"
+              }
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "DOP_Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 192,
+            "Category_ID": 25,
+            "Name": "Luncheon meat or poultry",
+            "Name_subtitle": "pre-packaged",
+            "DOP_Refrigerate_Min": 2,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Refrigerate_After_Opening_Min": 3,
+            "Refrigerate_After_Opening_Max": 5,
+            "Refrigerate_After_Opening_Metric": "Days",
+            "DOP_Freeze_Min": 1,
+            "DOP_Freeze_Max": 2,
+            "DOP_Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Keep the fridge at 40°F or below",
+          "text": "The temperature in a refrigerator should be 40°F or below throughout the unit.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": [
+            "40°F"
+          ]
+        },
+        {
+          "heading": "Keep it off the door",
+          "text": "Don't store perishable foods in the door. The temperature of the door bins fluctuates more than the temperature in the cabinet.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Mold means it goes",
+          "text": "USDA says to discard luncheon meats that show mold. Foods with high moisture content can be contaminated below the surface.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "eggs",
+      "url": "https://kepta.kitchen/how-long/eggs",
+      "group": "dairy",
+      "name": "Eggs",
+      "question": "How Long Do Eggs Last in the Fridge?",
+      "answer": "Raw eggs in the shell keep 3 to 5 weeks in the refrigerator from the date of purchase, according to USDA's FoodKeeper.",
+      "freezer_answer": "Not in the shell: FoodKeeper marks freezing as not recommended for eggs in the shell. Raw whites and yolks are listed at 12 months in the freezer.",
+      "index_summary": "3 to 5 weeks in the refrigerator, in the shell",
+      "records": [
+        {
+          "page_label": "Eggs in the shell",
+          "main_note_override": null,
+          "id": 21,
+          "name": "Eggs",
+          "subtitle": "in shell",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 21)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 5 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 5,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": "Cook until yolk and white are firm.",
+              "safe_minimum_temperature_f": null
+            }
+          ],
+          "raw": {
+            "ID": 21,
+            "Category_ID": 7,
+            "Name": "Eggs",
+            "Name_subtitle": "in shell",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 5,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Freeze_Metric": "Not Recommended"
+          }
+        },
+        {
+          "page_label": "Raw egg whites or yolks",
+          "main_note_override": null,
+          "id": 22,
+          "name": "Eggs",
+          "subtitle": "raw whites, yolks",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 22)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "2 to 4 days",
+                "field": "Refrigerate",
+                "min": 2,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "12 months",
+                "field": "Freeze",
+                "min": 12,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 22,
+            "Category_ID": 7,
+            "Name": "Eggs",
+            "Name_subtitle": "raw whites, yolks",
+            "Refrigerate_Min": 2,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 12,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Keep them in the carton",
+          "text": "Keep eggs in their carton and place them in the coldest part of the refrigerator, not in the door.",
+          "source": "eg",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Don't wash them",
+          "text": "Washing eggs at home is not necessary or recommended. Wash water can be drawn into the egg through the pores in the shell.",
+          "source": "eg",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Out for 2 hours at most",
+          "text": "Don't keep eggs out of the refrigerator more than 2 hours.",
+          "source": "eg",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+          "non_storage_figures": [
+            "2 hours"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hard-boiled-eggs",
+      "url": "https://kepta.kitchen/how-long/hard-boiled-eggs",
+      "group": "dairy",
+      "name": "Hard-Boiled Eggs",
+      "question": "How Long Do Hard-Boiled Eggs Last?",
+      "answer": "Hard-boiled eggs keep 1 week in the refrigerator, according to USDA's FoodKeeper.",
+      "freezer_answer": "FoodKeeper marks freezing as not recommended for hard-boiled eggs.",
+      "index_summary": "1 week in the refrigerator",
+      "records": [
+        {
+          "page_label": "Hard-boiled eggs",
+          "main_note_override": null,
+          "id": 23,
+          "name": "Eggs",
+          "subtitle": "hard boiled cooked",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 23)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 week",
+                "field": "Refrigerate",
+                "min": 1,
+                "max": 1,
+                "metric": "Weeks",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 23,
+            "Category_ID": 7,
+            "Name": "Eggs",
+            "Name_subtitle": "hard boiled cooked",
+            "Refrigerate_Min": 1,
+            "Refrigerate_Max": 1,
+            "Refrigerate_Metric": "Weeks",
+            "Freeze_Metric": "Not Recommended"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Chill within 2 hours",
+          "text": "Hard-cooked eggs should be refrigerated within 2 hours of cooking.",
+          "source": "eg",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+          "non_storage_figures": [
+            "2 hours"
+          ]
+        },
+        {
+          "heading": "Why they spoil sooner than raw eggs",
+          "text": "Hard-cooking leaves a thin layer of water on the egg under the shell, which gives bacteria a favorable place to grow.",
+          "source": "eg",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Keep it off the door",
+          "text": "Don't store perishable foods in the door. The temperature of the door bins fluctuates more than the temperature in the cabinet.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "milk",
+      "url": "https://kepta.kitchen/how-long/milk",
+      "group": "dairy",
+      "name": "Milk",
+      "question": "How Long Does Milk Last, and Can You Freeze It?",
+      "answer": "USDA's FoodKeeper does not give milk a number of days in the refrigerator. Its entry for plain or flavored milk says to go by the package use-by date.",
+      "freezer_answer": "Yes. FoodKeeper lists milk at 3 months in the freezer from the date of purchase.",
+      "index_summary": "the package use-by date, or 3 months frozen",
+      "records": [
+        {
+          "page_label": "Milk, plain or flavored",
+          "main_note_override": null,
+          "id": 27,
+          "name": "Milk",
+          "subtitle": "plain or flavored",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 27)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "Package use-by date",
+                "field": "Refrigerate",
+                "min": null,
+                "max": null,
+                "metric": "Package use-by date",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 3,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 27,
+            "Category_ID": 7,
+            "Name": "Milk",
+            "Name_subtitle": "plain or flavored",
+            "Refrigerate_Metric": "Package use-by date",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 3,
+            "DOP_Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Keep it off the door",
+          "text": "Don't store perishable foods in the door. The temperature of the door bins fluctuates more than the temperature in the cabinet.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "What a use-by date means",
+          "text": "A \"Use-By\" date is the last date recommended for the use of a product while at peak quality. Except on infant formula, it is not a safety date.",
+          "source": "dt",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Trust the signs of spoilage",
+          "text": "Spoiled foods develop an off odor, flavor, or texture. If a food has developed those characteristics, it should not be eaten.",
+          "source": "dt",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "cream-cheese",
+      "url": "https://kepta.kitchen/how-long/cream-cheese",
+      "group": "dairy",
+      "name": "Cream Cheese",
+      "question": "How Long Does Cream Cheese Last?",
+      "answer": "Cream cheese keeps 2 weeks in the refrigerator from the date of purchase, according to USDA's FoodKeeper. FoodKeeper does not list a separate time after opening.",
+      "freezer_answer": "FoodKeeper marks freezing as not recommended for cream cheese.",
+      "index_summary": "2 weeks in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Cream cheese",
+          "main_note_override": null,
+          "id": 10,
+          "name": "Cream cheese",
+          "subtitle": null,
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 10)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "2 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 2,
+                "max": 2,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 10,
+            "Category_ID": 7,
+            "Name": "Cream cheese",
+            "DOP_Refrigerate_Min": 2,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Freeze_Metric": "Not Recommended"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Keep the fridge at 40°F or below",
+          "text": "The temperature in a refrigerator should be 40°F or below throughout the unit.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": [
+            "40°F"
+          ]
+        },
+        {
+          "heading": "Keep it off the door",
+          "text": "Don't store perishable foods in the door. The temperature of the door bins fluctuates more than the temperature in the cabinet.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Mold means it goes",
+          "text": "USDA says to discard soft cheese such as cream cheese if it shows mold. Foods with high moisture content can be contaminated below the surface.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "yogurt",
+      "url": "https://kepta.kitchen/how-long/yogurt",
+      "group": "dairy",
+      "name": "Yogurt",
+      "question": "How Long Does Yogurt Last?",
+      "answer": "Yogurt keeps 1 to 2 weeks in the refrigerator from the date of purchase, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists yogurt at 1 to 2 months in the freezer.",
+      "index_summary": "1 to 2 weeks in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Yogurt",
+          "main_note_override": null,
+          "id": 33,
+          "name": "Yogurt",
+          "subtitle": null,
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 33)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 33,
+            "Category_ID": 7,
+            "Name": "Yogurt",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Keep it off the door",
+          "text": "Don't store perishable foods in the door. The temperature of the door bins fluctuates more than the temperature in the cabinet.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Mold means it goes",
+          "text": "USDA says to discard yogurt that shows mold. Foods with high moisture content can be contaminated below the surface.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Freezer times are about quality",
+          "text": "Freezer storage times are for quality only. Frozen foods remain safe indefinitely.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "shredded-cheese",
+      "url": "https://kepta.kitchen/how-long/shredded-cheese",
+      "group": "dairy",
+      "name": "Shredded Cheese",
+      "question": "How Long Does Shredded Cheese Last?",
+      "answer": "Shredded cheese such as cheddar or mozzarella keeps 1 month in the refrigerator from the date of purchase, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists shredded cheese at 3 to 4 months in the freezer from the date of purchase.",
+      "index_summary": "1 month in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Shredded cheese, such as cheddar or mozzarella",
+          "main_note_override": null,
+          "id": 5,
+          "name": "Cheese",
+          "subtitle": "shredded; cheddar, mozzarella, etc.",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 5)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 month",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 1,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 to 4 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 4,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 5,
+            "Category_ID": 7,
+            "Name": "Cheese",
+            "Name_subtitle": "shredded; cheddar, mozzarella, etc.",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 1,
+            "DOP_Refrigerate_Metric": "Months",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 4,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Hard cheese in a block, such as cheddar, Swiss, or Parmesan",
+          "main_note_override": null,
+          "id": 3,
+          "name": "Cheese",
+          "subtitle": "hard such as cheddar, swiss, block parmesan",
+          "category": "Dairy Products & Eggs",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 3)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "6 months",
+                "field": "DOP_Refrigerate",
+                "min": 6,
+                "max": 6,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": {
+                "text": "3 to 4 weeks",
+                "field": "Refrigerate_After_Opening",
+                "min": 3,
+                "max": 4,
+                "metric": "Weeks",
+                "basis": "after opening"
+              }
+            },
+            "freezer": {
+              "main": {
+                "text": "6 months",
+                "field": "DOP_Freeze",
+                "min": 6,
+                "max": 6,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 3,
+            "Category_ID": 7,
+            "Name": "Cheese",
+            "Name_subtitle": "hard such as cheddar, swiss, block parmesan",
+            "DOP_Refrigerate_Min": 6,
+            "DOP_Refrigerate_Max": 6,
+            "DOP_Refrigerate_Metric": "Months",
+            "Refrigerate_After_Opening_Min": 3,
+            "Refrigerate_After_Opening_Max": 4,
+            "Refrigerate_After_Opening_Metric": "Weeks",
+            "DOP_Freeze_Min": 6,
+            "DOP_Freeze_Max": 6,
+            "DOP_Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Mold means it goes",
+          "text": "USDA says to discard shredded, crumbled, or sliced cheese that shows mold, because it can be contaminated by the cutting instrument.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Keep the fridge at 40°F or below",
+          "text": "The temperature in a refrigerator should be 40°F or below throughout the unit.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": [
+            "40°F"
+          ]
+        },
+        {
+          "heading": "Freezer times are about quality",
+          "text": "Freezer storage times are for quality only. Frozen foods remain safe indefinitely.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "ground-beef",
+      "url": "https://kepta.kitchen/how-long/ground-beef",
+      "group": "raw",
+      "name": "Ground Beef",
+      "question": "How Long Does Ground Beef Last in the Fridge?",
+      "answer": "Raw ground beef keeps 1 to 2 days in the refrigerator from the date of purchase, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists ground beef at 3 to 4 months in the freezer from the date of purchase.",
+      "index_summary": "1 to 2 days in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Ground beef, raw",
+          "main_note_override": null,
+          "id": 43,
+          "name": "Beef",
+          "subtitle": "ground",
+          "category": "Meat / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 43)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 to 4 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 4,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": "Cooking suggestions are for burgers. Cooking times are per side if grilling.",
+              "safe_minimum_temperature_f": 160
+            }
+          ],
+          "raw": {
+            "ID": 43,
+            "Category_ID": 10,
+            "Name": "Beef",
+            "Name_subtitle": "ground",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 4,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Ground turkey or chicken, raw",
+          "main_note_override": null,
+          "id": 115,
+          "name": "Ground turkey or chicken",
+          "subtitle": null,
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 115)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 to 4 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 4,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": "Cooking suggestions are for burgers. Cooking times are per side if grilling.",
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 115,
+            "Category_ID": 15,
+            "Name": "Ground turkey or chicken",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 4,
+            "DOP_Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Chill it right away",
+          "text": "Refrigerate or freeze ground beef as soon as possible after purchase. That preserves freshness and slows the growth of bacteria.",
+          "source": "gb",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/ground-beef-and-food-safety",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Cook it to 160°F",
+          "text": "Cook ground beef to a safe minimum internal temperature of 160°F, measured with a food thermometer. FoodKeeper lists the same temperature.",
+          "source": "gb",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/ground-beef-and-food-safety",
+          "non_storage_figures": [
+            "160°F"
+          ]
+        },
+        {
+          "heading": "Thaw it in the fridge",
+          "text": "The best way to safely thaw ground beef is in the refrigerator. Keeping meat cold while it defrosts prevents the growth of bacteria.",
+          "source": "gb",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/ground-beef-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "raw-chicken",
+      "url": "https://kepta.kitchen/how-long/raw-chicken",
+      "group": "raw",
+      "name": "Raw Chicken",
+      "question": "How Long Does Raw Chicken Last in the Fridge?",
+      "answer": "Raw chicken keeps 1 to 2 days in the refrigerator from the date of purchase, whole or in parts, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists a whole chicken at 12 months in the freezer, chicken parts at 9 months, and ground chicken at 3 to 4 months, all from the date of purchase.",
+      "index_summary": "1 to 2 days in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Whole chicken",
+          "main_note_override": null,
+          "id": 113,
+          "name": "Chicken",
+          "subtitle": "whole",
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 113)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "12 months",
+                "field": "DOP_Freeze",
+                "min": 12,
+                "max": 12,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": "Cooking times for poultry are for unstuffed birds. Check the internal temperature in the innermost part of the thigh, innermost part of the wing, and thickest part of the breast. Add 15 to 30 minutes for stuffed birds. Stuffed birds are ready when the internal temperature of stuffing reaches 165°F.",
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 113,
+            "Category_ID": 15,
+            "Name": "Chicken",
+            "Name_subtitle": "whole",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 12,
+            "DOP_Freeze_Max": 12,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Chicken breasts, boneless",
+          "main_note_override": null,
+          "id": 117,
+          "name": "Chicken parts",
+          "subtitle": "breast halves, boneless",
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 117)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "9 months",
+                "field": "DOP_Freeze",
+                "min": 9,
+                "max": 9,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 117,
+            "Category_ID": 15,
+            "Name": "Chicken parts",
+            "Name_subtitle": "breast halves, boneless",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 9,
+            "DOP_Freeze_Max": 9,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Chicken breasts, bone-in",
+          "main_note_override": null,
+          "id": 116,
+          "name": "Chicken parts",
+          "subtitle": "breast halves, bone-in",
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 116)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "9 months",
+                "field": "DOP_Freeze",
+                "min": 9,
+                "max": 9,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 116,
+            "Category_ID": 15,
+            "Name": "Chicken parts",
+            "Name_subtitle": "breast halves, bone-in",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 9,
+            "DOP_Freeze_Max": 9,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Chicken legs or thighs",
+          "main_note_override": null,
+          "id": 118,
+          "name": "Chicken parts",
+          "subtitle": "legs or thighs",
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 118)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "9 months",
+                "field": "DOP_Freeze",
+                "min": 9,
+                "max": 9,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 118,
+            "Category_ID": 15,
+            "Name": "Chicken parts",
+            "Name_subtitle": "legs or thighs",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 9,
+            "DOP_Freeze_Max": 9,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Ground chicken or turkey",
+          "main_note_override": null,
+          "id": 115,
+          "name": "Ground turkey or chicken",
+          "subtitle": null,
+          "category": "Poultry / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 115)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 to 4 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 4,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": "Cooking suggestions are for burgers. Cooking times are per side if grilling.",
+              "safe_minimum_temperature_f": 165
+            }
+          ],
+          "raw": {
+            "ID": 115,
+            "Category_ID": 15,
+            "Name": "Ground turkey or chicken",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 4,
+            "DOP_Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Don't wash it",
+          "text": "Washing raw poultry before cooking is not recommended, because bacteria in the juices can spread to other foods, utensils, and surfaces. Only cooking destroys them.",
+          "source": "ch",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/chicken-farm-table",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Wrap it securely",
+          "text": "Raw meat, poultry, and seafood should be in a sealed container or wrapped securely so raw juices cannot contaminate other foods.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Cook it to 165°F",
+          "text": "FoodKeeper lists a safe minimum internal temperature of 165°F for chicken, whole or in parts.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": [
+            "165°F"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "salmon",
+      "url": "https://kepta.kitchen/how-long/salmon",
+      "group": "raw",
+      "name": "Fresh Salmon",
+      "question": "How Long Does Fresh Salmon Last in the Fridge?",
+      "answer": "Fresh salmon keeps 1 to 2 days in the refrigerator from the date of purchase. USDA's FoodKeeper groups salmon with other fatty fish.",
+      "freezer_answer": "Yes. FoodKeeper lists fatty fish such as salmon at 2 to 3 months in the freezer from the date of purchase, and cooked fish at 1 to 2 months.",
+      "index_summary": "1 to 2 days in the refrigerator from the date of purchase",
+      "records": [
+        {
+          "page_label": "Fresh salmon and other fatty fish",
+          "main_note_override": null,
+          "id": 146,
+          "name": "Fatty fish",
+          "subtitle": "bluefish, catfish, mackerel, mullet, salmon, tuna, etc.",
+          "category": "Seafood / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 146)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 days",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "2 to 3 months",
+                "field": "DOP_Freeze",
+                "min": 2,
+                "max": 3,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [
+            {
+              "tip": null,
+              "safe_minimum_temperature_f": 145
+            }
+          ],
+          "raw": {
+            "ID": 146,
+            "Category_ID": 20,
+            "Name": "Fatty fish",
+            "Name_subtitle": "bluefish, catfish, mackerel, mullet, salmon, tuna, etc.",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Days",
+            "DOP_Freeze_Min": 2,
+            "DOP_Freeze_Max": 3,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Cooked fish",
+          "main_note_override": null,
+          "id": 148,
+          "name": "Cooked fish",
+          "subtitle": "all",
+          "category": "Seafood / Fresh",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 148)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 4 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 4,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "1 to 2 months",
+                "field": "Freeze",
+                "min": 1,
+                "max": 2,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 148,
+            "Category_ID": 20,
+            "Name": "Cooked fish",
+            "Name_subtitle": "all",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 4,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 1,
+            "Freeze_Max": 2,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Wrap it securely",
+          "text": "Raw meat, poultry, and seafood should be in a sealed container or wrapped securely so raw juices cannot contaminate other foods.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Cook it to 145°F",
+          "text": "FoodKeeper lists a safe minimum internal temperature of 145°F for fatty fish such as salmon.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": [
+            "145°F"
+          ]
+        },
+        {
+          "heading": "Freezer times are about quality",
+          "text": "Freezer storage times are for quality only. Frozen foods remain safe indefinitely.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "berries",
+      "url": "https://kepta.kitchen/how-long/berries",
+      "group": "crisper",
+      "name": "Berries",
+      "question": "How Long Do Strawberries and Other Berries Last?",
+      "answer": "Strawberries and raspberries keep 2 to 3 days in the refrigerator from the date of purchase. Blueberries keep 1 to 2 weeks and blackberries 3 to 6 days, according to USDA's FoodKeeper.",
+      "freezer_answer": "Yes. FoodKeeper lists strawberries, raspberries, and blueberries at 8 to 12 months in the freezer, and blackberries at 12 months.",
+      "index_summary": "2 to 3 days for strawberries, 1 to 2 weeks for blueberries",
+      "records": [
+        {
+          "page_label": "Strawberries",
+          "main_note_override": null,
+          "id": 481,
+          "name": "Strawberries",
+          "subtitle": null,
+          "category": "Produce / Fresh Fruits",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 481)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "2 to 3 days",
+                "field": "DOP_Refrigerate",
+                "min": 2,
+                "max": 3,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "8 to 12 months",
+                "field": "Freeze",
+                "min": 8,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 481,
+            "Category_ID": 18,
+            "Name": "Strawberries",
+            "DOP_Refrigerate_Min": 2,
+            "DOP_Refrigerate_Max": 3,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Min": 8,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Raspberries",
+          "main_note_override": null,
+          "id": 482,
+          "name": "Raspberries",
+          "subtitle": null,
+          "category": "Produce / Fresh Fruits",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 482)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "2 to 3 days",
+                "field": "DOP_Refrigerate",
+                "min": 2,
+                "max": 3,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "8 to 12 months",
+                "field": "Freeze",
+                "min": 8,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 482,
+            "Category_ID": 18,
+            "Name": "Raspberries",
+            "DOP_Refrigerate_Min": 2,
+            "DOP_Refrigerate_Max": 3,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Min": 8,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Blueberries",
+          "main_note_override": null,
+          "id": 254,
+          "name": "Blueberries",
+          "subtitle": null,
+          "category": "Produce / Fresh Fruits",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 254)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "8 to 12 months",
+                "field": "Freeze",
+                "min": 8,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 254,
+            "Category_ID": 18,
+            "Name": "Blueberries",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Freeze_Min": 8,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Blackberries, boysenberries, and currants",
+          "main_note_override": null,
+          "id": 253,
+          "name": "Berries",
+          "subtitle": "blackberries, boysenberries, currant",
+          "category": "Produce / Fresh Fruits",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 253)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 6 days",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 6,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "12 months",
+                "field": "Freeze",
+                "min": 12,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 253,
+            "Category_ID": 18,
+            "Name": "Berries",
+            "Name_subtitle": "blackberries, boysenberries, currant",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 6,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Min": 12,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [],
+      "tips": [
+        {
+          "heading": "Mold means it goes",
+          "text": "USDA says to discard soft fruits that show mold. Soft fruits with high moisture content can be contaminated below the surface.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Use the crisper drawer",
+          "text": "Sealed crisper drawers provide an optimal storage environment for fruits and vegetables. Fruits need lower humidity than vegetables.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Freezer times are about quality",
+          "text": "Freezer storage times are for quality only. Frozen foods remain safe indefinitely.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "bagged-salad",
+      "url": "https://kepta.kitchen/how-long/bagged-salad",
+      "group": "crisper",
+      "name": "Bagged Salad",
+      "question": "How Long Does Bagged Salad Last?",
+      "answer": "Bagged salad greens keep 3 to 5 days in the refrigerator. USDA's FoodKeeper counts that from the date on the bag for an unopened bag, and gives an opened bag 2 days.",
+      "freezer_answer": "FoodKeeper marks freezing as not recommended for bagged greens and for lettuce.",
+      "index_summary": "3 to 5 days unopened, 2 days after opening",
+      "records": [
+        {
+          "page_label": "Bagged greens: leaf, spinach, lettuce",
+          "main_note_override": {
+            "fridge": "unopened, after the date on the bag"
+          },
+          "id": 415,
+          "name": "Bagged greens",
+          "subtitle": "leaf, spinach, lettuce, etc.",
+          "category": "Produce / Fresh Vegetables",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 415)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 5 days",
+                "field": "Refrigerate",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": {
+                "text": "2 days",
+                "field": "Refrigerate_After_Opening",
+                "min": 2,
+                "max": 2,
+                "metric": "Days",
+                "basis": "after opening"
+              }
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {
+            "Refrigerate_tips": "Unopened product will last 3 - 5 days after date on bag; after opening it will last 2 days."
+          },
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 415,
+            "Category_ID": 19,
+            "Name": "Bagged greens",
+            "Name_subtitle": "leaf, spinach, lettuce, etc.",
+            "Refrigerate_Min": 3,
+            "Refrigerate_Max": 5,
+            "Refrigerate_Metric": "Days",
+            "Refrigerate_tips": "Unopened product will last 3 - 5 days after date on bag; after opening it will last 2 days.",
+            "Refrigerate_After_Opening_Min": 2,
+            "Refrigerate_After_Opening_Max": 2,
+            "Refrigerate_After_Opening_Metric": "Days",
+            "Freeze_Metric": "Not Recommended"
+          }
+        },
+        {
+          "page_label": "Lettuce, iceberg or romaine",
+          "main_note_override": null,
+          "id": 290,
+          "name": "Lettuce",
+          "subtitle": "iceberg, romaine",
+          "category": "Produce / Fresh Vegetables",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 290)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "1 to 2 weeks",
+                "field": "DOP_Refrigerate",
+                "min": 1,
+                "max": 2,
+                "metric": "Weeks",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 290,
+            "Category_ID": 19,
+            "Name": "Lettuce",
+            "Name_subtitle": "iceberg, romaine",
+            "DOP_Refrigerate_Min": 1,
+            "DOP_Refrigerate_Max": 2,
+            "DOP_Refrigerate_Metric": "Weeks",
+            "Freeze_Metric": "Not Recommended"
+          }
+        },
+        {
+          "page_label": "Lettuce, leaf, or spinach",
+          "main_note_override": null,
+          "id": 291,
+          "name": "Lettuce",
+          "subtitle": "leaf, spinach",
+          "category": "Produce / Fresh Vegetables",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 291)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "3 to 7 days",
+                "field": "DOP_Refrigerate",
+                "min": 3,
+                "max": 7,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "Not recommended",
+                "field": "Freeze",
+                "min": null,
+                "max": null,
+                "metric": "Not Recommended",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 291,
+            "Category_ID": 19,
+            "Name": "Lettuce",
+            "Name_subtitle": "leaf, spinach",
+            "DOP_Refrigerate_Min": 3,
+            "DOP_Refrigerate_Max": 7,
+            "DOP_Refrigerate_Metric": "Days",
+            "Freeze_Metric": "Not Recommended"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [
+        {
+          "id": 415,
+          "label": "Bagged greens: leaf, spinach, lettuce",
+          "field": "Refrigerate_tips",
+          "text": "Unopened product will last 3 to 5 days after date on bag; after opening it will last 2 days."
+        }
+      ],
+      "tips": [
+        {
+          "heading": "Count from the date on the bag",
+          "text": "For bagged greens, FoodKeeper counts an unopened bag from the date printed on it, and an opened bag from the day you open it.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Use the crisper drawer",
+          "text": "Sealed crisper drawers provide an optimal storage environment for fruits and vegetables. Vegetables need higher humidity than fruits.",
+          "source": "rf",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/refrigeration",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Lettuce doesn't freeze well",
+          "text": "USDA names lettuce as an example of a food that simply doesn't freeze well.",
+          "source": "fr",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/freezing-and-food-safety",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "salsa",
+      "url": "https://kepta.kitchen/how-long/salsa",
+      "group": "pantry",
+      "name": "Salsa",
+      "question": "How Long Does Salsa Last After Opening?",
+      "answer": "Jarred salsa keeps 1 month in the refrigerator after opening, according to USDA's FoodKeeper. Fresh salsa keeps 4 to 7 days.",
+      "freezer_answer": "FoodKeeper lists homemade fresh salsa at 12 months in the freezer. It gives no freezer time for jarred salsa or for its general fresh salsa entry.",
+      "index_summary": "1 month after opening a jar, 4 to 7 days for fresh",
+      "records": [
+        {
+          "page_label": "Jarred salsa, picante, and taco sauces",
+          "main_note_override": null,
+          "id": 357,
+          "name": "Salsa",
+          "subtitle": "picante and taco sauces",
+          "category": "Condiments, Sauces & Canned Goods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 357)",
+          "values": {
+            "pantry": {
+              "main": {
+                "text": "1 year",
+                "field": "DOP_Pantry",
+                "min": 1,
+                "max": 1,
+                "metric": "Years",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "fridge": {
+              "main": null,
+              "open": {
+                "text": "1 month",
+                "field": "Refrigerate_After_Opening",
+                "min": 1,
+                "max": 1,
+                "metric": "Months",
+                "basis": "after opening"
+              }
+            },
+            "freezer": {
+              "main": null,
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {
+            "Pantry_tips": "Refrigeration ensures that commercial sauces and condiments stay fresh for a longer period of time. Shelf-stable commercial salsa is safe when stored at room temperature after opening. Quality, not safety, is the reason the labels on these products suggest that they be refrigerated after opening."
+          },
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 357,
+            "Category_ID": 6,
+            "Name": "Salsa",
+            "Name_subtitle": "picante and taco sauces",
+            "Pantry_tips": "Refrigeration ensures that commercial sauces and condiments stay fresh for a longer period of time. Shelf-stable commercial salsa is safe when stored at room temperature after opening. Quality, not safety, is the reason the labels on these products suggest that they be refrigerated after opening.",
+            "DOP_Pantry_Min": 1,
+            "DOP_Pantry_Max": 1,
+            "DOP_Pantry_Metric": "Years",
+            "Refrigerate_After_Opening_Min": 1,
+            "Refrigerate_After_Opening_Max": 1,
+            "Refrigerate_After_Opening_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Fresh salsa",
+          "main_note_override": null,
+          "id": 572,
+          "name": "Salsa",
+          "subtitle": "fresh",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 572)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "4 to 7 days",
+                "field": "Refrigerate",
+                "min": 4,
+                "max": 7,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": null,
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 572,
+            "Category_ID": 25,
+            "Name": "Salsa",
+            "Name_subtitle": "fresh",
+            "Refrigerate_Min": 4,
+            "Refrigerate_Max": 7,
+            "Refrigerate_Metric": "Days"
+          }
+        },
+        {
+          "page_label": "Homemade fresh salsa",
+          "main_note_override": null,
+          "id": 645,
+          "name": "Salsa",
+          "subtitle": "homemade, fresh",
+          "category": "Deli & Prepared Foods",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 645)",
+          "values": {
+            "pantry": {
+              "main": null,
+              "open": null
+            },
+            "fridge": {
+              "main": {
+                "text": "5 to 7 days",
+                "field": "Refrigerate",
+                "min": 5,
+                "max": 7,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "12 months",
+                "field": "Freeze",
+                "min": 12,
+                "max": 12,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 645,
+            "Category_ID": 25,
+            "Name": "Salsa",
+            "Name_subtitle": "homemade, fresh",
+            "Refrigerate_Min": 5,
+            "Refrigerate_Max": 7,
+            "Refrigerate_Metric": "Days",
+            "Freeze_Min": 12,
+            "Freeze_Max": 12,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [
+        {
+          "id": 357,
+          "label": "Jarred salsa, picante, and taco sauces",
+          "field": "Pantry_tips",
+          "text": "Refrigeration ensures that commercial sauces and condiments stay fresh for a longer period of time. Shelf-stable commercial salsa is safe when stored at room temperature after opening. Quality, not safety, is the reason the labels on these products suggest that they be refrigerated after opening."
+        }
+      ],
+      "tips": [
+        {
+          "heading": "The fridge is for quality",
+          "text": "FoodKeeper says shelf-stable commercial salsa is safe at room temperature after opening. Refrigerating it is about keeping it fresh longer, not safety.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Fresh salsa is different",
+          "text": "FoodKeeper gives fresh and homemade fresh salsa a refrigerator time only, with no pantry time.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Trust the signs of spoilage",
+          "text": "Spoiled foods develop an off odor, flavor, or texture. If a food has developed those characteristics, it should not be eaten.",
+          "source": "dt",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating",
+          "non_storage_figures": []
+        }
+      ]
+    },
+    {
+      "slug": "bread",
+      "url": "https://kepta.kitchen/how-long/bread",
+      "group": "pantry",
+      "name": "Bread",
+      "question": "How Long Does Bread Last?",
+      "answer": "Commercial bread keeps 14 to 18 days in the pantry from the date of purchase, according to USDA's FoodKeeper. It lists commercially baked, pre-sliced whole wheat bread at a shorter 3 to 5 days.",
+      "freezer_answer": "Yes. FoodKeeper lists commercial bread at 3 to 5 months in the freezer from the date of purchase, and whole wheat bread at 3 months.",
+      "index_summary": "14 to 18 days in the pantry from the date of purchase",
+      "records": [
+        {
+          "page_label": "Commercial bread, including pan breads, flat breads, rolls, and buns",
+          "main_note_override": null,
+          "id": 195,
+          "name": "Commercial bread products",
+          "subtitle": "including pan breads, flat breads, rolls, and buns",
+          "category": "Baked Goods / Bakery",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 195)",
+          "values": {
+            "pantry": {
+              "main": {
+                "text": "14 to 18 days",
+                "field": "DOP_Pantry",
+                "min": 14,
+                "max": 18,
+                "metric": "Days",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            },
+            "fridge": {
+              "main": null,
+              "open": {
+                "text": "2 to 3 weeks",
+                "field": "Refrigerate_After_Opening",
+                "min": 2,
+                "max": 3,
+                "metric": "Weeks",
+                "basis": "after opening"
+              }
+            },
+            "freezer": {
+              "main": {
+                "text": "3 to 5 months",
+                "field": "DOP_Freeze",
+                "min": 3,
+                "max": 5,
+                "metric": "Months",
+                "basis": "from the date of purchase"
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {},
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 195,
+            "Category_ID": 2,
+            "Name": "Commercial bread products",
+            "Name_subtitle": "including pan breads, flat breads, rolls, and buns",
+            "DOP_Pantry_Min": 14,
+            "DOP_Pantry_Max": 18,
+            "DOP_Pantry_Metric": "Days",
+            "Refrigerate_After_Opening_Min": 2,
+            "Refrigerate_After_Opening_Max": 3,
+            "Refrigerate_After_Opening_Metric": "Weeks",
+            "DOP_Freeze_Min": 3,
+            "DOP_Freeze_Max": 5,
+            "DOP_Freeze_Metric": "Months"
+          }
+        },
+        {
+          "page_label": "Whole wheat bread, commercially baked and pre-sliced",
+          "main_note_override": null,
+          "id": 461,
+          "name": "Whole wheat bread",
+          "subtitle": "commercially baked & pre-sliced",
+          "category": "Grains, Beans & Pasta",
+          "source": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json (Product sheet, ID 461)",
+          "values": {
+            "pantry": {
+              "main": {
+                "text": "3 to 5 days",
+                "field": "Pantry",
+                "min": 3,
+                "max": 5,
+                "metric": "Days",
+                "basis": null
+              },
+              "open": null
+            },
+            "fridge": {
+              "main": null,
+              "open": null
+            },
+            "freezer": {
+              "main": {
+                "text": "3 months",
+                "field": "Freeze",
+                "min": 3,
+                "max": 3,
+                "metric": "Months",
+                "basis": null
+              },
+              "open": null
+            }
+          },
+          "foodkeeper_tips": {
+            "Refrigerate_tips": "Refrigeration not recommended - bread will quickly dry out and become stale."
+          },
+          "foodkeeper_cooking": [],
+          "raw": {
+            "ID": 461,
+            "Category_ID": 9,
+            "Name": "Whole wheat bread",
+            "Name_subtitle": "commercially baked & pre-sliced",
+            "Pantry_Min": 3,
+            "Pantry_Max": 5,
+            "Pantry_Metric": "Days",
+            "Refrigerate_tips": "Refrigeration not recommended - bread will quickly dry out and become stale.",
+            "Freeze_Min": 3,
+            "Freeze_Max": 3,
+            "Freeze_Metric": "Months"
+          }
+        }
+      ],
+      "foodkeeper_notes_shown": [
+        {
+          "id": 461,
+          "label": "Whole wheat bread, commercially baked and pre-sliced",
+          "field": "Refrigerate_tips",
+          "text": "Refrigeration not recommended: bread will quickly dry out and become stale."
+        }
+      ],
+      "tips": [
+        {
+          "heading": "The fridge dries it out",
+          "text": "For pre-sliced whole wheat bread, FoodKeeper does not recommend refrigeration: the bread will quickly dry out and become stale.",
+          "source": "fk",
+          "source_url": "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Mold means the loaf goes",
+          "text": "USDA says to discard bread and baked goods that show mold. Porous foods can be contaminated below the surface.",
+          "source": "mo",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+          "non_storage_figures": []
+        },
+        {
+          "heading": "Bread can sit out",
+          "text": "USDA names bread as an exception to the rule that food left at room temperature for more than 2 hours should be discarded.",
+          "source": "to",
+          "source_url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-handling-take-out-foods",
+          "non_storage_figures": [
+            "2 hours"
+          ]
+        }
+      ]
+    }
+  ]
+}
