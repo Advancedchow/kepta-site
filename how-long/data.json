@@ -143,6 +143,10 @@
       ]
     }
   ],
+  "index_kepta_bridge": {
+    "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+    "kepta_figures": []
+  },
   "foods": [
     {
       "slug": "cooked-rice",
@@ -257,6 +261,13 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "In Kepta, cooked rice is a leftover: 3 days in the fridge, counting the day you cooked it. That is USDA’s shorter leftovers figure, on purpose, so it gets eaten in time. A date you set yourself always wins.",
+        "kepta_figures": [
+          "3 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Refrigerate within 2 hours",
@@ -449,6 +460,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Refrigerate within 2 hours",
@@ -649,6 +665,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Out for 2 hours at most",
@@ -811,6 +832,11 @@
           "text": "Keep frozen. For safety, cook as directed."
         }
       ],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Out for 2 hours at most",
@@ -954,6 +980,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Use shallow containers",
@@ -1147,6 +1178,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Out for 2 hours at most",
@@ -1183,7 +1219,7 @@
       "question": "How Long Is Deli Meat Good For?",
       "answer": "Deli meat sliced at the store keeps 3 to 5 days in the refrigerator from the date of purchase. Pre-packaged lunch meat keeps 2 weeks from the date of purchase, then 3 to 5 days after opening. Those are USDA FoodKeeper times.",
       "freezer_answer": "Yes. FoodKeeper lists both store-sliced and pre-packaged lunch meat at 1 to 2 months in the freezer.",
-      "index_summary": "3 to 5 days store-sliced, 3 to 5 days after opening a package",
+      "index_summary": "2 weeks sealed, 3 to 5 days once opened or store-sliced",
       "records": [
         {
           "page_label": "Lunch meat or poultry, sliced at the store",
@@ -1299,6 +1335,14 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "In Kepta, a sealed pack of lunch meat gets 14 days, and 3 days once you mark it opened, the early end of USDA’s range. Meat sliced at the counter is already open, so mark it Opened when you add it.",
+        "kepta_figures": [
+          "14 days",
+          "3 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Keep the fridge at 40°F or below",
@@ -1442,6 +1486,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Keep them in the carton",
@@ -1529,6 +1578,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Chill within 2 hours",
@@ -1616,6 +1670,13 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "USDA goes by the date on the carton, and so should you. Kepta starts milk at 7 days from the day you bought it. Set the carton’s date in Kepta and that date wins.",
+        "kepta_figures": [
+          "7 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Keep it off the door",
@@ -1700,6 +1761,15 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s date for cream cheese is longer than USDA’s: 30 days for a sealed package, following the maker’s guidance, then 10 days once you open it. If you would rather follow USDA’s 2 weeks, set that date yourself and it wins.",
+        "kepta_figures": [
+          "30 days",
+          "10 days",
+          "2 weeks"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Keep the fridge at 40°F or below",
@@ -1788,6 +1858,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Keep it off the door",
@@ -1936,6 +2011,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Mold means it goes",
@@ -2085,6 +2165,13 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "In Kepta, raw ground beef shows 2 days to cook from the day you bought it, the full USDA window. Cook it or freeze it by then. A date you set yourself always wins.",
+        "kepta_figures": [
+          "2 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Chill it right away",
@@ -2402,6 +2489,13 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "In Kepta, raw chicken shows 2 days to cook from the day you bought it, the full USDA window. Cook it or freeze it by then. A date you set yourself always wins.",
+        "kepta_figures": [
+          "2 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Don't wash it",
@@ -2547,6 +2641,13 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "In Kepta, fresh salmon shows 2 days to cook from the day you bought it, the full USDA window. Cook it or freeze it by then. A date you set yourself always wins.",
+        "kepta_figures": [
+          "2 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Wrap it securely",
@@ -2786,6 +2887,11 @@
         }
       ],
       "foodkeeper_notes_shown": [],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Mold means it goes",
@@ -2991,6 +3097,11 @@
           "text": "Unopened product will last 3 to 5 days after date on bag; after opening it will last 2 days."
         }
       ],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "Count from the date on the bag",
@@ -3180,6 +3291,11 @@
           "text": "Refrigeration ensures that commercial sauces and condiments stay fresh for a longer period of time. Shelf-stable commercial salsa is safe when stored at room temperature after opening. Quality, not safety, is the reason the labels on these products suggest that they be refrigerated after opening."
         }
       ],
+      "kepta_bridge": {
+        "text": "Kepta’s own dates lean early. Where USDA gives a range, Kepta starts from the early end so food gets eaten in time, and a date you set yourself always wins.",
+        "kepta_figures": [],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "The fridge is for quality",
@@ -3338,6 +3454,14 @@
           "text": "Refrigeration not recommended: bread will quickly dry out and become stale."
         }
       ],
+      "kepta_bridge": {
+        "text": "Kepta’s date for bread is shorter than USDA’s: 7 days in the pantry for any loaf, because bread at home often goes stale or moldy before 14. For a whole wheat loaf, USDA’s 3 to 5 days is the safer guide. A date you set yourself always wins.",
+        "kepta_figures": [
+          "7 days",
+          "3 to 5 days"
+        ],
+        "source": "Kepta app catalog, checked by the Kepta chat on 2026-11-25. These are Kepta refrigerator or pantry dates, not USDA figures."
+      },
       "tips": [
         {
           "heading": "The fridge dries it out",

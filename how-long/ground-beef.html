@@ -171,6 +171,7 @@
   .foodlist .sum { display: block; color: var(--muted); font-size: 0.98rem; line-height: 1.5; }
   .kepta-line { text-align: center; }
   .kepta-line p { font-weight: 600; margin: 0 0 1rem; }
+  .kepta-line p.bridge { font-weight: 400; color: var(--muted); max-width: 46em; margin: 0 auto 1.1rem; }
   .more { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0; padding: 0; list-style: none; }
   @media (max-width: 599px) {
     table.t3 tbody tr:not(.group) { grid-template-columns: repeat(3, 1fr); column-gap: 0.6rem; }
@@ -241,7 +242,8 @@
   </section>
 
   <div class="cta kepta-line">
-    <p>Kepta gives each food a date and counts it down for you. Free on&nbsp;iPhone.</p>
+    <p class="bridge" data-bridge>In Kepta, raw ground beef shows 2 days to cook from the day you bought it, the full USDA window. Cook it or freeze it by then. A date you set yourself always&nbsp;wins.</p>
+    <p data-kepta-line>Kepta gives each food a date and counts it down for you. Free on&nbsp;iPhone.</p>
     <div class="cta-buttons">
       <a class="store-badge" href="https://apps.apple.com/app/id6805635396"><img src="/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
     </div>
