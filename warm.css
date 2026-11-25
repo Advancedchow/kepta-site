@@ -1,0 +1,136 @@
+/* kepta.kitchen: the Warm Kitchen look (matches Kepta 1.2.15).
+   Loaded after each page's own <style>, so every rule here wins on order.
+   Colors are the app's WarmPalette, the same set try.html uses.
+   Visual only: nothing here adds, hides or changes any words. */
+
+:root {
+  --green: #0F6E56; --deep: #0A5140; --forest: #1E7B3A;
+  --page: #F4EEE3; --card: #FFFDF8; --sand: #F3ECDF; --sage: #ECF3EE;
+  --line: #E8DFCF; --edge: #D6C8B0;
+  --ink: #2B2520; --ink2: #6B6157;
+  --fresh: #54A042; --fresh-ink: #3C7B2D;
+  --amber: #C8820F; --amber-ink: #9A5F05;
+  --red: #C22630;
+  --cook: #D85A30; --cook-ink: #B84A24;
+  --serif: ui-serif, "New York", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --shadow: 0 3px 10px rgba(60,40,20,0.06);
+  /* The pages' older names, pointed at the warm set. */
+  --canvas: #F4EEE3; --muted: #6B6157; --card-border: #E8DFCF;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { background-color: var(--page); color: var(--ink); }
+
+/* ---------- Type: the serif on titles only, everything else stays SF ---------- */
+h1, h2 { font-family: var(--serif); font-weight: 800; color: var(--ink); }
+h1 { letter-spacing: -0.015em; }
+h2 { letter-spacing: -0.01em; font-size: clamp(1.6rem, 3vw, 1.95rem); line-height: 1.2; }
+h3, .card h3 { color: var(--ink); }
+aside.card h3 { color: var(--ink) !important; }
+.logo + h1 { color: var(--green); }                 /* the brand name on the home page */
+.shot-name { font-family: var(--serif); font-weight: 800; color: var(--ink); }
+.tagline { color: var(--ink); }
+header.site a.wordmark, header.site .brand { font-family: var(--serif); font-weight: 800; font-size: 1.3rem; }
+header.site img { box-shadow: 0 2px 6px rgba(60,40,20,0.14); }
+.wk-plain main h1 { font-size: 2rem; line-height: 1.2; margin-top: 1rem; }
+.wk-plain main h2 { font-family: inherit; font-weight: 700; font-size: 1.1rem; letter-spacing: 0; line-height: 1.35; }
+.wk-plain a { color: var(--green); }
+.updated, .muted { color: var(--ink2); }
+
+/* ---------- Surfaces: warm cards on cream, a hairline and the one soft shadow ---------- */
+.card, .compare, .cta-card, .faq details, .table-wrap, .notice, p.note, .kepta-line, .code-demo {
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.card, .compare, .cta-card, .table-wrap { border-radius: 18px; }
+.faq details, .notice, p.note, .kepta-line { border-radius: 14px; }
+.kepta-line, .cta-card:not(.name-story) { background: var(--sage); border-color: rgba(15,110,86,0.2); }
+.switch-facts { border-top-color: var(--line); }
+footer { border-top-color: var(--line); }
+blockquote { border-left-color: var(--edge); }
+.legend a { border-bottom-color: var(--edge); }
+.code, .invite { background: var(--sage); }
+.code-demo { border-radius: 14px; }
+
+/* Small round badges and tags. */
+.step-num, .rule-tag { background: var(--sage); box-shadow: inset 0 0 0 1.5px rgba(15,110,86,0.24); }
+.chip.diff { background: var(--card); }
+.chip.not { background: #EBE2D0; color: #5A5148; }
+
+/* ---------- Buttons ---------- */
+.soon, .write-btn {
+  background: var(--green); box-shadow: 0 5px 14px rgba(15,110,86,0.26);
+}
+.write-btn { padding: 0.7rem 1.5rem; }
+.write-btn:hover { background: var(--deep); }
+.ghost, a.notify { background: var(--card); }
+a:focus-visible, summary:focus-visible, button:focus-visible { outline: 3px solid #EF9F27; outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .write-btn, .ghost, .soon { transition: background-color 0.15s ease, transform 0.15s ease; }
+  .write-btn:active, .ghost:active, .soon:active { transform: scale(0.97); }
+}
+
+/* ---------- Tables ---------- */
+th, td { border-bottom-color: var(--line); }
+thead th { background: var(--sand); color: var(--ink); }
+tr.group th { background: #F8F3E9; color: var(--ink2); }
+tbody tr, tbody tr:not(.group) { border-bottom-color: var(--line); }
+
+/* ---------- Pictures and phone frames ---------- */
+.phone { border-color: var(--ink); background: var(--ink); box-shadow: 0 16px 38px rgba(60,40,20,0.22); }
+.shots img, .media img { border-color: var(--line); box-shadow: 0 10px 26px rgba(60,40,20,0.16); }
+.phone img { border: 0; box-shadow: none; }
+.logo { box-shadow: 0 10px 28px rgba(60,40,20,0.2); }
+.name-logo { box-shadow: 0 6px 16px rgba(60,40,20,0.16); }
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  .get-qr svg { box-shadow: 0 0 0 1px var(--line), 0 8px 22px rgba(60,40,20,0.08); }
+}
+/* "A look inside" sits on its own lighter shelf. */
+.shots:has(.phone) {
+  background: linear-gradient(#FBF7EE, #F7F1E5); border: 1px solid var(--line);
+  border-radius: 28px; padding: 1.8rem 1rem 1.5rem;
+}
+
+/* ---------- Freshness: the app's draining rings in place of squares ---------- */
+.swatch {
+  width: 17px; height: 17px; border-radius: 50%;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4.5px), #000 calc(100% - 4px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 4.5px), #000 calc(100% - 4px));
+}
+.swatch.g { background: var(--fresh); }
+.swatch.a { background: conic-gradient(var(--amber) 0 42%, rgba(200,130,15,0.24) 42% 100%); }
+.swatch.r { background: conic-gradient(var(--red) 0 12%, rgba(194,38,48,0.24) 12% 100%); }
+.swatches { gap: 0.35rem 1rem; }
+
+/* Money: the Insights tab's Forest and Toss red. */
+.split-bar .saved { background: var(--forest); }
+.split-bar .wasted { background: var(--red); }
+.split-legend .saved { color: var(--forest); }
+.split-legend .wasted { color: var(--red); }
+
+/* ---------- Kepta's painted food, used lightly (decoration only) ---------- */
+.wk-home .grid-4 > .card { position: relative; }
+.wk-home .grid-4 > .card::after,
+.wk-thanks .hero::before,
+.wk-404 main::before {
+  content: ""; display: block; width: 46px; height: 46px; border-radius: 13px;
+  background-color: var(--sand); background-repeat: no-repeat; background-position: center; background-size: 36px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.wk-home .grid-4 > .card::after { position: absolute; top: 1.15rem; right: 1.2rem; }
+.wk-home .grid-4 > .card:nth-child(1)::after { background-image: url(/art/milk.png); }
+.wk-home .grid-4 > .card:nth-child(2)::after { background-image: url(/art/spinach.png); }
+.wk-home .grid-4 > .card:nth-child(3)::after { background-image: url(/art/french-toast.jpg); background-size: cover; }
+.wk-home .grid-4 > .card:nth-child(4)::after { background-image: url(/art/bread.png); }
+.wk-thanks .hero::before { width: 72px; height: 72px; border-radius: 20px; background-size: 58px; margin: 0 auto 0.9rem; background-image: url(/art/leftovers.png); background-color: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+.wk-404 main::before { width: 72px; height: 72px; border-radius: 20px; background-size: 56px; margin: 2rem 0 0; background-image: url(/art/eggs.png); background-color: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+
+/* ---------- Rhythm ---------- */
+.wk-home section { margin-bottom: 5rem; }
+.wk-home .kicker { margin-bottom: 1.8rem; }
+@media (max-width: 719px) {
+  .wk-home section { margin-bottom: 3.75rem; }
+  .wk-home main { padding-top: 2.75rem; }
+}
+.card { padding-top: 1.45rem; padding-bottom: 1.45rem; }
+.faq summary { color: var(--ink); }
+.faq details[open] { background: var(--card); }

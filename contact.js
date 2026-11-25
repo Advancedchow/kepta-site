@@ -14,17 +14,17 @@
   var css =
     '.kc-dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;overflow:auto;}' +
     '.kc-dialog::backdrop{background:rgba(20,30,26,.45);}' +
-    '.kc-card{box-sizing:border-box;width:min(520px,calc(100% - 32px));margin:max(24px,6vh) auto 24px;background:#fff;color:#1c1c1a;' +
-    'border-radius:16px;box-shadow:0 18px 50px rgba(15,40,30,.25);padding:22px 22px 18px;font:inherit;font-size:16px;line-height:1.5;}' +
+    '.kc-card{box-sizing:border-box;width:min(520px,calc(100% - 32px));margin:max(24px,6vh) auto 24px;background:#FFFDF8;color:#2B2520;' +
+    'border-radius:20px;box-shadow:0 18px 50px rgba(60,40,20,.25);padding:22px 22px 18px;font:inherit;font-size:16px;line-height:1.5;}' +
     // The pages balance their paragraphs (text-wrap: balance), which squeezes
     // the sheet's one-line notes into short lines; the sheet wraps plainly.
     '.kc-card p,.kc-card label,.kc-card legend{text-wrap:wrap;max-width:none;}' +
     '.kc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}' +
-    '.kc-title{margin:0;font-size:1.45rem;line-height:1.25;color:#0F6E56;outline:none;}' +
+    '.kc-title{margin:0;font-family:ui-serif,"New York","Iowan Old Style",Georgia,"Times New Roman",serif;font-weight:800;font-size:1.5rem;line-height:1.25;color:#2B2520;outline:none;}' +
     '.kc-close{flex:none;width:44px;height:44px;margin:-8px -8px 0 0;border:0;border-radius:999px;background:transparent;color:#55554f;cursor:pointer;font-size:24px;line-height:1;}' +
-    '.kc-close:hover{background:#F1F0EA;color:#1c1c1a;}' +
+    '.kc-close:hover{background:#F3ECDF;color:#1c1c1a;}' +
     '.kc-legend{padding:0;font-size:.9rem;color:#55554f;}' +
-    '.kc-legend span{color:#8a8a82;}' +
+    '.kc-legend span{color:#6B6157;}' +
     '.kc-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}' +
     '.kc-topic{position:relative;}' +
     '.kc-topic input{position:absolute;opacity:0;width:1px;height:1px;}' +
@@ -34,8 +34,8 @@
     '.kc-row{display:grid;gap:12px;margin-top:16px;}' +
     '@media (min-width:560px){.kc-row{grid-template-columns:1fr 1fr;}}' +
     '.kc-label{display:block;font-size:.9rem;color:#55554f;}' +
-    '.kc-field{display:block;box-sizing:border-box;width:100%;margin-top:4px;padding:10px 12px;border:1.5px solid #d8d6cf;border-radius:10px;' +
-    'font:inherit;font-size:16px;color:#1c1c1a;background:#FBFBF8;outline:none;}' +
+    '.kc-field{display:block;box-sizing:border-box;width:100%;margin-top:4px;padding:10px 12px;border:1.5px solid #D6C8B0;border-radius:12px;' +
+    'font:inherit;font-size:16px;color:#2B2520;background:#FBF7EE;outline:none;}' +
     '.kc-field:focus{border-color:#0F6E56;box-shadow:0 0 0 3px rgba(15,110,86,.15);background:#fff;}' +
     '.kc-field[aria-invalid="true"]{border-color:#B42318;}' +
     'textarea.kc-field{min-height:7.5rem;resize:vertical;}' +
@@ -48,7 +48,7 @@
     // Other ways to reach us (the encue.app pattern): the address as text, a
     // Copy pill that turns into Copied for 2 s, and Open in Gmail on computers
     // or Open in Mail on phones. Nothing here depends on a mail app.
-    '.kc-other{margin:16px 0 0;padding-top:12px;border-top:1px solid #ECEBE5;}' +
+    '.kc-other{margin:16px 0 0;padding-top:12px;border-top:1px solid #E8DFCF;}' +
     '.kc-other-h{margin:0;font-size:.85rem;color:#6b6b64;}' +
     '.kc-addr{margin:2px 0 0;font-weight:600;color:#1c1c1a;word-break:break-all;}' +
     '.kc-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}' +
