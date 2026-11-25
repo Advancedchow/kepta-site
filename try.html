@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6805635396">
+<!-- DRAFT: not linked from any page and kept out of search until John approves it. -->
+<meta name="robots" content="noindex">
+<title>Stock the Fridge | Kepta</title>
+<meta name="description" content="Try Kepta in ten seconds. Tap a few foods into the fridge, skip ahead a few days, and see what Kepta does with them.">
+<meta name="theme-color" content="#0F6E56">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script>document.documentElement.className = 'js';</script>
+<style>
+  /* The app's Warm Kitchen colors (Theme.swift, WarmPalette). */
+  :root {
+    --green: #0F6E56; --deep: #0A5140; --forest: #1E7B3A;
+    --page: #F4EEE3; --card: #FFFDF8; --sand: #F3ECDF; --line: #E8DFCF; --edge: #D6C8B0;
+    --ink: #2B2520; --ink2: #6B6157;
+    --fresh: #54A042; --fresh-ink: #3C7B2D;
+    --amber: #C8820F; --amber-ink: #9A5F05;
+    --red: #C22630;
+    --cook: #D85A30; --cook-ink: #B84A24;
+    --serif: ui-serif, "New York", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem; line-height: 1.5;
+  }
+  img { max-width: 100%; }
+  main { max-width: 980px; margin: 0 auto; padding: 1.1rem 1rem 2rem; overflow-x: clip; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+  .top { text-align: center; margin: 0 0 0.9rem; }
+  .home { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--green); font-weight: 700;
+          text-decoration: none; min-height: 44px; padding: 0 0.4rem; }
+  .home img { width: 30px; height: 30px; border-radius: 8px; display: block; }
+  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.75rem, 6vw, 2.3rem); line-height: 1.15;
+       letter-spacing: -0.01em; margin: 0.1rem 0 0.3rem; }
+  .lede { color: var(--ink2); margin: 0 auto; max-width: 30rem; text-wrap: balance; }
+
+  .demo { display: grid; gap: 0.9rem; }
+  @media (min-width: 860px) {
+    main { padding-top: 2rem; }
+    .top { margin-bottom: 1.6rem; }
+    .demo { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 2.2rem; align-items: start; }
+  }
+
+  /* ---------- The fridge ---------- */
+  .stage { perspective: 1100px; max-width: 420px; width: 100%; margin: 0 auto; }
+  .fridge {
+    position: relative; border-radius: 26px; padding: 9px;
+    background: linear-gradient(160deg, #fff, #F1E9DA);
+    box-shadow: 0 14px 34px rgba(60,40,20,0.16), inset 0 0 0 1px var(--edge);
+  }
+  .inside {
+    position: relative; border-radius: 18px; overflow: hidden;
+    background:
+      radial-gradient(120% 60% at 50% 0%, rgba(255,255,255,0.95), rgba(255,255,255,0) 70%),
+      linear-gradient(#FBF7EE, #F3ECDF);
+    box-shadow: inset 0 0 0 1px var(--line), inset 0 6px 14px rgba(60,40,20,0.06);
+  }
+  .shelf { display: grid; grid-template-columns: 1fr 1fr; min-height: 104px; padding: 6px 4px 0; position: relative; }
+  .shelf::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
+    background: linear-gradient(#fff, #E3D8C4); box-shadow: 0 2px 4px rgba(60,40,20,0.08);
+  }
+  .shelf:last-child::after { height: 0; }
+  .slot { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 0 2px 11px; min-width: 0; }
+  .item { display: flex; flex-direction: column; align-items: center; min-width: 0; max-width: 100%; }
+  .item img { width: 52px; height: 52px; object-fit: contain; display: block; }
+  .item .name { font-size: 0.8rem; font-weight: 700; line-height: 1.2; margin-top: 1px; }
+  .status { display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 700; line-height: 1.25; white-space: nowrap; }
+  .status svg { width: 16px; height: 16px; flex: none; transform: rotate(-90deg); }
+  .status circle { fill: none; stroke-width: 3; }
+  .status .track { stroke: rgba(43,37,32,0.12); }
+  .status .arc { stroke-linecap: round; transition: stroke-dashoffset 0.55s cubic-bezier(.3,.7,.2,1), stroke 0.3s; }
+  .t-fresh .arc { stroke: var(--fresh); }  .t-fresh .words { color: var(--fresh-ink); }
+  .t-amber .arc { stroke: var(--amber); }  .t-amber .words { color: var(--amber-ink); }
+  .t-red .arc   { stroke: var(--red); }    .t-red .words   { color: var(--red); }
+  .t-cook .arc  { stroke: var(--cook); }   .t-cook .words  { color: var(--cook-ink); }
+  .t-past .arc  { stroke: transparent; }   .t-past .track  { stroke: rgba(194,38,48,0.34); } .t-past .words { color: var(--red); }
+
+  .empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center;
+           padding: 1rem; color: var(--ink2); font-weight: 600; pointer-events: none; transition: opacity 0.2s; }
+  .has-food .empty { opacity: 0; }
+
+  .hop { animation: hop 0.38s cubic-bezier(.2,.9,.3,1.25) both; }
+  @keyframes hop {
+    0% { transform: translateY(46px) scale(0.55); opacity: 0; }
+    60% { transform: translateY(-7px) scale(1.04); opacity: 1; }
+    100% { transform: none; opacity: 1; }
+  }
+
+  /* The door wears the app icon and swings open on its left hinge. */
+  .door {
+    position: absolute; inset: 0; border-radius: 26px; z-index: 3; display: none;
+    background: linear-gradient(135deg, #1D8468, #0F6E56 45%, #0A5140);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14);
+    transform-origin: left center; backface-visibility: hidden;
+    align-items: center; justify-content: center;
+  }
+  .js .door { display: flex; }
+  .door img { width: 46%; max-width: 170px; height: auto; border-radius: 22%; display: block; }
+  .door::after { content: ""; position: absolute; right: 14px; top: 50%; width: 7px; height: 74px; margin-top: -37px;
+                 border-radius: 4px; background: rgba(255,255,255,0.92); }
+  .door.open { animation: swing 0.95s cubic-bezier(.5,0,.25,1) 0.25s both; pointer-events: none; }
+  @keyframes swing {
+    0% { transform: rotateY(0); opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: rotateY(-104deg); opacity: 0; visibility: hidden; }
+  }
+
+  /* ---------- Controls ---------- */
+  .panel { display: grid; gap: 0.9rem; min-width: 0; }
+  .daybar { display: flex; align-items: center; gap: 0.5rem; }
+  .day { flex: 1; min-width: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(1rem, 4.4vw, 1.25rem); line-height: 1.2; white-space: nowrap; }
+  .btn {
+    font: inherit; font-weight: 700; min-height: 46px; padding: 0 1.15rem; border-radius: 999px; cursor: pointer;
+    border: 1.5px solid var(--green); background: var(--card); color: var(--green);
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation; white-space: nowrap;
+  }
+  .btn.solid { background: var(--green); color: #fff; box-shadow: 0 5px 14px rgba(15,110,86,0.26); }
+  .btn.quiet { border-color: var(--edge); color: var(--ink2); padding: 0 0.8rem; font-size: 0.92rem; }
+  .btn:active { transform: scale(0.97); }
+  .btn[disabled] { opacity: 0.45; cursor: default; box-shadow: none; }
+  .btn:focus-visible, .chip:focus-visible, a:focus-visible { outline: 3px solid #EF9F27; outline-offset: 2px; }
+
+  h2 { font-size: 0.82rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink2); margin: 0 0 0.45rem; font-weight: 700; }
+  .chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+  .chip {
+    font: inherit; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    min-height: 82px; padding: 7px 4px 6px; border-radius: 16px; cursor: pointer; color: var(--ink);
+    background: var(--card); border: 1px solid var(--line); box-shadow: 0 2px 6px rgba(60,40,20,0.07);
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  }
+  .chip img { width: 40px; height: 40px; object-fit: contain; display: block; }
+  .chip .nm { font-size: 0.84rem; font-weight: 700; line-height: 1.15; text-align: center; }
+  .chip .mark {
+    position: absolute; top: 5px; right: 6px; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--green); color: #fff; font-weight: 700; font-size: 15px; line-height: 20px; text-align: center;
+  }
+  .chip[aria-pressed="true"] { background: #E7EFE8; border-color: rgba(15,110,86,0.35); box-shadow: none; }
+  .chip[aria-pressed="true"] .mark { font-size: 12px; background: var(--forest); }
+  .chip:active { transform: scale(0.96); }
+  .hint { color: var(--ink2); font-size: 0.86rem; margin: 0.45rem 0 0; }
+
+  /* ---------- The recipe moment ---------- */
+  .rescue { min-width: 0; }
+  .rescue[hidden] { display: none; }
+  .tip { margin: 0; padding: 0.7rem 0.9rem; border-radius: 14px; background: var(--sand); color: var(--ink2); font-weight: 600; font-size: 0.93rem; }
+  .recipe {
+    display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 0.85rem; align-items: center;
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 0.7rem;
+    box-shadow: 0 8px 22px rgba(60,40,20,0.12);
+  }
+  .recipe > img { width: 92px; height: 92px; border-radius: 14px; display: block; }
+  .uses { margin: 0; color: var(--cook-ink); font-weight: 700; font-size: 0.9rem; line-height: 1.3; }
+  .recipe h3 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.2; margin: 0.1rem 0 0.5rem; }
+  .saved { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 1.45rem; line-height: 1.2; color: var(--forest); font-variant-numeric: tabular-nums; }
+  .after { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 0.65rem; text-align: center; }
+  .after p { margin: 0 0 0.5rem; }
+  .fine { color: var(--ink2); font-size: 0.82rem; line-height: 1.4; }
+  .slide { animation: slide 0.42s cubic-bezier(.2,.8,.3,1) both; }
+  @keyframes slide { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  .badge { display: inline-block; line-height: 0; border-radius: 9px; }
+  .badge img { display: block; height: 52px; width: auto; }
+
+  .get { text-align: center; margin: 2.2rem 0 0; }
+  .get p { margin: 0 0 0.7rem; font-weight: 600; }
+  footer { text-align: center; color: var(--ink2); font-size: 0.86rem; padding: 0 1rem 2rem; }
+  footer p { margin: 0.3rem 0; }
+  footer a { color: var(--green); }
+
+  /* ---------- Reduce Motion: three stills ---------- */
+  .stills { display: none; gap: 1.4rem; }
+  .stills figure { margin: 0; }
+  .stills figcaption { margin: 0 0 0.6rem; text-align: center; }
+  .stills figcaption strong { display: block; font-family: var(--serif); font-size: 1.2rem; }
+  .stills figcaption span { color: var(--ink2); font-size: 0.93rem; }
+  .still-mode .demo { display: none; }
+  .still-mode .stills { display: grid; }
+  @media (min-width: 860px) { .still-mode .stills { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; } }
+  .still-mode .shelf { min-height: 100px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .door { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a class="home" href="/"><img src="/apple-touch-icon.png" alt="" width="30" height="30">Kepta</a>
+    <h1>Stock the Fridge</h1>
+    <p class="lede">Tap a few foods. Then skip ahead and see what Kepta does with&nbsp;them.</p>
+  </header>
+
+  <noscript><p class="tip" style="text-align:center;">This demo needs JavaScript. Kepta tracks your food, counts down each item, and suggests recipes that use what you have.</p></noscript>
+
+  <div class="demo" id="demo">
+    <div class="stage">
+      <div class="fridge" id="fridge">
+        <div class="inside" id="inside" role="group" aria-label="Your fridge">
+          <p class="empty" id="empty">Tap a food to put it in the&nbsp;fridge.</p>
+        </div>
+        <div class="door" id="door" aria-hidden="true"><img src="/apple-touch-icon.png" alt="" width="180" height="180"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="daybar">
+        <div class="day" id="day">Today</div>
+        <button class="btn quiet" id="reset" type="button">Start Over</button>
+        <button class="btn solid" id="next" type="button" disabled>Next Day</button>
+      </div>
+
+      <div class="rescue" id="rescue" hidden></div>
+
+      <section aria-labelledby="qa">
+        <h2 id="qa">Quick Add</h2>
+        <div class="chips" id="chips"></div>
+        <p class="hint" id="hint">One tap adds a food. Kepta fills in how long it&nbsp;keeps.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="stills" id="stills" aria-label="How Kepta works, in three pictures"></div>
+
+  <p class="sr" id="say" aria-live="polite"></p>
+
+  <section class="get">
+    <p>Kepta is free on the App&nbsp;Store.</p>
+    <a class="badge" href="https://apps.apple.com/app/id6805635396"><img src="/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+  </section>
+</main>
+
+<footer>
+  <p>Shelf-life colors are quality guidance, not food-safety&nbsp;advice.</p>
+  <p>© 2026 Effort Zero, LLC. Kepta is a product of <a href="https://effortzero.app">Effort&nbsp;Zero</a>.</p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // The six foods. `keep` is the number of good days counting the day it went
+  // in. `clock` foods (raw meat, leftovers) wear the cook countdown instead of
+  // a freshness color, the way the app's Kitchen rows do (ItemStatus.swift).
+  // `price` is a typical price and `share` is the part French Toast uses.
+  var FOODS = [
+    { id: 'milk',      name: 'Milk',           keep: 7,  price: 3.99, share: 1 / 4 },
+    { id: 'eggs',      name: 'Eggs',           keep: 21, price: 3.99, share: 4 / 12 },
+    { id: 'chicken',   name: 'Chicken Breast', keep: 2,  clock: 'cook' },
+    { id: 'leftovers', name: 'Leftovers',      keep: 3,  clock: 'eat' },
+    { id: 'spinach',   name: 'Spinach',        keep: 3 },
+    { id: 'bread',     name: 'Bread',          keep: 5,  price: 2.49, share: 1 / 3 }
+  ];
+  var RECIPE = ['milk', 'eggs', 'bread'];
+  var RECIPE_DAY = 3, LAST_DAY = 3;
+  var SVG = 'http://www.w3.org/2000/svg';
+  var R = 6, C = 2 * Math.PI * R;
+  var byId = {};
+  FOODS.forEach(function (f) { byId[f.id] = f; });
+
+  // The app's one unit ladder, rounded down (ItemStatus.span).
+  function span(days) {
+    if (days < 14) return days === 1 ? '1 day' : days + ' days';
+    if (days < 60) return Math.floor(days / 7) + ' weeks';
+    return Math.floor(days / 30) + ' months';
+  }
+
+  // One status per food per day: words, ring color and how full the ring is.
+  function status(food, age) {
+    var left = food.keep - age;                    // good days left, counting today
+    if (left <= 0) return { tone: 'past', frac: 0, text: span(1 - left) + ' past' };
+    var frac = left / food.keep;
+    if (food.clock) {
+      return { tone: 'cook', frac: frac, text: left === 1 ? food.clock + ' today' : span(left) + ' to ' + food.clock };
+    }
+    if (left === 1) return { tone: 'red', frac: frac, text: 'use today' };
+    var tone = frac > 0.5 ? 'fresh' : (frac > 0.25 || left >= 4) ? 'amber' : 'red';
+    return { tone: tone, frac: frac, text: span(left) + ' left' };
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  // A fridge: three shelves, one fixed spot per food.
+  function makeFridge(inside) {
+    var slots = {}, items = {};
+    for (var s = 0; s < 3; s++) {
+      var shelf = el('div', 'shelf');
+      FOODS.slice(s * 2, s * 2 + 2).forEach(function (f) {
+        var slot = el('div', 'slot');
+        slots[f.id] = slot;
+        shelf.appendChild(slot);
+      });
+      inside.appendChild(shelf);
+    }
+    function paint(id, age, animate) {
+      var it = items[id], st = status(byId[id], age);
+      it.status.className = 'status t-' + st.tone;
+      it.words.textContent = st.text;
+      if (!animate) it.arc.style.transition = 'none';
+      it.arc.setAttribute('stroke-dashoffset', (C * (1 - st.frac)).toFixed(2));
+      if (!animate) { void it.arc.getBoundingClientRect(); it.arc.style.transition = ''; }
+      return st;
+    }
+    return {
+      has: function (id) { return !!items[id]; },
+      count: function () { return Object.keys(items).length; },
+      add: function (id, age, animate) {
+        var f = byId[id];
+        var item = el('div', 'item' + (animate ? ' hop' : ''));
+        var img = el('img'); img.src = '/try-art/' + id + '.png'; img.alt = ''; img.width = 52; img.height = 52;
+        var st = el('div', 'status');
+        var svg = document.createElementNS(SVG, 'svg');
+        svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('focusable', 'false');
+        var track = document.createElementNS(SVG, 'circle'), arc = document.createElementNS(SVG, 'circle');
+        [track, arc].forEach(function (c) { c.setAttribute('cx', '9'); c.setAttribute('cy', '9'); c.setAttribute('r', String(R)); svg.appendChild(c); });
+        track.setAttribute('class', 'track'); arc.setAttribute('class', 'arc');
+        arc.setAttribute('stroke-dasharray', C.toFixed(2));
+        arc.setAttribute('stroke-dashoffset', animate ? C.toFixed(2) : '0');
+        var words = el('span', 'words');
+        st.appendChild(svg); st.appendChild(words);
+        item.appendChild(img); item.appendChild(el('div', 'name', f.name)); item.appendChild(st);
+        slots[id].appendChild(item);
+        items[id] = { node: item, status: st, arc: arc, words: words };
+        inside.classList.add('has-food');
+        if (animate) void arc.getBoundingClientRect();   // the ring fills as the food lands
+        return paint(id, age, animate);
+      },
+      remove: function (id) {
+        if (!items[id]) return;
+        slots[id].removeChild(items[id].node);
+        delete items[id];
+        if (!Object.keys(items).length) inside.classList.remove('has-food');
+      },
+      paint: paint
+    };
+  }
+
+  // "Milk and Eggs", "Milk, Eggs, and Bread": the app's own joining.
+  function joined(names) {
+    if (names.length < 2) return names[0] || '';
+    if (names.length === 2) return names[0] + ' and ' + names[1];
+    return names[0] + ', ' + names[1] + ', and ' + names[2];
+  }
+  function savedFor(ids) {
+    return ids.reduce(function (sum, id) { return sum + Math.round(byId[id].price * byId[id].share * 100) / 100; }, 0);
+  }
+  function money(n) { return '$' + n.toFixed(2); }
+
+  // The French Toast card. `done` draws it after "I Made This".
+  function recipeCard(ids, done, animate, onMade) {
+    var card = el('div', 'recipe' + (animate ? ' slide' : ''));
+    var img = el('img'); img.src = '/try-art/french-toast.jpg'; img.alt = 'A plate of French toast'; img.width = 92; img.height = 92;
+    var body = el('div');
+    body.appendChild(el('p', 'uses', 'Uses your ' + joined(ids.map(function (id) { return byId[id].name; }))));
+    body.appendChild(el('h3', null, 'French Toast'));
+    card.appendChild(img); card.appendChild(body);
+    var total = savedFor(ids);
+
+    function finish(count) {
+      var saved = el('p', 'saved', money(count ? 0 : total) + ' Saved');
+      saved.setAttribute('aria-label', money(total) + ' saved');
+      body.appendChild(saved);
+      var after = el('div', 'after' + (count ? ' slide' : ''));
+      after.appendChild(el('p', 'fine', 'Counted at typical prices, for the share the recipe uses. In Kepta you can set your own.'));
+      var p = el('p', null, 'Now try it with your own kitchen.'); p.style.fontWeight = '700';
+      after.appendChild(p);
+      var a = el('a', 'badge'); a.href = 'https://apps.apple.com/app/id6805635396';
+      var b = el('img'); b.src = '/app-store-badge.svg'; b.alt = 'Download on the App Store'; b.width = 156; b.height = 52;
+      a.appendChild(b); after.appendChild(a);
+      card.appendChild(after);
+      if (!count) return;
+      var start = null;
+      (function step(t) {
+        if (start === null) start = t;
+        var p2 = Math.min(1, (t - start) / 650), e = 1 - Math.pow(1 - p2, 3);
+        saved.textContent = money(total * e) + ' Saved';
+        if (p2 < 1) requestAnimationFrame(step); else saved.textContent = money(total) + ' Saved';
+      })(performance.now());
+    }
+
+    if (done) finish(false);
+    else {
+      var made = el('button', 'btn solid', 'I Made This'); made.type = 'button';
+      made.addEventListener('click', function () {
+        body.removeChild(made);
+        finish(true);
+        if (onMade) onMade(total);
+      });
+      body.appendChild(made);
+    }
+    return card;
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Reduce Motion: three stills, nothing moves ----------
+  if (reduce) {
+    document.documentElement.classList.add('still-mode');
+    var stills = document.getElementById('stills');
+    var all = FOODS.map(function (f) { return f.id; });
+    [
+      { h: '1. Add food in one tap', s: 'Each food gets a ring that shows how long it keeps.', age: 0 },
+      { h: '2. The rings run down', s: 'Three days later, you can see what needs using first.', age: 3 },
+      { h: '3. Cook what you have', s: 'Kepta finds a recipe and counts what you saved.', card: true }
+    ].forEach(function (d) {
+      var fig = el('figure'), cap = el('figcaption');
+      cap.appendChild(el('strong', null, d.h)); cap.appendChild(el('span', null, d.s));
+      fig.appendChild(cap);
+      if (d.card) fig.appendChild(recipeCard(RECIPE, true, false));
+      else {
+        var shell = el('div', 'fridge'), inside = el('div', 'inside');
+        inside.setAttribute('role', 'group');
+        inside.setAttribute('aria-label', d.age ? 'The fridge three days later' : 'The fridge on the day the food went in');
+        shell.appendChild(inside); fig.appendChild(shell);
+        var fr = makeFridge(inside);
+        all.forEach(function (id) { fr.add(id, d.age, false); });
+      }
+      stills.appendChild(fig);
+    });
+    return;
+  }
+
+  // ---------- The live demo ----------
+  var fridge = makeFridge(document.getElementById('inside'));
+  var chipsBox = document.getElementById('chips');
+  var dayLabel = document.getElementById('day');
+  var next = document.getElementById('next');
+  var reset = document.getElementById('reset');
+  var rescue = document.getElementById('rescue');
+  var say = document.getElementById('say');
+  var door = document.getElementById('door');
+  var day = 0, added = {}, made = false, shownFor = '';
+  var chips = {};
+
+  function dayName(d) { return d === 0 ? 'Today' : d === 1 ? '1 Day Later' : d + ' Days Later'; }
+
+  function showRescue(animate) {
+    if (day < RECIPE_DAY) { rescue.hidden = true; rescue.textContent = ''; shownFor = ''; return; }
+    if (made) return;
+    var ids = RECIPE.filter(function (id) { return fridge.has(id); });
+    var key = ids.join(',') || 'none';
+    if (key === shownFor) return;
+    shownFor = key;
+    rescue.textContent = '';
+    rescue.hidden = false;
+    if (!ids.length) {
+      rescue.appendChild(el('p', 'tip' + (animate ? ' slide' : ''), 'Add Milk, Eggs, or Bread to see a recipe that uses them.'));
+      return;
+    }
+    rescue.appendChild(recipeCard(ids, false, animate, function (total) {
+      made = true;
+      say.textContent = 'French Toast made. ' + money(total) + ' saved.';
+    }));
+    say.textContent = 'A recipe: French Toast. Uses your ' + joined(ids.map(function (id) { return byId[id].name; })) + '.';
+  }
+
+  function refresh() {
+    dayLabel.textContent = dayName(day);
+    next.disabled = fridge.count() === 0 || day >= LAST_DAY;
+  }
+
+  FOODS.forEach(function (f) {
+    var b = el('button', 'chip'); b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+    var img = el('img'); img.src = '/try-art/' + f.id + '.png'; img.alt = ''; img.width = 40; img.height = 40;
+    var mark = el('span', 'mark', '+'); mark.setAttribute('aria-hidden', 'true');
+    b.appendChild(img); b.appendChild(el('span', 'nm', f.name)); b.appendChild(mark);
+    b.addEventListener('click', function () {
+      if (fridge.has(f.id)) {
+        fridge.remove(f.id); delete added[f.id]; mark.textContent = '+';
+        b.setAttribute('aria-pressed', 'false');
+        say.textContent = f.name + ' removed.';
+      } else {
+        added[f.id] = day;
+        var st = fridge.add(f.id, 0, true);
+        b.setAttribute('aria-pressed', 'true'); mark.textContent = '✓';
+        say.textContent = f.name + ' added. ' + st.text + '.';
+      }
+      if (made && day >= RECIPE_DAY) { /* the finished card stays as it is */ } else showRescue(true);
+      refresh();
+    });
+    chipsBox.appendChild(b);
+    chips[f.id] = b;
+  });
+
+  next.addEventListener('click', function () {
+    if (day >= LAST_DAY || !fridge.count()) return;
+    day += 1;
+    var parts = [];
+    FOODS.forEach(function (f) {
+      if (!fridge.has(f.id)) return;
+      var st = fridge.paint(f.id, day - added[f.id], true);
+      parts.push(f.name + ', ' + st.text);
+    });
+    refresh();
+    say.textContent = dayName(day) + '. ' + parts.join('. ') + '.';
+    showRescue(true);
+    if (day >= LAST_DAY) { var go = rescue.querySelector('button'); (go || reset).focus({ preventScroll: true }); }
+  });
+
+  reset.addEventListener('click', function () {
+    FOODS.forEach(function (f) { fridge.remove(f.id); chips[f.id].setAttribute('aria-pressed', 'false'); chips[f.id].querySelector('.mark').textContent = '+'; });
+    day = 0; added = {}; made = false; shownFor = '';
+    rescue.hidden = true; rescue.textContent = '';
+    refresh();
+    say.textContent = 'Fridge emptied. Back to today.';
+  });
+
+  refresh();
+
+  // The door opens once the page has painted. Taps work the whole time.
+  requestAnimationFrame(function () { requestAnimationFrame(function () { door.classList.add('open'); }); });
+  door.addEventListener('animationend', function () { door.style.display = 'none'; });
+})();
+</script>
+</body>
+</html>
